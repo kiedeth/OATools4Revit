@@ -33,6 +33,7 @@ namespace OATools.Main
             BitmapImage largeImage = new BitmapImage(uriImage);
             pushButton.LargeImage = largeImage;
 
+
             return Result.Succeeded;
         }
 

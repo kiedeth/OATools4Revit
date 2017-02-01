@@ -25,7 +25,6 @@ namespace OATools
             Document doc = uidoc.Document;
 
             // Access current selection
-
             Selection sel = uidoc.Selection;
 
             // Retrieve elements from database

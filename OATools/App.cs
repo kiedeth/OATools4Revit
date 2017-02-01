@@ -14,13 +14,6 @@ namespace OATools
     {
         public Result OnStartup(ExternalCommandData commandData, ref string message, ElementSet elements, UIControlledApplication a)
         {
-            //Get application and document objects
-            UIApplication uiApp = commandData.Application;
-            Document doc = uiApp.ActiveUIDocument.Document;
-            //UIApplication uiDoc = 
-
-            //TaskDialog.Show("Revit", "Hello World");
-            CsAddPanel.OnStartup(uiApp);
             return Result.Succeeded;
         }
 
