@@ -19,16 +19,16 @@ namespace OATools
       public Result OnStartup(UIControlledApplication application)
       {
          // Create a custom ribbon tab
-         String tabName = "OA Tools";
+         String tabName = "O'Brien/Atkins";
          application.CreateRibbonTab(tabName);
 
          // Add a new ribbon panel
-         RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "O'Brien/Atkins");
+         RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "O'Brien/Atkins Tools 4 Revit");
 
          // Create a push button to trigger a command add it to the ribbon panel.
          string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
          PushButtonData buttonData = new PushButtonData("cmdHelloWorld",
-            "OA Tools", thisAssemblyPath, "OATools.HelloWorld");
+            "Say Hello", thisAssemblyPath, "OATools.HelloWorld");
 
          PushButton pushButton = ribbonPanel.AddItem(buttonData) as PushButton;
 
@@ -37,7 +37,7 @@ namespace OATools
          pushButton.ToolTip = "Say hello to the entire world.";
 
          // b) large bitmap
-         Uri uriImage = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Img\img-icon-check-in-box.png");
+         Uri uriImage = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-grid.ico");
          BitmapImage largeImage = new BitmapImage(uriImage);
          pushButton.LargeImage = largeImage;
 

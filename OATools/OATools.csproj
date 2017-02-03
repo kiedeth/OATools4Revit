@@ -69,13 +69,14 @@
     <Compile Include="App.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CsAddPanel.cs" />
-    <Compile Include="Main\CreateRibbon.cs" />
+    <Compile Include="Main\clsCreateTab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="OATools.addin">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Resources\Icons\icon-grid.ico" />
     <Content Include="Resources\Img\img-icon-check-in-box.png" />
     <Content Include="Resources\Img\img-icon-check-mark5.png" />
     <Content Include="Resources\Img\img-icon-check-mark6.png" />
