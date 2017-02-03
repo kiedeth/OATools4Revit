@@ -34,3 +34,9 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2017.0.0.0")]
 [assembly: AssemblyFileVersion("2017.0.0.0")]
+
+
+
+
+//copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2017"
+//copy "$(ProjectDir)bin\x64\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017"

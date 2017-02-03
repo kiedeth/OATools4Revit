@@ -1,60 +1,56 @@
-﻿using System;
-using System.Reflection;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using System.Windows.Media.Imaging;
+﻿//using System;
+//using System.Reflection;
+//using Autodesk.Revit.DB;
+//using Autodesk.Revit.UI;
+//using System.Windows.Media.Imaging;
+//using System.Collections.Generic;
 
-namespace OATools.Main
-{
-    /// <remarks>
-    /// This application's main class. The class must be Public.
-    /// </remarks>
-    public class CsAddPanel : IExternalApplication
-    {
-        // Both OnStartup and OnShutdown must be implemented as public method
-        public Result OnStartup(UIControlledApplication application)
-        {
-            // Add a new ribbon panel
-            RibbonPanel ribbonPanel = application.CreateRibbonPanel("NewRibbonPanel");
+//namespace OATools
+//{
+//    public class CreateRibbon : IExternalCommand
+//    {
+//        //Both OnStartup and OnShutdown must be implemented as public method.
+//        public Autodesk.Revit.UI.Result OnStartup(UIControlledApplication application)
+//        {
+//            // Create ribbon tab.
+//            String tabName = "OA Tools";
+//            application.CreateRibbonTab(tabName);
 
-            // Create a push button to trigger a command add it to the ribbon panel.
-            string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
-            PushButtonData buttonData = new PushButtonData("cmdHelloWorld",
-               "Hello World", thisAssemblyPath, "OATools.Main.HelloWorld");
+//            //Get location of this assembly.
+//            string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
 
-            PushButton pushButton = ribbonPanel.AddItem(buttonData) as PushButton;
+//            // CreateRibbon push buttons.
+//            PushButtonData button1 = new PushButtonData("cmdHelloWorld", "Hello World", thisAssemblyPath, "OATools.Main.HelloWorld");
 
-            // Optionally, other properties may be assigned to the button
-            // a) tool-tip
-            pushButton.ToolTip = "Say hello to the entire world.";
+//            //// Create a ribbon panel.
+//            //List<RibbonItem> projectButtons = new List<RibbonItem>();
+//            //projectButtons.AddRange(m_projectPanel.AddStackedItems(button1));
 
-            // b) large bitmap
-            Uri uriImage = new Uri(@"D:\Sample\HelloWorld\bin\Debug\39-Globe_32x32.png");
-            BitmapImage largeImage = new BitmapImage(uriImage);
-            pushButton.LargeImage = largeImage;
+//            return Result.Succeeded;
+//        }
+
+//        public Autodesk.Revit.UI.Result OnShutdown(UIControlledApplication application)
+//        {
+//            // Nothing to clean up in this case.
+//            return Result.Succeeded;
+//        }
+
+//        Result IExternalCommand.Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+//        {
+//            TaskDialog.Show("Revit", "Ribbon Created!");
+//            return Autodesk.Revit.UI.Result.Succeeded;
+//        }
+//    }
+
+//    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
+//    public class HelloWorld : IExternalCommand
+//    {
+//        public Autodesk.Revit.UI.Result Execute(ExternalCommandData revit, ref string message, ElementSet elements)
+//        {
+//            TaskDialog.Show("Revit", "Hello World");
+//            return Autodesk.Revit.UI.Result.Succeeded;
+//        }
 
 
-            return Result.Succeeded;
-        }
-
-        public Result OnShutdown(UIControlledApplication application)
-        {
-            // nothing to clean up in this simple case
-            return Result.Succeeded;
-        }
-    }
-    /// <remarks>
-    /// The "HelloWorld" external command. The class must be Public.
-    /// </remarks>
-    [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-    public class HelloWorld : IExternalCommand
-    {
-        // The main Execute method (inherited from IExternalCommand) must be public
-        public Autodesk.Revit.UI.Result Execute(ExternalCommandData revit,
-            ref string message, ElementSet elements)
-        {
-            TaskDialog.Show("Revit", "Hello World");
-            return Autodesk.Revit.UI.Result.Succeeded;
-        }
-    }
-}
+//    }
+//}

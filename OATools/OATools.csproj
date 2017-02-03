@@ -62,15 +62,29 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="CsAddPanel.cs" />
     <Compile Include="Main\CreateRibbon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OATools.addin" />
+    <Content Include="OATools.addin">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\Img\img-icon-check-in-box.png" />
+    <Content Include="Resources\Img\img-icon-check-mark5.png" />
+    <Content Include="Resources\Img\img-icon-check-mark6.png" />
+    <Content Include="Resources\Img\img-icon-shapes-checkmark-solid-circle.png" />
+    <Content Include="Resources\Img\img-icon-shapes-comment-bubbles.png" />
+    <Content Include="Resources\Img\img-icon-shapes-power-button.png" />
+    <Content Include="Resources\Img\img-icon-shapes-square-download.png" />
+    <Content Include="Resources\Img\img-icon-shapes-tile1.png" />
+    <Content Include="Resources\Img\img-icon-symbols-shapes-cube.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

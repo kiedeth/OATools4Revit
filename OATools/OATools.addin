@@ -1,6 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <RevitAddIns>
-  <AddIn Type="Command">
+  <AddIn Type="Application">
+    <Name>OA Tools</Name>
+    <Assembly>OATools.dll</Assembly>
+    <AddInId>604b1052-f742-4951-8576-c261d1993108</AddInId>
+    <FullClassName>OATools.CsAddPanel</FullClassName>
+    <VendorId>NAME</VendorId>
+    <VendorDescription>Your Company Information</VendorDescription>
+  </AddIn>
+</RevitAddIns>
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>-->
+  
+  <!--<AddIn Type="Application">
+    <Name>Application OATools</Name>
+    <Assembly>OATools.dll</Assembly>
+    <FullClassName>OATools.App</FullClassName>
+    <ClientId>0f8780c2-68e8-46ba-96f6-db7a9f66c987</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>-->
+  
+  <!--<AddIn Type="Command">
     <Text>Command OATools</Text>
     <Description>Some description for OATools</Description>
     <Assembly>OATools.dll</Assembly>
@@ -8,13 +35,6 @@
     <ClientId>65e64740-c363-45de-b13a-fa53cfad9c31</ClientId>
     <VendorId>com.typepad.thebuildingcoder</VendorId>
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
-  </AddIn>
-  <AddIn Type="Application">
-    <Name>Application OATools</Name>
-    <Assembly>OATools.dll</Assembly>
-    <FullClassName>OATools.App</FullClassName>
-    <ClientId>0f8780c2-68e8-46ba-96f6-db7a9f66c987</ClientId>
-    <VendorId>com.typepad.thebuildingcoder</VendorId>
-    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
-  </AddIn>
-</RevitAddIns>
+  </AddIn>-->
+
+<!--</RevitAddIns>-->
