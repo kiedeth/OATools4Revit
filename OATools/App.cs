@@ -21,9 +21,12 @@ namespace OATools
 
         public Result OnStartup(UIControlledApplication application)
         {
-
+            //Creates the Tab
             clsCreateTab tab = new clsCreateTab();
             tab.CreateTab(application);
+
+            //formTest form = new formTest();
+            //form.ShowDialog();
 
             return Result.Succeeded;
         }
