@@ -34,8 +34,8 @@ namespace OATools
                "Say Hello", thisAssemblyPath, "OATools.clsHelloWorld");
 
             // Create 2nd push button to trigger a command add it to the ribbon panel.
-            PushButtonData buttonData2 = new PushButtonData("cmdAllText2Upper",
-               "Text To Upper", thisAssemblyPath, "OATools.Commands.cmdAllText2Upper");
+            PushButtonData buttonData2 = new PushButtonData("cmdConvertTextNotes",
+               "Text To Upper", thisAssemblyPath, "OATools.ConvertTextNotes.cmdConvertTextNotes");
 
 
             //Adds the button to the ribbon
