@@ -87,6 +87,7 @@ namespace OATools.ConvertTextNotes
             if (textNotesToUpdate.IsEmpty)
             {
                 //Do something if there are no notes to format
+                TaskDialog.Show("Nothing to do!", "There are no Text Notes to change to uppercase!");
             }
 
             // Apply the 'AllCaps' formatting to the TextNotes that still need it.
@@ -133,7 +134,7 @@ namespace OATools.ConvertTextNotes
             if (textNotesToUpdate.IsEmpty)
             {
                 //Do something if there are no notes to format
-                
+                TaskDialog.Show("Nothing to do!", "There are no Text Notes to change to uppercase!");
             }
 
             // Apply the 'AllCaps' formatting to the TextNotes that still need it.

@@ -8,9 +8,29 @@
     <VendorId>NAME</VendorId>
     <VendorDescription>Your Company Information</VendorDescription>
   </AddIn>
+
+
+<AddIn Type="Command">
+    <Text>Place Family</Text>
+    <Description>Some description for OATools</Description>
+    <Assembly>OATools.dll</Assembly>
+    <FullClassName>OATools.Commands.CmdPlaceFamilyInstance</FullClassName>
+    <ClientId>65e64740-c363-45de-b13a-fa53cfad9c31</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Load Family</Text>
+    <Description>Some description for OATools</Description>
+    <Assembly>OATools.dll</Assembly>
+    <FullClassName>OATools.Commands.cmdLoadFamilyFromFile</FullClassName>
+    <ClientId>4B602285-3F8B-4B98-9DFD-2A3DF5790B06</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
 </RevitAddIns>
-
-
 
 
 

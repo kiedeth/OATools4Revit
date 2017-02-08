@@ -73,6 +73,8 @@
     <Compile Include="App.cs" />
     <Compile Include="clsHelloWorld.cs" />
     <Compile Include="Commands\cmdAllText2Upper.cs" />
+    <Compile Include="Commands\cmdLoadFamilyFromFile.cs" />
+    <Compile Include="Commands\cmdPlaceFamilyInstance.cs" />
     <Compile Include="ConvertTextNotes\cmdConvertTextNotes.cs" />
     <Compile Include="ConvertTextNotes\frmConvertTextNotes.cs">
       <SubType>Form</SubType>
@@ -119,7 +121,9 @@
       <DependentUpon>formTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\fsDNote.rfa" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2017"
