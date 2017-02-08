@@ -18,16 +18,38 @@ namespace OATools.ConvertTextNotes
     public class cmdConvertTextNotes : IExternalCommand
     {
 
+
         public Autodesk.Revit.UI.Result Execute(Autodesk.Revit.UI.ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             try
             {
+                //Create a transaction
+                Transaction documentTransaction = new Transaction(commandData.Application.ActiveUIDocument.Document, "Document");
+                documentTransaction.Start();
+
+                System.Windows.Forms.DialogResult result;
+
+
                 // create a form to display the information of view filters
-                using (frmConvertTextNotes infoForm = new frmConvertTextNotes(commandData))
+                using (frmConvertTextNotes frm = new frmConvertTextNotes(commandData))
                 {
-                    infoForm.ShowDialog();
+                    result = frm.ShowDialog();
                 }
-                return Autodesk.Revit.UI.Result.Succeeded;
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+
+                    documentTransaction.Commit();
+                    return Autodesk.Revit.UI.Result.Succeeded;
+                }
+                else
+                {
+                    documentTransaction.RollBack();
+                    return Autodesk.Revit.UI.Result.Cancelled;
+                }
+
+
+
+                //return Autodesk.Revit.UI.Result.Succeeded;
             }
             catch (Exception ex)
             {
@@ -35,6 +57,48 @@ namespace OATools.ConvertTextNotes
                 message = ex.Message;
                 return Autodesk.Revit.UI.Result.Failed;
             }
+            
+
         }
     }
 }
+
+
+//public Autodesk.Revit.UI.Result Execute(Autodesk.Revit.UI.ExternalCommandData commandData,
+//                                       ref string message,
+//                                       ElementSet elements)
+//{
+//    try
+//    {
+//        //Create a transaction
+//        Transaction documentTransaction = new Transaction(commandData.Application.ActiveUIDocument.Document, "Document");
+//        documentTransaction.Start();
+//        // Create a new instance of class RoomsData
+//        RoomsData data = new RoomsData(commandData);
+
+//        System.Windows.Forms.DialogResult result;
+
+//        // Create a form to display the information of rooms
+//        using (AutoTagRoomsForm roomsTagForm = new AutoTagRoomsForm(data))
+//        {
+//            result = roomsTagForm.ShowDialog();
+//        }
+
+//        if (result == System.Windows.Forms.DialogResult.OK)
+//        {
+//            documentTransaction.Commit();
+//            return Autodesk.Revit.UI.Result.Succeeded;
+//        }
+//        else
+//        {
+//            documentTransaction.RollBack();
+//            return Autodesk.Revit.UI.Result.Cancelled;
+//        }
+//    }
+//    catch (Exception ex)
+//    {
+//        // If there are something wrong, give error information and return failed
+//        message = ex.Message;
+//        return Autodesk.Revit.UI.Result.Failed;
+//    }
+//}
