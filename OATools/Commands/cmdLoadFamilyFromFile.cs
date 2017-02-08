@@ -22,17 +22,24 @@ namespace OATools.Commands
             try
             {
                 //Create a transaction
-                Transaction tx = new Transaction(commandData.Application.ActiveUIDocument.Document, "Document");
-                tx.Start();
+                Transaction documentTransaction = new Transaction(commandData.Application.ActiveUIDocument.Document, "Document");
+                documentTransaction.Start();
 
-                String fileName = @"C:\Users\jschaad\Documents\Visual Studio 2015\Projects\OATools\OATools\Resources\fsDNote.rfa";
+                String fileName = @"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\fsDNote.rfa";
+
 
                 // try to load family
                 Family family = null;
                 if (!document.LoadFamily(fileName, out family))
                 {
-                    throw new Exception("Unable to load " + fileName);
+                    //throw new Exception("Unable to load " + fileName);
+                    
+                    documentTransaction.RollBack();
+                    return Autodesk.Revit.UI.Result.Cancelled;
                 }
+
+
+
 
                 // Loop through table symbols and add a new table for each
                 ISet<ElementId> familySymbolIds = family.GetFamilySymbolIds();
@@ -46,11 +53,15 @@ namespace OATools.Commands
                     x += 10.0;
                 }
 
-                tx.Commit();
+
+                documentTransaction.Commit();
                 return Autodesk.Revit.UI.Result.Succeeded;
 
 
             }
+
+            
+
             catch (Exception ex)
             {
                 // If there is something wrong, give error information and return failed

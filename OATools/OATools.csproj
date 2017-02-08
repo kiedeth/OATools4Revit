@@ -83,6 +83,7 @@
       <DependentUpon>frmConvertTextNotes.cs</DependentUpon>
     </Compile>
     <Compile Include="CsAddPanel.cs" />
+    <Compile Include="DNoter\cmdDNoter.cs" />
     <Compile Include="formTest.cs">
       <SubType>Form</SubType>
     </Compile>
