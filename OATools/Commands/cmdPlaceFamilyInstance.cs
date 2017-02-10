@@ -79,5 +79,6 @@ namespace OATools.Commands
 
       _added_element_ids.AddRange( e.GetAddedElementIds() );
     }
-  }
+
+    }
 }
