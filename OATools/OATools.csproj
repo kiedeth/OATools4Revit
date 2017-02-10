@@ -52,7 +52,11 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdWindows">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\AdWindows.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
       <HintPath>$(ProgramW6432)\Autodesk\Revit 2017\RevitAPI.dll</HintPath>
       <Private>False</Private>
@@ -67,6 +71,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIFramework">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\UIFramework.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -86,11 +93,16 @@
     <Compile Include="DNoter\appDNoter.cs" />
     <Compile Include="DNoter\cmdCreateDNote.cs" />
     <Compile Include="DNoter\cmdDNoter.cs" />
-    <Compile Include="DNoter\frmDNoter.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="DNoter\frmDNoter.cs" />
     <Compile Include="DNoter\frmDNoter.Designer.cs">
       <DependentUpon>frmDNoter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DNotes\cmdDNoteLoadPlace.cs" />
+    <Compile Include="DNotes\frmCreateDNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DNotes\frmCreateDNote.Designer.cs">
+      <DependentUpon>frmCreateDNote.cs</DependentUpon>
     </Compile>
     <Compile Include="formTest.cs">
       <SubType>Form</SubType>
@@ -130,11 +142,15 @@
     <EmbeddedResource Include="DNoter\frmDNoter.resx">
       <DependentUpon>frmDNoter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DNotes\frmCreateDNote.resx">
+      <DependentUpon>frmCreateDNote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formTest.resx">
       <DependentUpon>formTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DNotes\family_api_DNote.rfa" />
     <None Include="Resources\fsDNote.rfa" />
   </ItemGroup>
   <ItemGroup>
