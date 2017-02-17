@@ -60,6 +60,16 @@
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
   </AddIn>
 
+  <AddIn Type="Command">
+    <Text>Show Parameter Info</Text>
+    <Description>Some description for OATools</Description>
+    <Assembly>OATools.dll</Assembly>
+    <FullClassName>OATools.Commands.CmdShowParamerInfo</FullClassName>
+    <ClientId>7B49907B-E420-4074-B36C-7DE686482874</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
 </RevitAddIns>
 
 

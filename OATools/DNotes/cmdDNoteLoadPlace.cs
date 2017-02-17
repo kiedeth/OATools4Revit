@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 using OATools.Main;
 using System.IO;
 using Autodesk.Revit.DB.Events;
-
-
+using Autodesk.Revit.UI.Selection;
 
 namespace OATools.DNotes
 {
@@ -66,6 +65,7 @@ namespace OATools.DNotes
         /// </summary>
         List<ElementId> _added_element_ids = new List<ElementId>();
 
+        Family family = null;
 
 
 
@@ -78,6 +78,8 @@ namespace OATools.DNotes
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
+            Selection selection = uidoc.Selection;
+
 
             //Retrieve the family if it is already present:
             FilteredElementCollector a = new FilteredElementCollector(doc).OfClass(typeof(Family));
@@ -102,9 +104,13 @@ namespace OATools.DNotes
                 {
                     tx.Start("Load Family");
                     doc.LoadFamily(FamilyPath, out family);
+
+                    //Set the parameters here after loading the family but before exiting the transaction to promt for placement
+
                     tx.Commit();
                 }
             }
+
 
 
 
@@ -114,24 +120,20 @@ namespace OATools.DNotes
             //Create the symbol var
             FamilySymbol symbol = null;
 
-            //Loop through the id's 
-            //There will only be one 
-            //Set symbol var 
+            //Loop through the id's, There will only be one, set symbol var
             foreach (ElementId id in symbolIds)
             {
-                symbol = doc.GetElement(id) as FamilySymbol;             
+                symbol = doc.GetElement(id) as FamilySymbol;
+                
             }
 
 
-
-
-        // Place the family symbol:
-
-        // Subscribe to document changed event to
-        // retrieve family instance elements added by the 
-        // PromptForFamilyInstancePlacement operation:
-
-        app.DocumentChanged += new EventHandler<DocumentChangedEventArgs>(OnDocumentChanged);
+            /// <summary>
+            /// Place the family symbol:
+            /// 
+            /// Subscribe to document changed event to retrieve family instance elements added by the PromptForFamilyInstancePlacement operation:
+            /// </summary>
+            app.DocumentChanged += new EventHandler<DocumentChangedEventArgs>(OnDocumentChanged);
 
             _added_element_ids.Clear();
 
@@ -144,12 +146,17 @@ namespace OATools.DNotes
 
             // Access the newly placed family instances:
             int n = _added_element_ids.Count();
+            
 
             string msg = string.Format("Placed {0} {1} family instance{2}{3}", n, family.Name, Util.PluralSuffix(n), Util.DotOrColon(n));
 
             string ids = string.Join(", ", _added_element_ids.Select<ElementId, string>(id => id.IntegerValue.ToString()));
 
             Util.InfoMsg2(msg, ids);
+
+
+
+            
 
             return Result.Succeeded;
 
@@ -164,6 +171,38 @@ namespace OATools.DNotes
 
 
 
+        //void SetParameter(Document doc, UIDocument uidoc)
+        //{
+        //    //Retrieve the symbol id's
+        //    ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
+
+
+        //    ICollection<ElementId> selectedIds = uidoc.Selection.GetElementIds();
+
+        //    if (0 == symbolIds.Count)
+        //    {
+        //        TaskDialog.Show("Error", "No elements selected");
+        //    }
+        //    else
+        //    {
+        //        foreach (ElementId id in selectedIds)
+        //        {
+        //            //Gets the element associated with the ID
+        //            Element eFromId = doc.GetElement(id);
+
+        //            ParameterSet pSet = eFromId.Parameters;
+
+        //            foreach (Parameter param in pSet)
+        //            {
+        //                if (param.Definition.Name.Contains("Number"))
+        //                {
+        //                    param.Set("3");
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //}
 
 
 

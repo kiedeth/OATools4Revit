@@ -23,163 +23,67 @@ namespace OATools.Commands
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
+            Selection selection = uidoc.Selection;
 
-
-            FilteredElementCollector collector = new FilteredElementCollector(doc);
-
-            collector.OfCategory(BuiltInCategory.OST_GenericAnnotation);
-            collector.OfClass(typeof(FamilySymbol));
-
-            FamilySymbol symbol = collector.FirstElement() as FamilySymbol;
-
-
-
-
-
-            
-
-
-            //Perform the transaction
-            using (Transaction t = new Transaction(doc, "Show Parameters"))
-            {
-                t.Start();
-
-                //Do stuff here
-
-                // Get the element selection of current document.
-                Selection selection = uidoc.Selection;
-                ICollection<ElementId> selectedIds = uidoc.Selection.GetElementIds();
-                //ICollection<ElementId> selectedElements = uidoc.Selection.Get
-
-                if (0 == selectedIds.Count)
-                {
-                    // If no elements selected.
-                    TaskDialog.Show("Revit", "You haven't selected any elements.");
-                }
-                else
-                {
-                    String info = "Ids of selected elements in the document are: ";
-                    foreach (ElementId id in selectedIds)
-                    {
-                        info += "\n\t" + id.IntegerValue;
-
-                        ElementType type = doc.GetElement(id) as ElementType;
-
-                        //GetElementParameterInformation(doc, type);
-                    }
-
-                    TaskDialog.Show("Revit", info);
-                }
-
-
-
-
-
-
-
-                t.Commit();
-            }
-
-
+            SetParameter(doc, uidoc);
 
             return Result.Succeeded;
         }
 
-        private void setFamilyParams(Document doc)
+        public void SetParameter(Autodesk.Revit.DB.Document doc, UIDocument uidoc)
         {
-            FamilyManager manager = doc.FamilyManager;
+            ElementCategoryFilter categoryFilter = new ElementCategoryFilter(BuiltInCategory.OST_GenericAnnotation);
+            FilteredElementCollector collector = new FilteredElementCollector(doc).WherePasses(categoryFilter);
+            ICollection<ElementId> selectedIds = uidoc.Selection.GetElementIds();
 
-            // lookup the family parameters
-            FamilyParameter number = lookupFamilyParam(manager, "DNote Number");
-            //FamilyParameter partNumber = lookupFamilyParam(manager, "Model");
-
-            // set them
-            manager.Set(number, "1");
-            //manager.SetFormula(manufacturer, "\"VIKING\"");
-
-        }
-
-        private FamilyParameter lookupFamilyParam(FamilyManager fm, string name)
-        {
-            // lookup the family parameter
-            foreach (FamilyParameter fp in fm.Parameters)
+            if (0 == selectedIds.Count)
             {
-                if (fp.Definition.Name.ToUpper() == name.ToUpper()) return fp;
+                // If no elements selected.
+                TaskDialog.Show("Revit", "You haven't selected any elements.");
             }
-
-            throw new ApplicationException("Unable to find parameter: " + name);
-
-        }
-
-        void GetElementParameterInformation(Document document, Element element)
-        {
-            // Format the prompt information string
-            String prompt = "Show parameters in selected Element: \n\r";
-
-            StringBuilder st = new StringBuilder();
-            // iterate element's parameters
-            foreach (Parameter para in element.Parameters)
+            else
             {
-                st.AppendLine(GetParameterInformation(para, document));
-            }
+                String info = "Ids of selected elements in the document are: ";
+                foreach (ElementId id in selectedIds)
+                {
+                    info += "\n\t" + id.IntegerValue;
 
-            // Give the user some information
-            TaskDialog.Show("Revit", prompt + st.ToString());
-        }
+                    //Gets the type associated with the ID
+                    ElementType type = doc.GetElement(id) as ElementType;
 
-        String GetParameterInformation(Parameter para, Document document)
-        {
-            string defName = para.Definition.Name + "\t : ";
-            string defValue = string.Empty;
-            // Use different method to get parameter data according to the storage type
-            switch (para.StorageType)
-            {
-                case StorageType.Double:
-                    //covert the number into Metric
-                    defValue = para.AsValueString();
-                    break;
-                case StorageType.ElementId:
-                    //find out the name of the element
-                    Autodesk.Revit.DB.ElementId id = para.AsElementId();
-                    if (id.IntegerValue >= 0)
+                    //Gets the element associated with the ID
+                    Element eFromId = doc.GetElement(id);
+
+                    ParameterSet parameters = eFromId.Parameters;
+                    foreach (Parameter param in parameters)
                     {
-                        defValue = document.GetElement(id).Name;
-                    }
-                    else
-                    {
-                        defValue = id.IntegerValue.ToString();
-                    }
-                    break;
-                case StorageType.Integer:
-                    if (ParameterType.YesNo == para.Definition.ParameterType)
-                    {
-                        if (para.AsInteger() == 0)
+                        
+                        if (param.Definition.Name.Contains("Number"))
+                        //if (param.GUID.Equals("dcef93ac-112d-4ddd-830f-771951a8f103-0003e2fd") )
+                        //if (param.Definition.Name.Equals("DNote Number") && param.AsString() != "")
                         {
-                            defValue = "False";
-                        }
-                        else
-                        {
-                            defValue = "True";
+                            using (Transaction t = new Transaction(doc, "Set Parameter"))
+                            {
+                                t.Start();
+                                param.Set("3");
+                                t.Commit();
+                            }
                         }
                     }
-                    else
-                    {
-                        defValue = para.AsInteger().ToString();
-                    }
-                    break;
-                case StorageType.String:
-                    defValue = para.AsString();
-                    break;
-                default:
-                    defValue = "Unexposed parameter.";
-                    break;
+
+
+
+
+                }
+                TaskDialog.Show("Test", info);
             }
 
-            return defName + defValue;
         }
+
 
 
     }
-
-
 }
+
+//54faba29-384e-48cd-9a87-8a8df5102217-0003e16b
+//dcef93ac-112d-4ddd-830f-771951a8f103-0003e2fd

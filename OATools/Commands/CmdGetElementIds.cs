@@ -55,9 +55,11 @@ namespace OATools.Commands
                 {
                     info += "\n\t" + id.IntegerValue;
 
+                    //Gets the type associated with the ID
                     ElementType type = doc.GetElement(id) as ElementType;
 
-                    //GetElementParameterInformation(doc, type);
+                    //Gets the element associated with the ID
+                    Element eFromId = doc.GetElement(id);
                 }
 
                 TaskDialog.Show("Revit", info);

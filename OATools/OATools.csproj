@@ -87,6 +87,7 @@
     <Compile Include="Commands\CmdGetElementIds.cs" />
     <Compile Include="Commands\cmdLoadFamilyFromFile.cs" />
     <Compile Include="Commands\cmdPlaceFamilyInstance.cs" />
+    <Compile Include="Commands\CmdShowParamerInfo.cs" />
     <Compile Include="Commands\SetFamilyParams.cs" />
     <Compile Include="ConvertTextNotes\cmdConvertTextNotes.cs" />
     <Compile Include="ConvertTextNotes\frmConvertTextNotes.cs">
