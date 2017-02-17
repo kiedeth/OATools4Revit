@@ -1,0 +1,5 @@
+﻿
+
+Commands to create:
+1) Open project folder
+2) Open CAD link

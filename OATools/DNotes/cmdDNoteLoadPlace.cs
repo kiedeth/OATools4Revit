@@ -12,6 +12,8 @@ using OATools.Main;
 using System.IO;
 using Autodesk.Revit.DB.Events;
 
+
+
 namespace OATools.DNotes
 {
     [Transaction(TransactionMode.Manual)]
@@ -105,24 +107,31 @@ namespace OATools.DNotes
             }
 
 
+
+            //Retrieve the symbol id's
             ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
 
+            //Create the symbol var
             FamilySymbol symbol = null;
 
+            //Loop through the id's 
+            //There will only be one 
+            //Set symbol var 
             foreach (ElementId id in symbolIds)
             {
-                symbol = doc.GetElement(id) as FamilySymbol;
-                
+                symbol = doc.GetElement(id) as FamilySymbol;             
             }
 
 
-            // Place the family symbol:
 
-            // Subscribe to document changed event to
-            // retrieve family instance elements added by the 
-            // PromptForFamilyInstancePlacement operation:
 
-            app.DocumentChanged += new EventHandler<DocumentChangedEventArgs>(OnDocumentChanged);
+        // Place the family symbol:
+
+        // Subscribe to document changed event to
+        // retrieve family instance elements added by the 
+        // PromptForFamilyInstancePlacement operation:
+
+        app.DocumentChanged += new EventHandler<DocumentChangedEventArgs>(OnDocumentChanged);
 
             _added_element_ids.Clear();
 
@@ -146,11 +155,18 @@ namespace OATools.DNotes
 
         }
 
+        //Create a OnDocumentChanged method
         void OnDocumentChanged(object sender, DocumentChangedEventArgs e)
         {
             _added_element_ids.AddRange(e.GetAddedElementIds());
         }
 
 
+
+
+
+
+
     }
+
 }

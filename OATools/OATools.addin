@@ -30,6 +30,36 @@
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
   </AddIn>
 
+  <AddIn Type="Command">
+    <Text>Set Parameters</Text>
+    <Description>Some description for OATools</Description>
+    <Assembly>OATools.dll</Assembly>
+    <FullClassName>OATools.Commands.SetFamilyParams</FullClassName>
+    <ClientId>EAA7E4D0-A279-4404-A83F-77D3745F113D</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Create SP</Text>
+    <Description>Some description for OATools</Description>
+    <Assembly>OATools.dll</Assembly>
+    <FullClassName>OATools.Commands.CmdCreateSharedParams</FullClassName>
+    <ClientId>82636034-B708-4757-87F6-C8929670B1F6</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Show IDs</Text>
+    <Description>Some description for OATools</Description>
+    <Assembly>OATools.dll</Assembly>
+    <FullClassName>OATools.Commands.CmdGetElementIds</FullClassName>
+    <ClientId>E0760E01-BA87-44CB-8F81-65FF78EE94FB</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
 </RevitAddIns>
 
 
