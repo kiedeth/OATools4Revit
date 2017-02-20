@@ -42,10 +42,8 @@ namespace OATools.DNotes
         /// Family file path
         /// </summary>
         static string _family_path = null;
-
-        /// <summary>
-        /// Return complete family file path
-        /// </summary>
+        
+        // Return complete family file path
         static string FamilyPath
         {
             get
@@ -59,10 +57,8 @@ namespace OATools.DNotes
                 return _family_path;
             }
         }
-
-        /// <summary>
-        /// Collection of newly added family instances
-        /// </summary>
+        
+        // Collection of newly added family instances
         List<ElementId> _added_element_ids = new List<ElementId>();
 
         Family family = null;
@@ -80,12 +76,24 @@ namespace OATools.DNotes
             Document doc = uidoc.Document;
             Selection selection = uidoc.Selection;
 
-
             //Retrieve the family if it is already present:
             FilteredElementCollector a = new FilteredElementCollector(doc).OfClass(typeof(Family));
-
             Family family = a.FirstOrDefault<Element>(e => e.Name.Equals(FamilyName)) as Family;
 
+            //Retrieve the symbol id's
+            ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
+
+            //Create the symbol var
+            FamilySymbol symbol = null;
+
+            //Loop through the id's, There will only be one, set symbol var
+            foreach (ElementId id in symbolIds)
+            {
+                symbol = doc.GetElement(id) as FamilySymbol;
+            }
+
+
+            //Verify that the family path is valid and load the family
             if (null == family)
             {
                 if (!File.Exists(FamilyPath))
@@ -99,13 +107,11 @@ namespace OATools.DNotes
                 }
 
                 // It is not present, so load it:
-
                 using (Transaction tx = new Transaction(doc))
                 {
                     tx.Start("Load Family");
-                    doc.LoadFamily(FamilyPath, out family);
 
-                    //Set the parameters here after loading the family but before exiting the transaction to promt for placement
+                    doc.LoadFamily(FamilyPath, out family);
 
                     tx.Commit();
                 }
@@ -114,25 +120,12 @@ namespace OATools.DNotes
 
 
 
-            //Retrieve the symbol id's
-            ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
-
-            //Create the symbol var
-            FamilySymbol symbol = null;
-
-            //Loop through the id's, There will only be one, set symbol var
-            foreach (ElementId id in symbolIds)
-            {
-                symbol = doc.GetElement(id) as FamilySymbol;
-                
-            }
 
 
-            /// <summary>
-            /// Place the family symbol:
-            /// 
-            /// Subscribe to document changed event to retrieve family instance elements added by the PromptForFamilyInstancePlacement operation:
-            /// </summary>
+
+
+            // Place the family symbol: 
+            //Subscribe to document changed event to retrieve family instance elements added by the PromptForFamilyInstancePlacement operation:
             app.DocumentChanged += new EventHandler<DocumentChangedEventArgs>(OnDocumentChanged);
 
             _added_element_ids.Clear();
@@ -142,22 +135,70 @@ namespace OATools.DNotes
 
             uidoc.PromptForFamilyInstancePlacement(symbol);
 
+
+
+
+
+
             app.DocumentChanged -= new EventHandler<DocumentChangedEventArgs>(OnDocumentChanged);
 
             // Access the newly placed family instances:
             int n = _added_element_ids.Count();
-            
 
+            //Get the newly placed element ID's
+            //_added_element_ids.ToList();
+
+            //ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
+
+
+
+            using (Transaction tx = new Transaction(doc, "Set Parameter"))
+            {
+                tx.Start("Set Parameters");
+
+                //Set the parameters
+
+                if (0 == symbolIds.Count)
+                {
+                    TaskDialog.Show("Error", "No elements selected");
+                }
+                else
+                {
+                    foreach (ElementId id in _added_element_ids)
+                    {
+                        //Gets the element associated with the ID
+                        Element eFromId = doc.GetElement(id);
+
+                        ParameterSet pSet = eFromId.Parameters;
+
+                        foreach (Parameter param in pSet)
+                        {
+                            if (param.Definition.Name.Contains("Number")) 
+                            {
+                                param.Set("3");
+                            }
+                        }
+                    }
+                }
+
+                tx.Commit();
+            }
+
+
+
+
+
+
+
+
+            //Construct the message
             string msg = string.Format("Placed {0} {1} family instance{2}{3}", n, family.Name, Util.PluralSuffix(n), Util.DotOrColon(n));
-
             string ids = string.Join(", ", _added_element_ids.Select<ElementId, string>(id => id.IntegerValue.ToString()));
 
+            //Show the message
             Util.InfoMsg2(msg, ids);
 
-
-
             
-
             return Result.Succeeded;
 
         }
@@ -171,13 +212,15 @@ namespace OATools.DNotes
 
 
 
-        //void SetParameter(Document doc, UIDocument uidoc)
+
+        //void SetParameter(Document doc, UIDocument uidoc, Family symbol)
         //{
         //    //Retrieve the symbol id's
-        //    ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
+        //    //ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
 
+        //    //ICollection<ElementId> selectedIds = uidoc.Selection.GetElementIds();
 
-        //    ICollection<ElementId> selectedIds = uidoc.Selection.GetElementIds();
+        //    ICollection<ElementId> symbolIds = family.GetFamilySymbolIds();
 
         //    if (0 == symbolIds.Count)
         //    {
@@ -185,7 +228,7 @@ namespace OATools.DNotes
         //    }
         //    else
         //    {
-        //        foreach (ElementId id in selectedIds)
+        //        foreach (ElementId id in symbolIds)
         //        {
         //            //Gets the element associated with the ID
         //            Element eFromId = doc.GetElement(id);
@@ -203,6 +246,8 @@ namespace OATools.DNotes
         //    }
 
         //}
+
+
 
 
 
