@@ -30,7 +30,6 @@ namespace OATools.DNotes
         /// method. In this case, we store the sample 
         /// family in the same location as the add-in.
         /// </summary>
-        //const string _family_folder = "Z:/a/rvt";
         static string _family_folder = Path.GetDirectoryName(typeof(cmdDNoteLoadPlace).Assembly.Location);
 
         /// <summary>
@@ -80,19 +79,19 @@ namespace OATools.DNotes
             FilteredElementCollector a = new FilteredElementCollector(doc).OfClass(typeof(Family));
             Family family = a.FirstOrDefault<Element>(e => e.Name.Equals(FamilyName)) as Family;
 
-            //Retrieve the symbol id's
-            ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
-
-            //Create the symbol var
-            FamilySymbol symbol = null;
-
-            //Loop through the id's, There will only be one, set symbol var
-            foreach (ElementId id in symbolIds)
+            //Check to make sure the user is on a sheet otherwise cancel 
+            View activeView = doc.ActiveView;
+            if (!(activeView is ViewSheet))
             {
-                symbol = doc.GetElement(id) as FamilySymbol;
+                TaskDialog.Show("ERROR!", "You must be on a sheet to place DNotes");
+                return Result.Cancelled;
             }
-
-
+            
+            //Get the active sheet number
+            Parameter activeSheetNumber;
+            activeSheetNumber = activeView.get_Parameter(BuiltInParameter.SHEET_NUMBER);
+            string sheet_number = activeSheetNumber.AsString();
+           
             //Verify that the family path is valid and load the family
             if (null == family)
             {
@@ -117,12 +116,17 @@ namespace OATools.DNotes
                 }
             }
 
+            //Create the symbol var
+            FamilySymbol symbol = null;
 
-
-
-
-
-
+            //Retrieve the symbol id's
+            //This has to happen after the family has been loaded
+            ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
+            //Loop through the id's, There will only be one, set symbol var
+            foreach (ElementId id in symbolIds)
+            {
+                symbol = doc.GetElement(id) as FamilySymbol;
+            }           
 
             // Place the family symbol: 
             //Subscribe to document changed event to retrieve family instance elements added by the PromptForFamilyInstancePlacement operation:
@@ -132,25 +136,25 @@ namespace OATools.DNotes
 
             // PromptForFamilyInstancePlacement cannot 
             // be called inside transaction.
-
-            uidoc.PromptForFamilyInstancePlacement(symbol);
-
-
-
-
-
-
+            uidoc.PromptForFamilyInstancePlacement(symbol);            
             app.DocumentChanged -= new EventHandler<DocumentChangedEventArgs>(OnDocumentChanged);
 
             // Access the newly placed family instances:
             int n = _added_element_ids.Count();
 
-            //Get the newly placed element ID's
-            //_added_element_ids.ToList();
+            //Show the form
+            frmCreateDNote form = new frmCreateDNote(sheet_number);
+            form.ShowDialog();
 
-            //ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
+            //Get the data from the form
+            string DNoteNumberValue = string.Empty;
+            DNoteNumberValue = frmCreateDNote.DNoteNumberInput;
 
+            string DNoteSheetValue = string.Empty;
+            DNoteSheetValue = frmCreateDNote.DNoteSheetInput;
 
+            string DNoteTextValue = string.Empty;
+            DNoteTextValue = frmCreateDNote.DNoteTextInput;
 
             using (Transaction tx = new Transaction(doc, "Set Parameter"))
             {
@@ -175,32 +179,31 @@ namespace OATools.DNotes
                         {
                             if (param.Definition.Name.Contains("Number")) 
                             {
-                                param.Set("3");
+                                param.Set(DNoteNumberValue);
+                            }
+                            if (param.Definition.Name.Contains("Sheet"))
+                            {
+                                param.Set(DNoteSheetValue);
+                            }
+                            if (param.Definition.Name.Contains("Text"))
+                            {
+                                param.Set(DNoteTextValue);
                             }
                         }
                     }
                 }
 
                 tx.Commit();
-            }
-
-
-
-
-
-
-
+            }            
 
             //Construct the message
             string msg = string.Format("Placed {0} {1} family instance{2}{3}", n, family.Name, Util.PluralSuffix(n), Util.DotOrColon(n));
             string ids = string.Join(", ", _added_element_ids.Select<ElementId, string>(id => id.IntegerValue.ToString()));
 
             //Show the message
-            Util.InfoMsg2(msg, ids);
-
+            //Util.InfoMsg2(msg, ids);
             
             return Result.Succeeded;
-
         }
 
         //Create a OnDocumentChanged method
@@ -208,49 +211,46 @@ namespace OATools.DNotes
         {
             _added_element_ids.AddRange(e.GetAddedElementIds());
         }
-
-
-
-
-
-        //void SetParameter(Document doc, UIDocument uidoc, Family symbol)
-        //{
-        //    //Retrieve the symbol id's
-        //    //ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
-
-        //    //ICollection<ElementId> selectedIds = uidoc.Selection.GetElementIds();
-
-        //    ICollection<ElementId> symbolIds = family.GetFamilySymbolIds();
-
-        //    if (0 == symbolIds.Count)
-        //    {
-        //        TaskDialog.Show("Error", "No elements selected");
-        //    }
-        //    else
-        //    {
-        //        foreach (ElementId id in symbolIds)
-        //        {
-        //            //Gets the element associated with the ID
-        //            Element eFromId = doc.GetElement(id);
-
-        //            ParameterSet pSet = eFromId.Parameters;
-
-        //            foreach (Parameter param in pSet)
-        //            {
-        //                if (param.Definition.Name.Contains("Number"))
-        //                {
-        //                    param.Set("3");
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //}
-
-
-
-
-
     }
-
 }
+
+
+
+//void SetParameter(Document doc, UIDocument uidoc, Family symbol)
+//{
+//    //Retrieve the symbol id's
+//    //ISet<ElementId> symbolIds = family.GetFamilySymbolIds();
+
+//    //ICollection<ElementId> selectedIds = uidoc.Selection.GetElementIds();
+
+//    ICollection<ElementId> symbolIds = family.GetFamilySymbolIds();
+
+//    if (0 == symbolIds.Count)
+//    {
+//        TaskDialog.Show("Error", "No elements selected");
+//    }
+//    else
+//    {
+//        foreach (ElementId id in symbolIds)
+//        {
+//            //Gets the element associated with the ID
+//            Element eFromId = doc.GetElement(id);
+
+//            ParameterSet pSet = eFromId.Parameters;
+
+//            foreach (Parameter param in pSet)
+//            {
+//                if (param.Definition.Name.Contains("Number"))
+//                {
+//                    param.Set("3");
+//                }
+//            }
+//        }
+//    }
+
+//}
+
+
+
+
+
