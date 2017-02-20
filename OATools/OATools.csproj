@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="DNotes\cmdDNoteLoadPlace.cs" />
     <Compile Include="DNotes\cmdFamilyParamGUID.cs" />
+    <Compile Include="DNotes\cmdFillDatagrid.cs" />
     <Compile Include="DNotes\frmCreateDNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +135,7 @@
     <Compile Include="Windows\RunAllText2Upper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DNotes\DNoteTextFile.txt" />
     <Content Include="Notes.txt" />
     <Content Include="OATools.addin">
       <SubType>Designer</SubType>
