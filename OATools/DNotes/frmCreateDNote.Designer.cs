@@ -33,6 +33,10 @@
             this.tbxDNoteNumber = new System.Windows.Forms.TextBox();
             this.tbxDNoteText = new System.Windows.Forms.TextBox();
             this.dgvNotesFromFile = new System.Windows.Forms.DataGridView();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.tbxFilePath = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotesFromFile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,11 +93,46 @@
             this.dgvNotesFromFile.TabIndex = 4;
             this.dgvNotesFromFile.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNotesFromFile_CellContentClick);
             // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(885, 121);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(123, 35);
+            this.btnOpenFile.TabIndex = 5;
+            this.btnOpenFile.Text = "button1";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // tbxFilePath
+            // 
+            this.tbxFilePath.Location = new System.Drawing.Point(180, 134);
+            this.tbxFilePath.Name = "tbxFilePath";
+            this.tbxFilePath.Size = new System.Drawing.Size(604, 22);
+            this.tbxFilePath.TabIndex = 6;
+            this.tbxFilePath.TextChanged += new System.EventHandler(this.tbxFilePath_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmCreateDNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 985);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tbxFilePath);
+            this.Controls.Add(this.btnOpenFile);
             this.Controls.Add(this.dgvNotesFromFile);
             this.Controls.Add(this.tbxDNoteText);
             this.Controls.Add(this.tbxDNoteNumber);
@@ -114,5 +153,9 @@
         private System.Windows.Forms.TextBox tbxDNoteNumber;
         private System.Windows.Forms.TextBox tbxDNoteText;
         private System.Windows.Forms.DataGridView dgvNotesFromFile;
+        private System.Windows.Forms.Button btnOpenFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox tbxFilePath;
+        private System.Windows.Forms.Button button1;
     }
 }

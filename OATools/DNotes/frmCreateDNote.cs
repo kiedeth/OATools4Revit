@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autodesk.Revit.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,44 +9,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OATools.Utilities;
 
 namespace OATools.DNotes
 {
     public partial class frmCreateDNote : System.Windows.Forms.Form
     {
-
+        //Make the datagrid visible 
         public DataGridView NotesFromFile
         {
             get { return this.dgvNotesFromFile; }
         }
 
+        //InitializeComponent
         public frmCreateDNote(string sheetNumber)
         {
             InitializeComponent();
 
-            ReadCSV("C:/Users/jschaad/documents/visual studio 2015/Projects/OATools/OATools/DNotes/DNotesCSVFile.csv");
+            ReadCSV(DNoteFilePathInput);
 
             SetSheetNumber(sheetNumber);
         }
 
+        //OK btn click
         private void btnOK_Click(object sender, EventArgs e)
         {
             DialogResult = System.Windows.Forms.DialogResult.OK;
             Close();
         }
 
+        //Set sheet number (called from cmd class)
         public void SetSheetNumber(string v)
         {
             tbxSheet_number.Text = v;
         }
 
-        //Declare a Static variable
+        //Declare Static variables
+        public static string DNoteFilePathInput = string.Empty;
         public static string DNoteNumberInput = string.Empty;
         public static string DNoteSheetInput = string.Empty;
         public static string DNoteTextInput = string.Empty;
 
         //Set textBox Value to this variable on any event
 
+        private void tbxFilePath_TextChanged(object sender, EventArgs e)
+        {
+            DNoteFilePathInput = tbxFilePath.Text;
+            dgvNotesFromFile.Refresh();
+        }
 
         private void tbxDNoteNumber_TextChanged(object sender, EventArgs e)
         {
@@ -66,6 +77,10 @@ namespace OATools.DNotes
 
         private DataTable ReadCSV(string FileName)
         {
+            if (FileName == null)
+            {
+                TaskDialog.Show("Error", "Please set a file path");
+            }
 
             DataTable csvDataTable = new DataTable();
             try
@@ -134,21 +149,57 @@ namespace OATools.DNotes
 
             tbxDNoteText.Text = DNoteTextFromFile;
         }
+
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+
+
+            openFileDialog1.InitialDirectory = @"C:\";
+
+            openFileDialog1.Title = "Browse Text Files";
+
+
+
+            openFileDialog1.CheckFileExists = true;
+
+            openFileDialog1.CheckPathExists = true;
+
+
+
+            openFileDialog1.DefaultExt = "csv";
+
+            openFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            openFileDialog1.FilterIndex = 2;
+
+            openFileDialog1.RestoreDirectory = true;
+
+
+
+            openFileDialog1.ReadOnlyChecked = true;
+
+            openFileDialog1.ShowReadOnly = true;
+
+
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+
+            {
+
+                tbxFilePath.Text = openFileDialog1.FileName;
+
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
+            cls.WriteSetting("<DNOTE_TEXTFILE_PATH>", "C:/Users/jschaad/Documents/Visual Studio 2015/Projects/OATools/OATools/DNotes/test");
+        }
     }
 }
 
-
-//int i = 0;
-//foreach( string gotya in myArray )
-//{
-//  string[] values = gotya.Split(' ');
-
-//int j = 0;
-//  foreach( string value in values)
-//  {
-//    dataGridView1.Rows.Add();
-//    dataGridView1.Rows[i].Cells[j]).Value = value;
-//    j++
-//  }
-//  i++;
-//}

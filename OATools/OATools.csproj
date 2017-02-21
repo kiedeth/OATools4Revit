@@ -131,7 +131,8 @@
     <Compile Include="Sheet_Tools\frmChangeTB.Designer.cs">
       <DependentUpon>frmChangeTB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util\Util.cs" />
+    <Compile Include="Utilities\cmdSettingsReadWrite.cs" />
+    <Compile Include="Utilities\Util.cs" />
     <Compile Include="Windows\RunAllText2Upper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,7 +178,9 @@
     <None Include="DNotes\family_api_DNote.rfa" />
     <None Include="Resources\fsDNote.rfa" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Settings\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2017"

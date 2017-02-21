@@ -18,6 +18,8 @@ namespace OATools.DNotes
     [Transaction(TransactionMode.Manual)]
     public class cmdDNoteLoadPlace : IExternalCommand
     {
+        
+
         /// <summary>
         /// Family name.
         /// </summary>
@@ -147,6 +149,7 @@ namespace OATools.DNotes
             form.ShowDialog();
 
             //Get the data from the form
+
             string DNoteNumberValue = string.Empty;
             DNoteNumberValue = frmCreateDNote.DNoteNumberInput;
 
