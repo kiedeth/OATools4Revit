@@ -38,8 +38,10 @@ namespace OATools.Utilities
                 //if no file exists then create the file
                 using (StreamWriter sw = new StreamWriter(path))
                 {
-                    String header = "<|OA TOOLS 4 REVIT SETTINGS FILE - DO NOT EDIT MANUALLY|>";
-                    sw.WriteLine(header);
+                    String h1 = "<|OA TOOLS 4 REVIT SETTINGS FILE - DO NOT EDIT MANUALLY|>";
+                    String h2 = "<DNOTE_TEXTFILE_PATH>";
+                    sw.WriteLine(h1);
+                    sw.WriteLine(h2);
                     sw.Close();
                 }
             }
@@ -62,12 +64,12 @@ namespace OATools.Utilities
             {
                 //if no file exists then create the file
                 CreateSettingsFile();
+
+                TaskDialog.Show("Message", "No settings file present: An empty DNote Settings file was created @ " + Environment.ExpandEnvironmentVariables("%appdata%" + "/OATools")); 
             }
             
 
-            else
-            {
-
+     
                 //WriteAllLines takes a string[] and writes it to a file
                 File.WriteAllLines(path,                
 
@@ -84,8 +86,7 @@ namespace OATools.Utilities
 
             }));
 
-            }
-
+            
         }
 
     }
