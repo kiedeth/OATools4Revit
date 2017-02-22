@@ -16,46 +16,9 @@ namespace OATools.Utilities
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
 
-        //public void Check4SettingsDirectory()
-        //{
-        //    //Check for directory, if no directory exists create it
-        //    if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
-        //}
-
-        //public void CreateSettingsFile()
-        //{
-
-        //    //Check4SettingsDirectory();
-
-        //    //Set the file path
-        //    var path = directory + "/OATools_Settings.ini";
-        //    //var path = @"C:/Users/jschaad/Documents/Visual Studio 2015/Projects/OATools/OATools/DNotes/OAToolsSettings.ini";
-
-        //    //Check for file
-        //    if (!File.Exists(path))
-        //    {
-        //        //if no file exists then create the file
-        //        using (StreamWriter sw = new StreamWriter(path))
-        //        {
-        //            String h1 = "<|OA TOOLS 4 REVIT SETTINGS FILE - DO NOT EDIT MANUALLY|>";
-        //            String h2 = "<DNOTE_TEXTFILE_PATH>";
-        //            sw.WriteLine(h1);
-        //            sw.WriteLine(h2);
-        //            sw.Close();
-        //        }
-        //    }
-        //}
-
-        //public void initialize()
-        //{
-        //    //Check for directory if null create it
-        //    if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
 
-        //}
-
-
-        public void WriteSetting(String tag, String settingToWrite)
+        public void UpdateSetting(String tag, String settingToWrite)
         {
 
             //Check for file
@@ -74,13 +37,19 @@ namespace OATools.Utilities
                     {
 
                     // If the line starts with the tag, we want to change that line
-                    if (x.StartsWith(tag)) return tag + settingToWrite;
+                    if (x.StartsWith(tag)) return tag + settingToWrite;                      
+
 
                     // If the line isn't one of the ones we want to change, return the original string (x) without making any changes
                     return x;
 
                     }));
             }
+        }
+
+        public void CreateSetting(String tag, String settingToWrite)
+        {
+
         }
     }
 }

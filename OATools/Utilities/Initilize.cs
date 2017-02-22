@@ -1,10 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.ApplicationServices;
@@ -20,6 +16,8 @@ namespace OATools.Utilities
         static string fileName = "OATools_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
+
+
 
         //Perform a series of checks and perform the required tasks
         public void initializeApp()
@@ -49,11 +47,23 @@ namespace OATools.Utilities
                 String h2 = "<THIS APP WAS INITIALIZED ON:" + string.Format("{0:yyyy-MM-dd_hh-mm-ss-tt}", DateTime.Now) + ">";
                 String h3 = "<SETTINGS TO FOLLOW:>";
 
+                //Create blank setting tags
+                String t1 = "<DNOTE_FILE_PATH>";
+                String t2 = "<NEW_TAG>";
+                String t3 = "<NEW_TAG>";
+                String t4 = "<NEW_TAG>";
+
                 //Write the lines
                 sw.WriteLine(h1);
                 sw.WriteLine(h2);
                 sw.WriteLine(h3);
-                
+
+                //Write the tags
+                sw.WriteLine(t1);
+                sw.WriteLine(t2);
+                sw.WriteLine(t3);
+                sw.WriteLine(t4);
+
                 //Close the streamwriter
                 sw.Close();
             }//Using

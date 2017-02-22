@@ -198,9 +198,9 @@ namespace OATools.DNotes
         private void button1_Click(object sender, EventArgs e)
         {
             cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
-            cls.WriteSetting("<DNOTE_TEXTFILE_PATH>", "C:/Users/jschaad/Documents/Visual Studio 2015/Projects/OATools/OATools/DNotes/test");
+            cls.UpdateSetting("<DNOTE_FILE_PATH>", "C:/Users/jschaad/Documents/Visual Studio 2015/Projects/OATools/OATools/DNotes/test");
 
-            //cls.WriteSetting("<TEST_SETTING>", "TEST");
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
