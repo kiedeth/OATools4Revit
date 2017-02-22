@@ -105,6 +105,21 @@ namespace OATools
             //Add the button to ribbon
             PushButton pushButtonc2 = ribbonPanel3.AddItem(c2) as PushButton;
 
+            // Add the 3rd ribbon panel
+            RibbonPanel ribbonPanel4 = application.CreateRibbonPanel(tabName, "OA Tools 4 Revit");
+
+            // Create push button to trigger a command
+            PushButtonData d1 = new PushButtonData("Initilize", "Initilize", thisAssemblyPath, "OATools.Utilities.Initilize");
+            d1.ToolTip = "Load the DNote family and " + "place DNote instances";
+            Uri uriImaged1 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-initialize.ico");
+            BitmapImage largeImaged1 = new BitmapImage(uriImaged1);
+            d1.LargeImage = largeImaged1;
+            //Add the button to ribbon
+            PushButton pushButtond1 = ribbonPanel4.AddItem(d1) as PushButton;
+
+
+
+
         }
     }
 }

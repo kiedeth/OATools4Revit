@@ -16,79 +16,72 @@ namespace OATools.Utilities
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
 
-        public void Check4SettingsDirectory()
-        {
-            //Check for directory, if no directory exists create it
-            if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
-        }
-        
-        public void CreateSettingsFile()
-        {
-            //var directory = Environment.ExpandEnvironmentVariables("%appdata%" + "/OATools");
+        //public void Check4SettingsDirectory()
+        //{
+        //    //Check for directory, if no directory exists create it
+        //    if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
+        //}
 
-            Check4SettingsDirectory();
+        //public void CreateSettingsFile()
+        //{
 
-            //Set the file path
-            var path = directory + "/OATools_Settings.ini";
-            //var path = @"C:/Users/jschaad/Documents/Visual Studio 2015/Projects/OATools/OATools/DNotes/OAToolsSettings.ini";
+        //    //Check4SettingsDirectory();
 
-            //Check for file
-            if (!File.Exists(path))
-            {
-                //if no file exists then create the file
-                using (StreamWriter sw = new StreamWriter(path))
-                {
-                    String h1 = "<|OA TOOLS 4 REVIT SETTINGS FILE - DO NOT EDIT MANUALLY|>";
-                    String h2 = "<DNOTE_TEXTFILE_PATH>";
-                    sw.WriteLine(h1);
-                    sw.WriteLine(h2);
-                    sw.Close();
-                }
-            }
-        }
+        //    //Set the file path
+        //    var path = directory + "/OATools_Settings.ini";
+        //    //var path = @"C:/Users/jschaad/Documents/Visual Studio 2015/Projects/OATools/OATools/DNotes/OAToolsSettings.ini";
+
+        //    //Check for file
+        //    if (!File.Exists(path))
+        //    {
+        //        //if no file exists then create the file
+        //        using (StreamWriter sw = new StreamWriter(path))
+        //        {
+        //            String h1 = "<|OA TOOLS 4 REVIT SETTINGS FILE - DO NOT EDIT MANUALLY|>";
+        //            String h2 = "<DNOTE_TEXTFILE_PATH>";
+        //            sw.WriteLine(h1);
+        //            sw.WriteLine(h2);
+        //            sw.Close();
+        //        }
+        //    }
+        //}
+
+        //public void initialize()
+        //{
+        //    //Check for directory if null create it
+        //    if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
+
+
+        //}
 
 
         public void WriteSetting(String tag, String settingToWrite)
         {
-            //var directory = Environment.ExpandEnvironmentVariables("%appdata%" + "/OATools");
-
-
-            //Check for directory, if no directory exists create it
-            //if (!Directory.Exists(directory)) CreateSettingsFile();
-
-            //Set the file path
-            //var path = directory + "/OATools_Settings.ini";
 
             //Check for file
             if (!File.Exists(path))
             {
-                //if no file exists then create the file
-                CreateSettingsFile();
-
-                TaskDialog.Show("Message", "No settings file present: An empty DNote Settings file was created @ " + Environment.ExpandEnvironmentVariables("%appdata%" + "/OATools")); 
+                //if no file exists tell user to initialize the app
+                TaskDialog.Show("Message", "Please initialize OA Tools");
             }
-            
 
-     
+            else
+            {
                 //WriteAllLines takes a string[] and writes it to a file
-                File.WriteAllLines(path,                
-
                 //ReadAllLines reads a string[] from a file
-                File.ReadAllLines(path)                
+                File.WriteAllLines(path, File.ReadAllLines(path).Select(x =>
 
-                .Select(x =>
+                    {
 
-                {
+                    // If the line starts with the tag, we want to change that line
                     if (x.StartsWith(tag)) return tag + settingToWrite;
 
-                //If line doesnt match anything just return
-                return x;
+                    // If the line isn't one of the ones we want to change, return the original string (x) without making any changes
+                    return x;
 
-            }));
-
-            
+                    }));
+            }
         }
-
     }
 }
 
