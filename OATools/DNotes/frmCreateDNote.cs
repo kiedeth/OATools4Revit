@@ -15,6 +15,14 @@ namespace OATools.DNotes
 {
     public partial class frmCreateDNote : System.Windows.Forms.Form
     {
+        String textFilePath;
+
+        void GetTextFilePath()
+        {
+            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
+            textFilePath = cls.GetSetting("<DNOTE_FILE_PATH>");       
+        }
+
         //Make the datagrid visible 
         public DataGridView NotesFromFile
         {
@@ -26,8 +34,16 @@ namespace OATools.DNotes
         {
             InitializeComponent();
 
-            ReadCSV(DNoteFilePathInput);
+            //Get the text file path from the settings file
+            GetTextFilePath();
 
+            //Read the CSV file
+            ReadCSV(textFilePath);
+
+            //Set file path textbox text to returned path
+            tbxFilePath.Text = textFilePath;
+
+            //Set sheet number textbox to returned sheet number
             SetSheetNumber(sheetNumber);
         }
 
@@ -50,11 +66,16 @@ namespace OATools.DNotes
         public static string DNoteSheetInput = string.Empty;
         public static string DNoteTextInput = string.Empty;
 
-        //Set textBox Value to this variable on any event
-
+        //Set textBox Value to this variable on any event to be passed to the cmd class
         private void tbxFilePath_TextChanged(object sender, EventArgs e)
         {
+            //Set the var to the textbox value
             DNoteFilePathInput = tbxFilePath.Text;
+
+            //Write the path in the textbox to settings file
+            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
+            cls.UpdateSetting("<DNOTE_FILE_PATH>", tbxFilePath.Text);
+
             dgvNotesFromFile.Refresh();
         }
 
@@ -75,9 +96,9 @@ namespace OATools.DNotes
 
 
 
-        private DataTable ReadCSV(string FileName)
+        private DataTable ReadCSV(string textFilePath)
         {
-            if (FileName == null)
+            if (textFilePath == null)
             {
                 TaskDialog.Show("Error", "Please set a file path");
             }
@@ -86,7 +107,7 @@ namespace OATools.DNotes
             try
             {
                 //no try/catch - add these in yourselfs or let exception happen
-                String[] csvData = File.ReadAllLines(FileName);
+                String[] csvData = File.ReadAllLines(textFilePath);
 
                 //if no data
                 if (csvData.Length == 0)
@@ -153,60 +174,62 @@ namespace OATools.DNotes
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
+            //Create the dialog
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-
-
+            
+            //Set the initial directory
             openFileDialog1.InitialDirectory = @"C:\";
 
-            openFileDialog1.Title = "Browse Text Files";
+            //Set the dialog title
+            openFileDialog1.Title = "Browse for DNote CSV File";
 
-
-
+            //Perform checks
             openFileDialog1.CheckFileExists = true;
-
             openFileDialog1.CheckPathExists = true;
 
-
-
+            //Set default extension
             openFileDialog1.DefaultExt = "csv";
 
-            openFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            //Set the file type filter
+            openFileDialog1.Filter = "DNote Files (*.csv)|*.csv";  //"Text files (*.txt)|*.txt|All files (*.*)|*.*"
 
             openFileDialog1.FilterIndex = 2;
 
+            //Open to last directory
             openFileDialog1.RestoreDirectory = true;
 
-
-
+            //Include readOnly files
             openFileDialog1.ReadOnlyChecked = true;
-
             openFileDialog1.ShowReadOnly = true;
 
-
-
+            //If the user clicks ok show the path in the textbox
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
-
             {
-
+                //Set the text box to the returned path
                 tbxFilePath.Text = openFileDialog1.FileName;
 
-            }
+                dgvNotesFromFile.Refresh();
+            }//if
 
+        }//btnOpenFile_Click
+
+
+        //When save button is clicked save path to settings file
+        private void btnSaveFilePath_Click(object sender, EventArgs e)
+        {
+            //Write the path in the textbox to settings file
+            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
+            cls.UpdateSetting("<DNOTE_FILE_PATH>", tbxFilePath.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
-            cls.UpdateSetting("<DNOTE_FILE_PATH>", "C:/Users/jschaad/Documents/Visual Studio 2015/Projects/OATools/OATools/DNotes/test");
+            String returnedSetting = cls.GetSetting("<DNOTE_FILE_PATH>");
 
-            
-        }
+            tbxFilePath.Text = returnedSetting;
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Initilize cls = new Initilize();
-            cls.initializeApp();
+            //TaskDialog.Show("Test", stng);
         }
     }
 }

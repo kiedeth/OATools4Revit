@@ -15,6 +15,7 @@ namespace OATools.Utilities
         static string fileName = "OATools_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
+        public static string defaultPath = directory + "/" + "DNotes_default_CSVFile" + "." + fileType;
 
 
 
@@ -35,10 +36,8 @@ namespace OATools.Utilities
                 File.WriteAllLines(path, File.ReadAllLines(path).Select(x =>
 
                     {
-
                     // If the line starts with the tag, we want to change that line
                     if (x.StartsWith(tag)) return tag + settingToWrite;                      
-
 
                     // If the line isn't one of the ones we want to change, return the original string (x) without making any changes
                     return x;
@@ -47,37 +46,31 @@ namespace OATools.Utilities
             }
         }
 
-        public void CreateSetting(String tag, String settingToWrite)
-        {
 
+        public string GetSetting(string tag)
+        {
+            var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+            using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
+            {
+                string rawLine;
+                while ((rawLine = streamReader.ReadLine()) != null)
+                {
+                    if (rawLine.StartsWith(tag))
+                    {
+
+                        rawLine = rawLine.Replace(tag, "");
+
+                        return rawLine;
+                    }
+                    //return line;
+                }
+
+                
+
+                return rawLine;
+            }
         }
+
     }
 }
 
-
-
-
-//            else
-//            {
-
-
-//                File.WriteAllLines(path,
-//                //WriteAllLines takes a string[] and writes it to a file
-
-//                File.ReadAllLines(path)
-//                //ReadAllLines reads a string[] from a file
-
-//                .Select(x =>
-//                // .Select lets us transform the data... So it's going to go over each string in the array (each line in the file), and do whatever we say to do.  It's going to execute the following code for each line in the file (and the line will be stored in "x" because i said "x =>" above)
-
-//                {
-//    if (x.StartsWith(tag)) return tag + settingToWrite;
-//    // If the line starts with "ip = ", we want to change that line...
-
-//    //else if (x.StartsWith("name = ")) return "name = " + box2.Text;
-//    // If the line starts with "name = ", we also want to change that line...
-
-//    return x;
-//    // If the line isn't one of the ones we want to change, we just return the original string (x) without making any changes
-
-//}));

@@ -16,7 +16,7 @@ namespace OATools.Utilities
         static string fileName = "OATools_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
-
+        public static string defaultPath = directory + "/" + "DNotes_default_CSVFile" + "." + "csv";
 
 
         //Perform a series of checks and perform the required tasks
@@ -48,7 +48,7 @@ namespace OATools.Utilities
                 String h3 = "<SETTINGS TO FOLLOW:>";
 
                 //Create blank setting tags
-                String t1 = "<DNOTE_FILE_PATH>";
+                String t1 = "<DNOTE_FILE_PATH>" + defaultPath;
                 String t2 = "<NEW_TAG>";
                 String t3 = "<NEW_TAG>";
                 String t4 = "<NEW_TAG>";
