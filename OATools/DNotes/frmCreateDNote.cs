@@ -1,4 +1,13 @@
-﻿using Autodesk.Revit.UI;
+﻿/// <summary>
+/// On form initialize:
+/// First get the stored setting in the settings file
+/// Then set the datagrid source to this returned file
+/// put the path in the textbox for visual feedback 
+/// reload the grid by setting its datasource
+/// </summary>
+
+
+using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,10 +26,20 @@ namespace OATools.DNotes
     {
         String textFilePath;
 
-        void GetTextFilePath()
+        void GetDNoteFilePathFromSettings()
         {
+            //Set the class
             cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
-            textFilePath = cls.GetSetting("<DNOTE_FILE_PATH>");       
+
+            //Get the path from the settings file
+            string returnedDNoteFilePath = cls.GetSetting("<DNOTE_FILE_PATH>");
+
+            //Read the CSV file
+            ReadCSV(returnedDNoteFilePath);
+
+            //Set the textbox text to the returned path for visual feedback 
+            tbxFilePath.Text = returnedDNoteFilePath;           
+            
         }
 
         //Make the datagrid visible 
@@ -35,13 +54,7 @@ namespace OATools.DNotes
             InitializeComponent();
 
             //Get the text file path from the settings file
-            GetTextFilePath();
-
-            //Read the CSV file
-            ReadCSV(textFilePath);
-
-            //Set file path textbox text to returned path
-            tbxFilePath.Text = textFilePath;
+            GetDNoteFilePathFromSettings();
 
             //Set sheet number textbox to returned sheet number
             SetSheetNumber(sheetNumber);
@@ -76,7 +89,8 @@ namespace OATools.DNotes
             cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
             cls.UpdateSetting("<DNOTE_FILE_PATH>", tbxFilePath.Text);
 
-            dgvNotesFromFile.Refresh();
+            //Read the new CSV file everytime the textbox changes 
+            ReadCSV(textFilePath);
         }
 
         private void tbxDNoteNumber_TextChanged(object sender, EventArgs e)
@@ -100,7 +114,7 @@ namespace OATools.DNotes
         {
             if (textFilePath == null)
             {
-                TaskDialog.Show("Error", "Please set a file path");
+                //This value will always be null when the form is initialized because the path has not been read from the settings file yet
             }
 
             DataTable csvDataTable = new DataTable();
@@ -151,7 +165,7 @@ namespace OATools.DNotes
 
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message.ToString());
+                //System.Windows.Forms.MessageBox.Show(ex.Message.ToString());
             }
             //return the CSV DataTable
 
@@ -208,7 +222,8 @@ namespace OATools.DNotes
                 //Set the text box to the returned path
                 tbxFilePath.Text = openFileDialog1.FileName;
 
-                dgvNotesFromFile.Refresh();
+                //Call the method to reload the file path from settings and put it into the grid
+                GetDNoteFilePathFromSettings();
             }//if
 
         }//btnOpenFile_Click
@@ -230,6 +245,61 @@ namespace OATools.DNotes
             tbxFilePath.Text = returnedSetting;
 
             //TaskDialog.Show("Test", stng);
+        }
+
+        private void btnNewCSV_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.InitialDirectory = @"C:\";
+
+            saveFileDialog1.Title = "Save DNote File";
+
+            saveFileDialog1.CheckFileExists = false;
+
+            saveFileDialog1.CheckPathExists = true;
+
+            saveFileDialog1.DefaultExt = "csv";
+
+            saveFileDialog1.Filter = "DNote files (*.csv)|*.csv";
+
+            saveFileDialog1.FileName = "DNotes";
+
+            saveFileDialog1.FilterIndex = 2;
+
+            saveFileDialog1.RestoreDirectory = true;
+
+            saveFileDialog1.OverwritePrompt = true;
+            saveFileDialog1.CreatePrompt = false;
+
+
+            
+
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+
+            {
+                //Create the DNotes datatable
+                DataTable dt = CreateCSVFile.CreateDNoteDataTable();
+
+                //Get the filepath from the save dialog
+                String filePath = saveFileDialog1.FileName;
+
+                //Send the datatable to the CSV writer
+                dt.ToCSV(filePath);
+
+                //Write the new path to the settings file
+                cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
+                cls.UpdateSetting("<DNOTE_FILE_PATH>", filePath);
+
+                //Call the method to reload the updated file path from settings
+                GetDNoteFilePathFromSettings();
+
+
+
+            }
+
+            
         }
     }
 }

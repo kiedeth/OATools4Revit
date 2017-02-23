@@ -4,6 +4,7 @@ using System.IO;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.ApplicationServices;
+using System.Data;
 
 namespace OATools.Utilities
 {
@@ -16,7 +17,8 @@ namespace OATools.Utilities
         static string fileName = "OATools_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
-        public static string defaultPath = directory + "/" + "DNotes_default_CSVFile" + "." + "csv";
+        public static string defaultDNotesFilePath = directory + "/" + "DNotes_default_CSVFile" + "." + "csv";
+
 
 
         //Perform a series of checks and perform the required tasks
@@ -27,6 +29,12 @@ namespace OATools.Utilities
 
             //Check for settings file if null create it
             if (!File.Exists(path)) CreateSettingsFile();
+
+            //Check for DNotes file if null create it
+            if (!File.Exists(defaultDNotesFilePath)) CreateDefaultDNotesFile();
+
+
+
 
             //Else show message
             else TaskDialog.Show("Message", "OA Tools has already been initialized.");
@@ -48,7 +56,7 @@ namespace OATools.Utilities
                 String h3 = "<SETTINGS TO FOLLOW:>";
 
                 //Create blank setting tags
-                String t1 = "<DNOTE_FILE_PATH>" + defaultPath;
+                String t1 = "<DNOTE_FILE_PATH>" + defaultDNotesFilePath;
                 String t2 = "<NEW_TAG>";
                 String t3 = "<NEW_TAG>";
                 String t4 = "<NEW_TAG>";
@@ -68,6 +76,14 @@ namespace OATools.Utilities
                 sw.Close();
             }//Using
         }//CreateSettingsFile
+
+        public void CreateDefaultDNotesFile()
+        {
+
+            DataTable dt = CreateCSVFile.CreateDNoteDataTable();
+
+            dt.ToCSV(defaultDNotesFilePath);
+        }
 
         //Execute the command
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)

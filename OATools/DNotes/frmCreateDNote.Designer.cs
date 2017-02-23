@@ -38,6 +38,8 @@
             this.tbxFilePath = new System.Windows.Forms.TextBox();
             this.btnSaveFilePath = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnNewCSV = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotesFromFile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,11 +138,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnNewCSV
+            // 
+            this.btnNewCSV.Location = new System.Drawing.Point(700, 41);
+            this.btnNewCSV.Name = "btnNewCSV";
+            this.btnNewCSV.Size = new System.Drawing.Size(128, 26);
+            this.btnNewCSV.TabIndex = 10;
+            this.btnNewCSV.Text = "Create New File";
+            this.btnNewCSV.UseVisualStyleBackColor = true;
+            this.btnNewCSV.Click += new System.EventHandler(this.btnNewCSV_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.CreatePrompt = true;
+            this.saveFileDialog1.FileName = "DNotes";
+            this.saveFileDialog1.RestoreDirectory = true;
+            // 
             // frmCreateDNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 985);
+            this.Controls.Add(this.btnNewCSV);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSaveFilePath);
             this.Controls.Add(this.tbxFilePath);
@@ -170,5 +189,7 @@
         private System.Windows.Forms.TextBox tbxFilePath;
         private System.Windows.Forms.Button btnSaveFilePath;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNewCSV;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

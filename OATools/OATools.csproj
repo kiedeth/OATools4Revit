@@ -133,6 +133,7 @@
       <DependentUpon>frmChangeTB.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\cmdSettingsReadWrite.cs" />
+    <Compile Include="Utilities\CreateCSVFile.cs" />
     <Compile Include="Utilities\Initilize.cs" />
     <Compile Include="Utilities\Util.cs" />
     <Compile Include="Windows\RunAllText2Upper.cs" />
