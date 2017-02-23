@@ -28,10 +28,8 @@ namespace OATools.DNotes
 
         void GetDNoteFilePathFromSettings()
         {
-            //Set the class
-            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
-
             //Get the path from the settings file
+            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();            
             string returnedDNoteFilePath = cls.GetSetting("<DNOTE_FILE_PATH>");
 
             //Read the CSV file
@@ -220,7 +218,7 @@ namespace OATools.DNotes
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //Set the text box to the returned path
-                //tbxFilePath.Text = openFileDialog1.FileName;
+                tbxFilePath.Text = openFileDialog1.FileName;
 
                 //Write the new path to the settings file
                 cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
@@ -238,30 +236,17 @@ namespace OATools.DNotes
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.InitialDirectory = @"C:\";
-
             saveFileDialog1.Title = "Save DNote File";
-
             saveFileDialog1.CheckFileExists = false;
-
             saveFileDialog1.CheckPathExists = true;
-
             saveFileDialog1.DefaultExt = "csv";
-
             saveFileDialog1.Filter = "DNote files (*.csv)|*.csv";
-
             saveFileDialog1.FileName = "DNotes";
-
             saveFileDialog1.FilterIndex = 2;
-
             saveFileDialog1.RestoreDirectory = true;
-
             saveFileDialog1.OverwritePrompt = true;
             saveFileDialog1.CreatePrompt = false;
-
-
-            
-
-
+                       
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
 
             {
@@ -271,7 +256,7 @@ namespace OATools.DNotes
                 //Get the filepath from the save dialog
                 String filePath = saveFileDialog1.FileName;
 
-                //Send the datatable to the CSV writer
+                //Send the datatable to the CSV writer, this is to the writer not the reader
                 dt.ToCSV(filePath);
 
                 //Write the new path to the settings file

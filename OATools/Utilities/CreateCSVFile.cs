@@ -21,7 +21,7 @@ namespace OATools.Utilities
 
             //data  
             table.Rows.Add("This is the default DNotes File created when OA Tools was initialized.");
-            table.Rows.Add("Click Create New File to create your own file.");
+            table.Rows.Add("Use Create New File to create your own file.");
 
             return table;
         }
@@ -33,8 +33,8 @@ namespace OATools.Utilities
             //table.Columns.Add("NUMBER", typeof(int));
             table.Columns.Add("NOTE TEXT", typeof(string));
 
-            //data  
-            table.Rows.Add("EMPTY DNOTES FILE");
+            //data (at least one row has to be added for the reader to load the file)
+            table.Rows.Add("");
 
             return table;
         }

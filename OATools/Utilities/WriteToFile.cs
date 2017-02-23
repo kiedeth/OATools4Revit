@@ -34,8 +34,6 @@ namespace OATools.Utilities
                     
                 }
 
-                //row.Add("");
-
                 var sb = new StringBuilder();
 
                 foreach (string value in row)

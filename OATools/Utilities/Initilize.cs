@@ -80,7 +80,7 @@ namespace OATools.Utilities
         public void CreateDefaultDNotesFile()
         {
 
-            DataTable dt = CreateCSVFile.CreateDNoteDataTable();
+            DataTable dt = CreateCSVFile.CreateDefaultDNoteDataTable();
 
             dt.ToCSV(defaultDNotesFilePath);
         }

@@ -105,6 +105,7 @@
             this.dgvNotesFromFile.Name = "dgvNotesFromFile";
             this.dgvNotesFromFile.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Transparent;
             this.dgvNotesFromFile.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNotesFromFile.RowTemplate.Height = 24;
             this.dgvNotesFromFile.Size = new System.Drawing.Size(1020, 537);
