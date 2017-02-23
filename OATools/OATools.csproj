@@ -136,6 +136,7 @@
     <Compile Include="Utilities\CreateCSVFile.cs" />
     <Compile Include="Utilities\Initilize.cs" />
     <Compile Include="Utilities\Util.cs" />
+    <Compile Include="Utilities\WriteToFile.cs" />
     <Compile Include="Windows\RunAllText2Upper.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,7 +24,7 @@ namespace OATools.DNotes
 {
     public partial class frmCreateDNote : System.Windows.Forms.Form
     {
-        String textFilePath;
+        //String textFilePath;
 
         void GetDNoteFilePathFromSettings()
         {
@@ -38,7 +38,7 @@ namespace OATools.DNotes
             ReadCSV(returnedDNoteFilePath);
 
             //Set the textbox text to the returned path for visual feedback 
-            tbxFilePath.Text = returnedDNoteFilePath;           
+            tbxFilePath.Text = returnedDNoteFilePath;                                  
             
         }
 
@@ -82,15 +82,15 @@ namespace OATools.DNotes
         //Set textBox Value to this variable on any event to be passed to the cmd class
         private void tbxFilePath_TextChanged(object sender, EventArgs e)
         {
-            //Set the var to the textbox value
-            DNoteFilePathInput = tbxFilePath.Text;
+            ////Set the var to the textbox value
+            //DNoteFilePathInput = tbxFilePath.Text;
 
-            //Write the path in the textbox to settings file
-            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
-            cls.UpdateSetting("<DNOTE_FILE_PATH>", tbxFilePath.Text);
+            ////Write the path in the textbox to settings file
+            //cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
+            //cls.UpdateSetting("<DNOTE_FILE_PATH>", tbxFilePath.Text);
 
-            //Read the new CSV file everytime the textbox changes 
-            ReadCSV(textFilePath);
+            ////Read the new CSV file everytime the textbox changes 
+            //ReadCSV(textFilePath);
         }
 
         private void tbxDNoteNumber_TextChanged(object sender, EventArgs e)
@@ -220,7 +220,11 @@ namespace OATools.DNotes
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //Set the text box to the returned path
-                tbxFilePath.Text = openFileDialog1.FileName;
+                //tbxFilePath.Text = openFileDialog1.FileName;
+
+                //Write the new path to the settings file
+                cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
+                cls.UpdateSetting("<DNOTE_FILE_PATH>", openFileDialog1.FileName);
 
                 //Call the method to reload the file path from settings and put it into the grid
                 GetDNoteFilePathFromSettings();
@@ -228,24 +232,6 @@ namespace OATools.DNotes
 
         }//btnOpenFile_Click
 
-
-        //When save button is clicked save path to settings file
-        private void btnSaveFilePath_Click(object sender, EventArgs e)
-        {
-            //Write the path in the textbox to settings file
-            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
-            cls.UpdateSetting("<DNOTE_FILE_PATH>", tbxFilePath.Text);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            cmdSettingsReadWrite cls = new cmdSettingsReadWrite();
-            String returnedSetting = cls.GetSetting("<DNOTE_FILE_PATH>");
-
-            tbxFilePath.Text = returnedSetting;
-
-            //TaskDialog.Show("Test", stng);
-        }
 
         private void btnNewCSV_Click(object sender, EventArgs e)
         {
@@ -294,13 +280,29 @@ namespace OATools.DNotes
 
                 //Call the method to reload the updated file path from settings
                 GetDNoteFilePathFromSettings();
-
-
-
             }
 
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Write textbox text to DNote file
+            WriteToFile cls = new WriteToFile();
+            cls.AppendLineToDNoteFile(tbxDNoteText.Text);
+
+            //Call the method to reload the updated file path from settings
+            GetDNoteFilePathFromSettings();
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+
     }
 }
 
