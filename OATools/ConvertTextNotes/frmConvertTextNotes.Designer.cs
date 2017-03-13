@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConvertTextNotes));
             this.btnConvertTextNotes = new System.Windows.Forms.Button();
             this.rbtnActiveView = new System.Windows.Forms.RadioButton();
             this.rbtnByProject = new System.Windows.Forms.RadioButton();
@@ -38,8 +39,9 @@
             // btnConvertTextNotes
             // 
             this.btnConvertTextNotes.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnConvertTextNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConvertTextNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConvertTextNotes.Location = new System.Drawing.Point(297, 122);
+            this.btnConvertTextNotes.Location = new System.Drawing.Point(321, 122);
             this.btnConvertTextNotes.Name = "btnConvertTextNotes";
             this.btnConvertTextNotes.Size = new System.Drawing.Size(135, 41);
             this.btnConvertTextNotes.TabIndex = 0;
@@ -50,10 +52,10 @@
             // rbtnActiveView
             // 
             this.rbtnActiveView.AutoSize = true;
-            this.rbtnActiveView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnActiveView.Font = new System.Drawing.Font("Monospac821 BT", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnActiveView.Location = new System.Drawing.Point(17, 52);
             this.rbtnActiveView.Name = "rbtnActiveView";
-            this.rbtnActiveView.Size = new System.Drawing.Size(129, 28);
+            this.rbtnActiveView.Size = new System.Drawing.Size(152, 26);
             this.rbtnActiveView.TabIndex = 1;
             this.rbtnActiveView.TabStop = true;
             this.rbtnActiveView.Text = "Active View";
@@ -62,10 +64,10 @@
             // rbtnByProject
             // 
             this.rbtnByProject.AutoSize = true;
-            this.rbtnByProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnByProject.Location = new System.Drawing.Point(289, 52);
+            this.rbtnByProject.Font = new System.Drawing.Font("Monospac821 BT", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnByProject.Location = new System.Drawing.Point(271, 52);
             this.rbtnByProject.Name = "rbtnByProject";
-            this.rbtnByProject.Size = new System.Drawing.Size(143, 28);
+            this.rbtnByProject.Size = new System.Drawing.Size(185, 26);
             this.rbtnByProject.TabIndex = 2;
             this.rbtnByProject.TabStop = true;
             this.rbtnByProject.Text = "Entire Project";
@@ -74,18 +76,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Revit_HEB_SHX", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label1.Location = new System.Drawing.Point(13, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(420, 25);
+            this.label1.Size = new System.Drawing.Size(443, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Convert All Text Notes to uppercase text in the:";
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(18, 122);
+            this.btnCancel.Location = new System.Drawing.Point(17, 122);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(135, 41);
             this.btnCancel.TabIndex = 4;
@@ -96,12 +99,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 184);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(468, 178);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rbtnByProject);
             this.Controls.Add(this.rbtnActiveView);
             this.Controls.Add(this.btnConvertTextNotes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConvertTextNotes";
             this.Text = "frmConvertTextNotes";
             this.ResumeLayout(false);

@@ -911,9 +911,7 @@ namespace OATools.Utilities
     #endregion // Display a message
 
     #region Element Selection
-    public static Element SelectSingleElement(
-      UIDocument uidoc,
-      string description )
+    public static Element SelectSingleElement(UIDocument uidoc, string description )
     {
       if( ViewType.Internal == uidoc.ActiveView.ViewType )
       {
@@ -957,11 +955,9 @@ namespace OATools.Utilities
       }
     }
 
-    public static Element GetSingleSelectedElement(
-      UIDocument uidoc )
+    public static Element GetSingleSelectedElement(UIDocument uidoc )
     {
-      ICollection<ElementId> ids
-        = uidoc.Selection.GetElementIds();
+      ICollection<ElementId> ids = uidoc.Selection.GetElementIds();
 
       Element e = null;
 
@@ -1023,28 +1019,19 @@ namespace OATools.Utilities
     /// <param name="uidoc">Active document</param>
     /// <param name="t">Specific type</param>
     /// <returns>True if some elements were retrieved</returns>
-    public static bool GetSelectedElementsOrAll(
-      List<Element> a,
-      UIDocument uidoc,
-      Type t )
+    public static bool GetSelectedElementsOrAll(List<Element> a, UIDocument uidoc, Type t )
     {
       Document doc = uidoc.Document;
 
-      ICollection<ElementId> ids
-        = uidoc.Selection.GetElementIds();
+      ICollection<ElementId> ids = uidoc.Selection.GetElementIds();
 
       if( 0 < ids.Count )
       {
-        a.AddRange( ids
-          .Select<ElementId, Element>(
-            id => doc.GetElement( id ) )
-          .Where<Element>(
-            e => t.IsInstanceOfType( e ) ) );
+        a.AddRange( ids.Select<ElementId, Element>(id => doc.GetElement( id ) ).Where<Element>(e => t.IsInstanceOfType( e ) ) );
       }
       else
       {
-        a.AddRange( new FilteredElementCollector( doc )
-          .OfClass( t ) );
+        a.AddRange( new FilteredElementCollector( doc ).OfClass( t ) );
       }
       return 0 < a.Count;
     }
@@ -1147,10 +1134,7 @@ namespace OATools.Utilities
     /// Given a specific family and symbol name,
     /// return the appropriate family symbol.
     /// </summary>
-    public static FamilySymbol FindFamilySymbol(
-      Document doc,
-      string familyName,
-      string symbolName )
+    public static FamilySymbol FindFamilySymbol(Document doc, string familyName, string symbolName )
     {
       FilteredElementCollector collector
         = new FilteredElementCollector( doc )
@@ -1729,22 +1713,15 @@ namespace OATools.Utilities
     #endregion // Autodesk.Revit.DB.Definitions
 
     #region Autodesk.Revit.DB.Document
-    public static Element GetElement2(
-      this Document doc,
-      ElementId id )
+    public static Element GetElement2(this Document doc, ElementId id )
     {
       Element value = null;
-      MethodInfo met = doc.GetType()
-      .GetMethod( "get_Element", new Type[] { typeof( ElementId ) } );
-      if( met == null )
-        met = doc.GetType()
-        .GetMethod( "GetElement", new Type[] { typeof( ElementId ) } );
-      value = met.Invoke( doc,
-        new object[] { id } ) as Element;
+      MethodInfo met = doc.GetType().GetMethod( "get_Element", new Type[] { typeof( ElementId ) } );
+      if( met == null ) met = doc.GetType().GetMethod( "GetElement", new Type[] { typeof( ElementId ) } );
+      value = met.Invoke( doc, new object[] { id } ) as Element;
       return value;
     }
-    public static Element GetElement2( this Document
-    doc, Reference refe )
+    public static Element GetElement2( this Document doc, Reference refe )
     {
       Element value = null;
       value = doc.GetElement( refe );

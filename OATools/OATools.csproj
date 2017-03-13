@@ -52,6 +52,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdWindows">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\AdWindows.dll</HintPath>
@@ -105,6 +108,7 @@
     <Compile Include="DNoter\frmDNoter.Designer.cs">
       <DependentUpon>frmDNoter.cs</DependentUpon>
     </Compile>
+    <Compile Include="DNotes\CmdCreateDNoteLegend.cs" />
     <Compile Include="DNotes\cmdDNoteLoadPlace.cs" />
     <Compile Include="DNotes\cmdFamilyParamGUID.cs" />
     <Compile Include="DNotes\cmdFillDatagrid.cs" />
@@ -124,6 +128,16 @@
     <Compile Include="Main\clsCreateTab.cs" />
     <Compile Include="Main\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Revitize\clsImportDWG.cs" />
+    <Compile Include="Revitize\cmdDWG2DrafingView.cs" />
+    <Compile Include="Revitize\frmImportDWG.cs" />
+    <Compile Include="Revitize\frmRevitize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Revitize\frmRevitize.Designer.cs">
+      <DependentUpon>frmRevitize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Revitize\ThisDocument.cs" />
     <Compile Include="Sheet_Tools\cmdChangeSheet.cs" />
     <Compile Include="Sheet_Tools\cmdChangeTB.cs" />
     <Compile Include="Sheet_Tools\frmChangeTB.cs">
@@ -132,10 +146,13 @@
     <Compile Include="Sheet_Tools\frmChangeTB.Designer.cs">
       <DependentUpon>frmChangeTB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\GetSharedParamGUID.cs" />
+    <Compile Include="Utilities\ScheduleUtilities.cs" />
     <Compile Include="Utilities\cmdSettingsReadWrite.cs" />
     <Compile Include="Utilities\CreateCSVFile.cs" />
     <Compile Include="Utilities\Initilize.cs" />
     <Compile Include="Utilities\Util.cs" />
+    <Compile Include="Utilities\UtilSelection.cs" />
     <Compile Include="Utilities\WriteToFile.cs" />
     <Compile Include="Windows\RunAllText2Upper.cs" />
   </ItemGroup>
@@ -145,6 +162,9 @@
     <Content Include="OATools.addin">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Resources\Icons\dnote_icon%281%29.ico" />
+    <Content Include="Resources\Icons\dnote_icon.ico" />
+    <Content Include="Resources\Icons\drafting_icon.ico" />
     <Content Include="Resources\Icons\icon-check_16x16.ico" />
     <Content Include="Resources\Icons\icon-check_32x32.ico" />
     <Content Include="Resources\Icons\icon-grid.ico" />
@@ -160,6 +180,8 @@
     <Content Include="Resources\Img\img-icon-shapes-square-download.png" />
     <Content Include="Resources\Img\img-icon-shapes-tile1.png" />
     <Content Include="Resources\Img\img-icon-symbols-shapes-cube.png" />
+    <Content Include="Revitize\frmImportDWG.vb" />
+    <Content Include="Revitize\ThisDocument.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConvertTextNotes\frmConvertTextNotes.resx">
@@ -173,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formTest.resx">
       <DependentUpon>formTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Revitize\frmRevitize.resx">
+      <DependentUpon>frmRevitize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sheet_Tools\frmChangeTB.resx">
       <DependentUpon>frmChangeTB.cs</DependentUpon>

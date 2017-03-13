@@ -19,10 +19,6 @@ namespace OATools
     public class App : IExternalApplication
     {
 
-        //static AddInId m_appId = new AddInId(new Guid("F86FDA67-5090-4FF4-A837-088E6B907D5F"));
-
-            
-
         // get the absolute path of this assembly
         string thisAssemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
@@ -78,11 +74,20 @@ namespace OATools
             // Create push button to trigger a command
             PushButtonData b1 = new PushButtonData("cmdDNoteLoadPlace", "Create DNote", thisAssemblyPath, "OATools.DNotes.cmdDNoteLoadPlace");
             b1.ToolTip = "Load the DNote family and " + "place DNote instances";
-            Uri uriImageb1 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-text.ico");
+            Uri uriImageb1 = new Uri(@"C:\Users\jschaad\Documents\Visual Studio 2015\Projects\OATools\OATools\Resources\Icons\dnote_icon(1).ico");
             BitmapImage largeImageb1 = new BitmapImage(uriImageb1);
             b1.LargeImage = largeImageb1;
             //Add the button to ribbon
             PushButton pushButtonb1 = ribbonPanel2.AddItem(b1) as PushButton;
+
+            // Create push button to trigger a command
+            PushButtonData b2 = new PushButtonData("CmdCreateDNoteLegend", "DNote Legend", thisAssemblyPath, "OATools.DNotes.CmdCreateDNoteLegend");
+            b2.ToolTip = "Load the DNote family and " + "place DNote instances";
+            Uri uriImageb2 = new Uri(@"C:\Users\jschaad\Documents\Visual Studio 2015\Projects\OATools\OATools\Resources\Icons\dnote_legend_icon.ico");
+            BitmapImage largeImageb2 = new BitmapImage(uriImageb2);
+            b2.LargeImage = largeImageb2;
+            //Add the button to ribbon
+            PushButton pushButtonb2 = ribbonPanel2.AddItem(b2) as PushButton;
 
             // Add the 3rd ribbon panel
             RibbonPanel ribbonPanel3 = application.CreateRibbonPanel(tabName, "Sheet Tools");
@@ -90,7 +95,7 @@ namespace OATools
             // Create push button to trigger a command
             PushButtonData c1 = new PushButtonData("cmdChangeSheet", "Change Sheet", thisAssemblyPath, "OATools.Sheet_Tools.cmdChangeSheet");
             c1.ToolTip = "Load the DNote family and " + "place DNote instances";
-            Uri uriImagec1 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-text.ico");
+            Uri uriImagec1 = new Uri(@"C:\Users\jschaad\Documents\Visual Studio 2015\Projects\OATools\OATools\Resources\Icons\icon-grid.ico");
             BitmapImage largeImagec1 = new BitmapImage(uriImageb1);
             c1.LargeImage = largeImagec1;
             //Add the button to ribbon
@@ -99,14 +104,26 @@ namespace OATools
             // Create push button to trigger a command
             PushButtonData c2 = new PushButtonData("cmdChangeTB", "Change TitleBlocks", thisAssemblyPath, "OATools.Sheet_Tools.cmdChangeTB");
             c2.ToolTip = "Load the DNote family and " + "place DNote instances";
-            Uri uriImagec2 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-text.ico");
+            Uri uriImagec2 = new Uri(@"C:\Users\jschaad\Documents\Visual Studio 2015\Projects\OATools\OATools\Resources\Icons\icon-grid.ico");
             BitmapImage largeImagec2 = new BitmapImage(uriImageb1);
             c2.LargeImage = largeImagec2;
             //Add the button to ribbon
             PushButton pushButtonc2 = ribbonPanel3.AddItem(c2) as PushButton;
 
-            // Add the 3rd ribbon panel
-            RibbonPanel ribbonPanel4 = application.CreateRibbonPanel(tabName, "OA Tools 4 Revit");
+            // Add the 4th ribbon panel
+            RibbonPanel ribbonPanel5 = application.CreateRibbonPanel(tabName, "Revitize");
+
+            // Create push button to trigger a command
+            PushButtonData e1 = new PushButtonData("DWG to Drafting View", "DWG to Drafting View", thisAssemblyPath, "OATools.Revitize.cmdDWG2DrafingView");
+            e1.ToolTip = "Load the DNote family and " + "place DNote instances";
+            Uri uriImagee1 = new Uri(@"C:\Users\jschaad\Documents\Visual Studio 2015\Projects\OATools\OATools\Resources\Icons\drafting_icon.ico");
+            BitmapImage largeImagee1 = new BitmapImage(uriImagee1);
+            e1.LargeImage = largeImagee1;
+            //Add the button to ribbon
+            PushButton pushButtone1 = ribbonPanel5.AddItem(e1) as PushButton;
+
+            // Add the 5th ribbon panel
+            RibbonPanel ribbonPanel4 = application.CreateRibbonPanel(tabName, "Settings");
 
             // Create push button to trigger a command
             PushButtonData d1 = new PushButtonData("Initilize", "Initilize", thisAssemblyPath, "OATools.Utilities.Initilize");
@@ -116,8 +133,6 @@ namespace OATools
             d1.LargeImage = largeImaged1;
             //Add the button to ribbon
             PushButton pushButtond1 = ribbonPanel4.AddItem(d1) as PushButton;
-
-
 
 
         }

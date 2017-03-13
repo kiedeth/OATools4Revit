@@ -65,7 +65,7 @@ namespace OATools.Main
         #endregion // Formatting
 
         #region Display a message
-        public const string Caption = "OA Tools 4 Revit";
+        public const string Caption = "O/A Tools";
 
         public static void InfoMsg(string msg)
         {
