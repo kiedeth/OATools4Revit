@@ -50,8 +50,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotesFromFile)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -87,10 +89,10 @@
             // tbxDNoteText
             // 
             this.tbxDNoteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDNoteText.Location = new System.Drawing.Point(8, 312);
+            this.tbxDNoteText.Location = new System.Drawing.Point(8, 327);
             this.tbxDNoteText.Multiline = true;
             this.tbxDNoteText.Name = "tbxDNoteText";
-            this.tbxDNoteText.Size = new System.Drawing.Size(1020, 121);
+            this.tbxDNoteText.Size = new System.Drawing.Size(1020, 106);
             this.tbxDNoteText.TabIndex = 3;
             this.tbxDNoteText.TextChanged += new System.EventHandler(this.txbDNoteText_TextChanged);
             // 
@@ -119,7 +121,7 @@
             // btnOpenFile
             // 
             this.btnOpenFile.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnOpenFile.Location = new System.Drawing.Point(896, 112);
+            this.btnOpenFile.Location = new System.Drawing.Point(896, 128);
             this.btnOpenFile.Name = "btnOpenFile";
             this.btnOpenFile.Size = new System.Drawing.Size(132, 27);
             this.btnOpenFile.TabIndex = 5;
@@ -134,7 +136,7 @@
             // tbxFilePath
             // 
             this.tbxFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxFilePath.Location = new System.Drawing.Point(8, 112);
+            this.tbxFilePath.Location = new System.Drawing.Point(8, 128);
             this.tbxFilePath.Name = "tbxFilePath";
             this.tbxFilePath.Size = new System.Drawing.Size(865, 27);
             this.tbxFilePath.TabIndex = 6;
@@ -143,7 +145,7 @@
             // btnNewCSV
             // 
             this.btnNewCSV.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnNewCSV.Location = new System.Drawing.Point(896, 145);
+            this.btnNewCSV.Location = new System.Drawing.Point(896, 161);
             this.btnNewCSV.Name = "btnNewCSV";
             this.btnNewCSV.Size = new System.Drawing.Size(132, 27);
             this.btnNewCSV.TabIndex = 10;
@@ -161,7 +163,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Unicode MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 80);
+            this.label1.Location = new System.Drawing.Point(8, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(188, 23);
             this.label1.TabIndex = 11;
@@ -183,7 +185,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tbxSheet_number);
             this.groupBox1.Controls.Add(this.tbxDNoteNumber);
-            this.groupBox1.Location = new System.Drawing.Point(12, 153);
+            this.groupBox1.Location = new System.Drawing.Point(12, 169);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(263, 109);
             this.groupBox1.TabIndex = 13;
@@ -203,7 +205,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Unicode MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 282);
+            this.label4.Location = new System.Drawing.Point(8, 295);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 23);
             this.label4.TabIndex = 14;
@@ -233,7 +235,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(812, 269);
+            this.button1.Location = new System.Drawing.Point(812, 284);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(216, 33);
             this.button1.TabIndex = 17;
@@ -247,7 +249,7 @@
             this.label6.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Swis721 BdOul BT", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(780, 9);
+            this.label6.Location = new System.Drawing.Point(422, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(248, 36);
             this.label6.TabIndex = 19;
@@ -258,12 +260,22 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(850, 50);
+            this.label7.Location = new System.Drawing.Point(492, 62);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(104, 19);
             this.label7.TabIndex = 18;
             this.label7.Text = "Create DNote";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::OATools.Properties.Resources.oba_orange_square_160;
+            this.pictureBox1.Location = new System.Drawing.Point(938, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
             // 
             // frmCreateDNote
             // 
@@ -271,6 +283,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1044, 922);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button1);
@@ -294,6 +307,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotesFromFile)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,5 +335,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

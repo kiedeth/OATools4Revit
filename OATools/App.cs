@@ -18,6 +18,12 @@ namespace OATools
 {
     public class App : IExternalApplication
     {
+        //Set some static vars
+        static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
+        static string directory = appData + "/OATools"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
+        static string fileName = "OATools_Settings";
+        static string fileType = "ini";
+        public static string path = directory + "/" + fileName + "." + fileType;
 
         // get the absolute path of this assembly
         string thisAssemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -58,6 +64,9 @@ namespace OATools
 
             // Add the 1st ribbon panel
             RibbonPanel ribbonPanel1 = application.CreateRibbonPanel(tabName, "Common Tools");
+
+            //Set the icon folder path
+            String iconFlderPath = directory + "Icons";
 
             // Create push button to trigger a command
             PushButtonData a1 = new PushButtonData("Text 2 Upper", "Text 2 Upper", thisAssemblyPath, "OATools.ConvertTextNotes.cmdConvertTextNotes");

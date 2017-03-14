@@ -21,7 +21,7 @@ namespace OATools.DNotes
     {
         //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/OATools";
+        static string directory = appData + "/OATools"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
         static string fileName = "OATools_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
@@ -29,7 +29,8 @@ namespace OATools.DNotes
         /// <summary>
         /// Family name.
         /// </summary>
-        public const string FamilyName = "family_api_DNote";
+        //public const string FamilyName = "family_api_DNote";
+        public const string FamilyName = "fsDNote";
 
         /// <summary>
         /// Family file path.
@@ -38,12 +39,17 @@ namespace OATools.DNotes
         /// method. In this case, we store the sample 
         /// family in the same location as the add-in.
         /// </summary>
-        static string _family_folder = Path.GetDirectoryName(typeof(cmdDNoteLoadPlace).Assembly.Location);
+        //static string _family_folder = Path.GetDirectoryName(typeof(cmdDNoteLoadPlace).Assembly.Location) + directory;
+        static string _family_folder = directory;
 
         /// <summary>
         /// Family filename extension RFA.
         /// </summary>
         const string _family_ext = "rfa";
+
+        //C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\OATools\fsDNote.rfa
+
+
 
         /// <summary>
         /// Family file path
