@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Autodesk.Revit.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +15,7 @@ namespace OATools.Revitize
 {
     public partial class frmRevitize : Form
     {
+
         public frmRevitize()
         {
             InitializeComponent();
@@ -20,6 +24,33 @@ namespace OATools.Revitize
             this.cmbColors.SelectedIndex = 0;
             this.cmbInsertType.SelectedIndex = 0;
             this.cmbPositioning.SelectedIndex = 2;
+
+
+            try
+            {
+                //Assembly _assembly;
+                //Stream _imageStream;
+
+                ////get the location of the assembly
+                //_assembly = Assembly.GetExecutingAssembly();
+                ////test to see if a icon can be loaded
+                //_imageStream = _assembly.GetManifestResourceStream("OATools.bmp-file.bmp");
+
+                //pictureBox2.Image = new Bitmap(_imageStream);
+
+
+                System.Drawing.Icon icnTask;
+                System.IO.Stream st;
+                System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
+                st = a.GetManifestResourceStream("OATools.Resources.Icons.icon-text.ico");
+                icnTask = new System.Drawing.Icon(st);
+
+            }
+            catch
+            {
+                //show errer if no icon can be loaded
+                TaskDialog.Show("Error", "Error accessing resources!");
+            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)

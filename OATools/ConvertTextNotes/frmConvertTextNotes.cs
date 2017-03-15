@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using OATools.Test;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -150,6 +151,11 @@ namespace OATools.ConvertTextNotes
         }
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmLoadResource frm = new frmLoadResource();
+            frm.ShowDialog();
+        }
     }
 }
 

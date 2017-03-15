@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OATools", "OATools\OATools.csproj", "{38CE0FDB-B54E-4391-89AE-E322BBBC7460}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OA Tools Setup", "Setup\Setup.vdproj", "{89F45D6A-FC63-48C8-8A12-5C8FF6156373}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,13 @@ Global
 		{38CE0FDB-B54E-4391-89AE-E322BBBC7460}.Release|x64.Build.0 = Release|x64
 		{38CE0FDB-B54E-4391-89AE-E322BBBC7460}.Release|x86.ActiveCfg = Release|x86
 		{38CE0FDB-B54E-4391-89AE-E322BBBC7460}.Release|x86.Build.0 = Release|x86
+		{89F45D6A-FC63-48C8-8A12-5C8FF6156373}.Debug|Any CPU.ActiveCfg = Debug
+		{89F45D6A-FC63-48C8-8A12-5C8FF6156373}.Debug|x64.ActiveCfg = Debug
+		{89F45D6A-FC63-48C8-8A12-5C8FF6156373}.Debug|x86.ActiveCfg = Debug
+		{89F45D6A-FC63-48C8-8A12-5C8FF6156373}.Release|Any CPU.ActiveCfg = Release
+		{89F45D6A-FC63-48C8-8A12-5C8FF6156373}.Release|x64.ActiveCfg = Release
+		{89F45D6A-FC63-48C8-8A12-5C8FF6156373}.Release|x64.Build.0 = Release
+		{89F45D6A-FC63-48C8-8A12-5C8FF6156373}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

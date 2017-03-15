@@ -169,6 +169,13 @@
     <Compile Include="Sheet_Tools\frmChangeTB.Designer.cs">
       <DependentUpon>frmChangeTB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test\frmLoadResource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\frmLoadResource.Designer.cs">
+      <DependentUpon>frmLoadResource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\clsLoadIcon.cs" />
     <Compile Include="Utilities\GetSharedParamGUID.cs" />
     <Compile Include="Utilities\ScheduleUtilities.cs" />
     <Compile Include="Utilities\cmdSettingsReadWrite.cs" />
@@ -180,6 +187,7 @@
     <Compile Include="Windows\RunAllText2Upper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="bmp_32x32_initialize.bmp" />
     <Content Include="DNotes\DNoteTextFile.txt" />
     <Content Include="Notes.txt" />
     <Content Include="OATools.addin">
@@ -189,7 +197,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icons\dnote_icon%281%29.ico" />
     <EmbeddedResource Include="Resources\Icons\dnote_icon.ico" />
     <EmbeddedResource Include="Resources\Icons\drafting_icon.ico" />
     <EmbeddedResource Include="Resources\Icons\icon-check_16x16.ico" />
@@ -198,6 +205,12 @@
     <EmbeddedResource Include="Resources\Icons\icon-home.ico" />
     <EmbeddedResource Include="Resources\Icons\icon-text-label.png" />
     <EmbeddedResource Include="Resources\Icons\icon-text.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon-initialize.ico" />
+    <EmbeddedResource Include="Resources\Img\bmp-file.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icons\oba_icon.ico" />
+    <EmbeddedResource Include="Resources\bmp\bmp_32x32_initialize.bmp" />
     <Content Include="Resources\Img\img-icon-check-in-box.png" />
     <Content Include="Resources\Img\img-icon-check-mark5.png" />
     <Content Include="Resources\Img\img-icon-check-mark6.png" />
@@ -207,6 +220,9 @@
     <Content Include="Resources\Img\img-icon-shapes-square-download.png" />
     <Content Include="Resources\Img\img-icon-shapes-tile1.png" />
     <Content Include="Resources\Img\img-icon-symbols-shapes-cube.png" />
+    <EmbeddedResource Include="Test\frmLoadResource.resx">
+      <DependentUpon>frmLoadResource.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\oba-orange square-160.jpg" />
     <Content Include="Resources\oba_icon.ico" />
     <Content Include="Revitize\frmImportDWG.vb" />
@@ -245,7 +261,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2017"
-copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017"</PostBuildEvent>
+copy "$(ProjectDir)bin\x64\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

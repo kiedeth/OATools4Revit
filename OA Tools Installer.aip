@@ -34,7 +34,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="OATools.addin" ComponentId="{7D425A14-C0AC-4442-8AF2-C160C8323EB3}" Directory_="APPDIR" Attributes="0" KeyPath="OATools.addin" Type="0"/>
-    <ROW Component="OATools.dll" ComponentId="{466B2B80-32A3-49C5-99F9-E05B6DA7B9D3}" Directory_="APPDIR" Attributes="256" KeyPath="OATools.dll"/>
+    <ROW Component="OATools.dll" ComponentId="{75AF3AEF-9D93-4D81-868E-E1804501A42E}" Directory_="APPDIR" Attributes="256" KeyPath="OATools.dll"/>
     <ROW Component="ProductInformation" ComponentId="{06347494-3BF4-4F59-8AE1-78EEB67F5F54}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="blackwhitepearliconarrowsarrowcirclerefr" ComponentId="{78F27EC1-216C-4876-A2D2-AB0B1C537759}" Directory_="Icons_Dir" Attributes="0" KeyPath="dnote_icon1.ico" Type="0"/>
     <ROW Component="fsDNote.rfa_1" ComponentId="{3563E795-8536-4D25-8CBE-53C088A874DB}" Directory_="OATools_1_Dir" Attributes="0" KeyPath="fsDNote.rfa_1" Type="0"/>
@@ -45,18 +45,18 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="OATools.addin" Component_="OATools.addin" FileName="OATOOL~1.ADD|OATools.addin" Attributes="0" SourcePath="OATools\OATools.addin" SelfReg="false" NextFile="fsDNote.rfa_1"/>
-    <ROW File="OATools.dll" Component_="OATools.dll" FileName="OATools.dll" Attributes="0" SourcePath="OATools\bin\x64\Release\OATools.dll" SelfReg="false" NextFile="dnote_icon1.ico"/>
+    <ROW File="OATools.dll" Component_="OATools.dll" FileName="OATools.dll" Attributes="0" SourcePath="OATools\bin\x64\Release\OATools.dll" SelfReg="false"/>
     <ROW File="dnote_icon.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="DNOTE_~2.ICO|dnote_icon.ico" Attributes="0" SourcePath="OATools\Resources\Icons\dnote_icon.ico" SelfReg="false" NextFile="dnote_legend_icon.ico"/>
     <ROW File="dnote_icon1.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="DNOTE_~1.ICO|dnote_icon(1).ico" Attributes="0" SourcePath="OATools\Resources\Icons\dnote_icon(1).ico" SelfReg="false" NextFile="dnote_icon.ico"/>
     <ROW File="dnote_legend_icon.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="DNOTE_~3.ICO|dnote_legend_icon.ico" Attributes="0" SourcePath="OATools\Resources\Icons\dnote_legend_icon.ico" SelfReg="false" NextFile="drafting_icon.ico"/>
     <ROW File="drafting_icon.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="DRAFTI~1.ICO|drafting_icon.ico" Attributes="0" SourcePath="OATools\Resources\Icons\drafting_icon.ico" SelfReg="false" NextFile="iconcheck_16x16.ico"/>
-    <ROW File="fsDNote.rfa_1" Component_="fsDNote.rfa_1" FileName="fsDNote.rfa" Attributes="0" SourcePath="OATools\OATools\fsDNote.rfa" SelfReg="false" NextFile="OATools.dll"/>
+    <ROW File="fsDNote.rfa_1" Component_="fsDNote.rfa_1" FileName="fsDNote.rfa" Attributes="0" SourcePath="OATools\OATools\fsDNote.rfa" SelfReg="false" NextFile="dnote_icon1.ico"/>
     <ROW File="iconcheck_16x16.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="ICON-C~1.ICO|icon-check_16x16.ico" Attributes="0" SourcePath="OATools\Resources\Icons\icon-check_16x16.ico" SelfReg="false" NextFile="iconcheck_32x32.ico"/>
     <ROW File="iconcheck_32x32.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="ICON-C~2.ICO|icon-check_32x32.ico" Attributes="0" SourcePath="OATools\Resources\Icons\icon-check_32x32.ico" SelfReg="false" NextFile="icongrid.ico"/>
     <ROW File="icongrid.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="ICON-G~1.ICO|icon-grid.ico" Attributes="0" SourcePath="OATools\Resources\Icons\icon-grid.ico" SelfReg="false" NextFile="iconhome.ico"/>
     <ROW File="iconhome.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="ICON-H~1.ICO|icon-home.ico" Attributes="0" SourcePath="OATools\Resources\Icons\icon-home.ico" SelfReg="false" NextFile="iconinitialize.ico"/>
     <ROW File="iconinitialize.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="ICON-I~1.ICO|icon-initialize.ico" Attributes="0" SourcePath="OATools\Resources\Icons\icon-initialize.ico" SelfReg="false" NextFile="icontextlabel.png"/>
-    <ROW File="icontext.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="ICON-T~1.ICO|icon-text.ico" Attributes="0" SourcePath="OATools\Resources\Icons\icon-text.ico" SelfReg="false"/>
+    <ROW File="icontext.ico" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="ICON-T~1.ICO|icon-text.ico" Attributes="0" SourcePath="OATools\Resources\Icons\icon-text.ico" SelfReg="false" NextFile="OATools.dll"/>
     <ROW File="icontextlabel.png" Component_="blackwhitepearliconarrowsarrowcirclerefr" FileName="ICON-T~1.PNG|icon-text-label.png" Attributes="0" SourcePath="OATools\Resources\Icons\icon-text-label.png" SelfReg="false" NextFile="icontext.ico"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">

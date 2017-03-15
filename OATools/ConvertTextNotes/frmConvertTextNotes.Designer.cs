@@ -34,6 +34,7 @@
             this.rbtnByProject = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConvertTextNotes
@@ -55,10 +56,10 @@
             this.rbtnActiveView.Font = new System.Drawing.Font("Monospac821 BT", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnActiveView.Location = new System.Drawing.Point(17, 52);
             this.rbtnActiveView.Name = "rbtnActiveView";
-            this.rbtnActiveView.Size = new System.Drawing.Size(152, 26);
+            this.rbtnActiveView.Size = new System.Drawing.Size(196, 26);
             this.rbtnActiveView.TabIndex = 1;
             this.rbtnActiveView.TabStop = true;
-            this.rbtnActiveView.Text = "Active View";
+            this.rbtnActiveView.Text = "Active Viewtest";
             this.rbtnActiveView.UseVisualStyleBackColor = true;
             // 
             // rbtnByProject
@@ -95,12 +96,23 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(196, 84);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmConvertTextNotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(468, 178);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rbtnByProject);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.RadioButton rbtnByProject;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button button1;
     }
 }
