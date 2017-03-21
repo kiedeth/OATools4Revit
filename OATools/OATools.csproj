@@ -77,6 +77,10 @@
     <Reference Include="AdWindows">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\AdWindows.dll</HintPath>
     </Reference>
+    <Reference Include="NAppUpdate.Framework, Version=0.5.1.0, Culture=neutral, PublicKeyToken=d1f1d1f19f9e5a56, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAppUpdate.Framework.0.5.1.0\lib\net40\NAppUpdate.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
@@ -161,6 +165,13 @@
       <DependentUpon>frmRevitize.cs</DependentUpon>
     </Compile>
     <Compile Include="Revitize\ThisDocument.cs" />
+    <Compile Include="Settings\cmdCheckForUpdates.cs" />
+    <Compile Include="Settings\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sheet_Tools\cmdChangeSheet.cs" />
     <Compile Include="Sheet_Tools\cmdChangeTB.cs" />
     <Compile Include="Sheet_Tools\frmChangeTB.cs">
@@ -220,9 +231,13 @@
     <Content Include="Resources\Img\img-icon-shapes-square-download.png" />
     <Content Include="Resources\Img\img-icon-shapes-tile1.png" />
     <Content Include="Resources\Img\img-icon-symbols-shapes-cube.png" />
+    <EmbeddedResource Include="Settings\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test\frmLoadResource.resx">
       <DependentUpon>frmLoadResource.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Resources\oba-orange square-160.jpg" />
     <Content Include="Resources\oba_icon.ico" />
     <Content Include="Revitize\frmImportDWG.vb" />
@@ -256,12 +271,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Settings\" />
+    <ProjectReference Include="..\AppUpdater\AppUpdater.csproj">
+      <Project>{a25b3dfe-f9d3-4275-8963-70f628f89d94}</Project>
+      <Name>AppUpdater</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2017"
-copy "$(ProjectDir)bin\x64\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017"</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*" "A:\"  /s /Y
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

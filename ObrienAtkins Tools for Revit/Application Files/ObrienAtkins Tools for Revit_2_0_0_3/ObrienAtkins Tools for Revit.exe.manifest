@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="ObrienAtkins Tools for Revit.exe" version="2.0.0.3" publicKeyToken="8c06a1233eab523c" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="ObrienAtkins Tools for Revit" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="ObrienAtkins Tools for Revit.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ObrienAtkins Tools for Revit.exe" size="11688">
+      <assemblyIdentity name="ObrienAtkins Tools for Revit" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>TcARfCfeZqTL1gs3Qy5rmfUI7j3GPBl6vrj2P43KQ8Q=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="ObrienAtkins Tools for Revit.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>6N7MliNbVJSIAIPrecIshMbZ7zEoKLr5SQvud4LDUOw=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=OBA\JSchaad" issuerKeyHash="b8c21069c555b78799ffcb43923220a4bf7689d4" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>MZtKzfolP8xBTmU0tD3T0JXVbskeSC52ooMyc02t3yw=</DigestValue></Reference></SignedInfo><SignatureValue>WcApdvRFS013Led+o0r89L97r2sEkWEEz8hFORLTWD3uyFiG4m2xrVICfNZoean9LKqfC5pH6fu7DShg37ZgLP9B7keZdKtCtQh4if90ZOAvbcz7jonHM81U8tdk4Zow+b+SpmYsWxrxxc7oU9TJ5WCeYVQIXTP8RFidlc5zjFE=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>2qDw4CXTjt+irKq0tshV9n2SM8GthKNhWX97OjfdtVPFBl1i+au9dXAFKNgg8NFsQEL+f8DlrPt7m11wX0w9OT8cupqOpZtBXBD0PGDq19O3sBriMgG85aQjntn96ZF9pf0/8kA+FaROSNpyR9Zz7/1bAgOv5Qz0EuAS2sUf52s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="2cdfad4d733283a2762e481ec96ed595d0d33db434654e41cc3f25facd4a9b31" Description="" Url=""><as:assemblyIdentity name="ObrienAtkins Tools for Revit.exe" version="2.0.0.3" publicKeyToken="8c06a1233eab523c" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=OBA\JSchaad</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>RcVc0SbRRO3gHK6axzJCI2+ZkMQI2wH/bAirYrySWYE=</DigestValue></Reference></SignedInfo><SignatureValue>A7DN7lSNOYCBbCzsS0bFCq+Is7/HpZzjeoZWNhAC43FU9ha4SWot32jvogEV+ksM1jbmISgEl6ia0INYwyH5bXV19iy3yQOG1vh8Q5P26GdFu/rUHui4W9eWAqsfddlC17r7Y6w0lwRqgdnjKoM04jkKPJnhoXG0e4rST3hh7QM=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>2qDw4CXTjt+irKq0tshV9n2SM8GthKNhWX97OjfdtVPFBl1i+au9dXAFKNgg8NFsQEL+f8DlrPt7m11wX0w9OT8cupqOpZtBXBD0PGDq19O3sBriMgG85aQjntn96ZF9pf0/8kA+FaROSNpyR9Zz7/1bAgOv5Qz0EuAS2sUf52s=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBxTCCAS6gAwIBAgIQOCtGPWqGkpZOmnfHQ2r/WTANBgkqhkiG9w0BAQsFADAhMR8wHQYDVQQDHhYATwBCAEEAXABKAFMAYwBoAGEAYQBkMB4XDTE3MDMxNjE2NDQ0OFoXDTE4MDMxNjIyNDQ0OFowITEfMB0GA1UEAx4WAE8AQgBBAFwASgBTAGMAaABhAGEAZDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA2qDw4CXTjt+irKq0tshV9n2SM8GthKNhWX97OjfdtVPFBl1i+au9dXAFKNgg8NFsQEL+f8DlrPt7m11wX0w9OT8cupqOpZtBXBD0PGDq19O3sBriMgG85aQjntn96ZF9pf0/8kA+FaROSNpyR9Zz7/1bAgOv5Qz0EuAS2sUf52sCAwEAATANBgkqhkiG9w0BAQsFAAOBgQBmj2BzKmXcT1KqbIBYp0JOqQCa2z2tEuKNukzXV+QtCTLflYDWWSynEh57+sEND6ND7A5IenijxQ+cp4mGKCcdPeAEXhrAB5oN3KoI894VAnnH7qwr+Lll8yhK2GeE5LWDejLHpqEkbaeoqByMFl8ycu/cTFEazB0xz6a+0OCgKQ==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

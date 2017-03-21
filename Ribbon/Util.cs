@@ -5,7 +5,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 #endregion // Namespaces
 
-namespace OATools.Main
+namespace Ribbon
 {
     class Util
     {
@@ -65,7 +65,7 @@ namespace OATools.Main
         #endregion // Formatting
 
         #region Display a message
-        public const string Caption = "O/A Tools old";
+        public const string Caption = "O/A Tools";
 
         public static void InfoMsg(string msg)
         {
