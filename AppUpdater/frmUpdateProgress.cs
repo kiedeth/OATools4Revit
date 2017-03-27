@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AppUpdater
 {
-    public partial class Form1 : Form
+    public partial class frmUpdateProgress : Form
     {
-        public Form1()
+        public frmUpdateProgress()
         {
             InitializeComponent();
         }

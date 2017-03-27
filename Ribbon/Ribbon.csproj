@@ -88,6 +88,10 @@
       <Project>{a25b3dfe-f9d3-4275-8963-70f628f89d94}</Project>
       <Name>AppUpdater</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OAToolsUpdater\OAToolsUpdater.csproj">
+      <Project>{5ae7ed62-4ec3-4169-9df5-54d1dc71e081}</Project>
+      <Name>OAToolsUpdater</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OATools\OATools.csproj">
       <Project>{38ce0fdb-b54e-4391-89ae-e322bbbc7460}</Project>
       <Name>OATools</Name>

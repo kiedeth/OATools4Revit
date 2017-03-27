@@ -1,4 +1,4 @@
-﻿namespace AppUpdater
+﻿namespace StartupProject
 {
     partial class Form1
     {

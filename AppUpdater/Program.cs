@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Reflection;
@@ -22,7 +23,7 @@ namespace AppUpdater
         static string curVersionFilePath = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/";        
 
         // The name of the local file where the binaries are saved and read from. 
-        private static readonly string assemblyFilePath = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/OATools.dll";
+        private static readonly string assemblyFilePath = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/OATools.DLL";
 
         // The name of the class in your binaries that implements ILauncher.
         private static readonly string launcherClassName = "Binaries.Launcher";
@@ -40,6 +41,8 @@ namespace AppUpdater
         // The name of the file that will store the latest version. 
         private static readonly string latestVersionInfoFile = curVersionFilePath + "version";
 
+        private bool eventHandled;
+
 
         [STAThread]
         public static void Main()
@@ -51,7 +54,7 @@ namespace AppUpdater
 
             if (binaries == null)
             {
-                MessageBox.Show( "Everything is up to date");
+                //MessageBox.Show( "Everything is up to date");
             }
             else
             {
@@ -130,6 +133,7 @@ namespace AppUpdater
             {
                 return GetLocalAssembly();
             }
+            //
 
             string latestVersion = GetLatestVersion();
 
@@ -142,11 +146,16 @@ namespace AppUpdater
 
                 return GetLocalAssembly();
             }
+            //
 
             string localVersion = GetLocalVersionNumber();
 
+            //
+
             if (ShallIDownloadTheLatestBinaries(localVersion, latestVersion, shouldPromptForUpgrade))
             {
+
+
                 bool success = DownloadLatestAssembly();
                 if (success)
                 {
@@ -175,22 +184,31 @@ namespace AppUpdater
                 MessageBoxButton.YesNo);
         }
 
-        private static bool DownloadLatestAssembly()
+        public static bool DownloadLatestAssembly()
         {
             WebClient downloader = new WebClient();
+
+            //Show the update in progress form
+            frmUpdateProgress downloadForm = new frmUpdateProgress();
+            downloadForm.Show();
+
             try
             {
-                //byte[] latestVersionBytes = downloader.DownloadData(latestVersionAssembly);
-
-
+                
                 // use a temporary download location in case something goes wrong, we don't want to 
                 // corrupt the program and make it unusable without making the user manually delete files. 
                 string temporaryPath = assemblyFilePath + ".temp";
 
                 using (var client = new WebClient())
                 {
-                     client.DownloadFile(latestVersionAssembly, temporaryPath);
-                    
+                    //delete any temporary file that may be there
+                    File.Delete(temporaryPath);
+
+                    //download the new file to temp path
+                    client.DownloadFile(latestVersionAssembly, temporaryPath);
+
+                    Thread.Sleep(10000);
+
                 }
 
 
@@ -198,26 +216,86 @@ namespace AppUpdater
 
                 if (File.Exists(assemblyFilePath))
                 {
-                    //int milliseconds = 10000;
-                    //Thread.Sleep(milliseconds);
+                    //Close the progress form
+                    downloadForm.Close();
 
-                    File.Delete(assemblyFilePath);
+                    frmWaitRevitClose revitCloseForm = new frmWaitRevitClose();
+                    
 
+                    //get the status and if Revit is running return pid
+                    int runId = getProcessStatus();
+
+                    
+
+                    Process myProcess = null;
+
+                    //Process.GetProcessById(runId).HasExited
+                    System.Diagnostics.Process process = Process.GetProcessById(runId);
+
+                    do
+                    {
+
+                        Thread.Sleep(3000);
+                        //process = Process.GetProcessById(runId);
+
+                    } while (!process.HasExited);
+
+                    if (process.HasExited)
+                    {
+                        File.Delete(assemblyFilePath);
+                        
+                    }
+                    File.Move(temporaryPath, assemblyFilePath);
                 }
+                                           
 
-                //while (IsFileLocked(file))
-                //    Thread.Sleep(1000);
-                //file.Delete();
+                //File.Move(temporaryPath, assemblyFilePath);
 
-                File.Move(temporaryPath, assemblyFilePath);
             }
             catch (Exception)
             {
                 // so much can go wrong
                 return false;
             }
+
             return true;
         }
+
+        public static void RevitHasClosed()
+        {
+            string temporaryPath = assemblyFilePath + ".temp";
+
+            File.Delete(assemblyFilePath);
+            Process.GetProcesses();
+
+            File.Move(temporaryPath, assemblyFilePath);
+
+            MessageBox.Show("Revit has closed!");
+        }
+
+        private static int getProcessStatus()
+        {
+            int processId = 0;
+
+            Process[] pname = Process.GetProcessesByName("Revit");
+            if (pname.Length == 0)
+            {
+                MessageBox.Show("Update Complete");
+            }
+                
+            else
+            {
+                foreach (var process in pname)
+                {
+                    processId = process.Id;
+                    return processId;
+                }
+
+            }
+            
+            return processId;
+        }
+
     }
 }
 

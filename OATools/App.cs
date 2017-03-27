@@ -25,9 +25,9 @@ namespace OATools
         // get the absolute path of this assembly
         string thisAssemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
-        static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string addinsLocation = appData + "/Autodesk/Revit/Addins/2017";
-        static string appUpdater = addinsLocation + "/" + "OAToolsForRevit2017.bundle" + "/" + "AppUpdater.exe";
+        private static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
+        private static string addinsLocation = appData + "/Autodesk/Revit/Addins/2017";
+        private static string appUpdater = addinsLocation + "/" + "OAToolsForRevit2017.bundle" + "/" + "AppUpdater.exe";
 
         private AppDocEvents m_appDocEvents;
 
@@ -39,12 +39,16 @@ namespace OATools
             //AppUpdater.Program.Main();
             System.Diagnostics.Process.Start(appUpdater);
 
+            //Apply the updates if any
+            AppUpdater.Program.RevitHasClosed();
+
             return Result.Succeeded;
         }
 
         public Result OnStartup(UIControlledApplication application)
         {
-            CreateTab(application);            
+            //CreateTab(application);     
+                   
             AddAppDocEvents(application.ControlledApplication);
 
             return Result.Succeeded;

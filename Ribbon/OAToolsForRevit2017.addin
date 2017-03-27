@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
-  <AddIn Type="Command">
+  <!--<AddIn Type="Command">
     <Text>Command Ribbon</Text>
     <Description>Some description for Ribbon</Description>
     <Assembly>Ribbon.dll</Assembly>
@@ -8,7 +8,7 @@
     <ClientId>1ed7e0cb-89a1-4f55-b990-cab9dacb3fd8</ClientId>
     <VendorId>com.typepad.thebuildingcoder</VendorId>
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
-  </AddIn>
+  </AddIn>-->
   <AddIn Type="Application">
     <Name>OBrienAtkins Tools for Revit</Name>
     <Assembly>OAToolsForRevit2017.bundle/Ribbon.dll</Assembly>
