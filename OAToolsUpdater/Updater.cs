@@ -88,11 +88,11 @@ namespace OAToolsUpdater
         //The OA Tools LOCAL bundle directory
         public static readonly string local_bundle = m_RevitAddinDir + m_oatBundleName;
 
-        //The OA Tools LOCAL apply updates exe
-        public static readonly string local_applyUpdatesExe = m_RevitAddinDir + m_oatBundleName + "OAToolsApplyUpdates.exe";
-
         //The OA Tools LOCAL bundle contents directory
         public static readonly string local_bundleContents = m_RevitAddinDir + m_oatBundleName + m_oatBundleContentsName;
+
+        //The OA Tools LOCAL apply updates exe
+        public static readonly string local_applyUpdatesExe = local_bundle + "OAToolsApplyUpdate.exe";
 
         //The OA Tools LOCAL received updates folder
         public static readonly string local_receivedUpdates = m_RevitAddinDir + m_oatBundleName + "ReceivedUpdates/";
@@ -100,14 +100,14 @@ namespace OAToolsUpdater
         //The OA Tools LOCAL received version file
         public static readonly string local_receivedVersion = local_receivedUpdates + m_oatVersionFileName;
 
+        //The OA Tools LOCAL Ribbon assembly
+        public static readonly string m_oatRibbonAssembly = local_bundleContents + "Ribbon.dll";
+
         //The OA Tools FTP Server bundle
         public static readonly string ftp_versionFile = "/srv/ftp/OAToolsForRevit2017.bundle/Contents/oatVersion";
 
         //The OA Tools REMOTE bundle contents directory
         public static readonly string m_oatRemoteBundleContentsDir = m_oatRemoteServerAddress + m_oatBundleName + m_oatBundleContentsName;
-
-        //The OA Tools REMOTE assembly
-        public static readonly string m_oatRemoteAssembly = m_oatRemoteBundleContentsDir + "Ribbon.dll";
 
         //The OA Tools REMOTE Version File
         public static readonly string m_oatRemoteVersionFile = m_oatRemoteBundleContentsDir + m_oatVersionFileName;
@@ -261,15 +261,16 @@ namespace OAToolsUpdater
 
                     //launch the Apply Updates exe
                     //System.Diagnostics.Process.Start(local_applyUpdatesExe);
-                    //Process p = new Process();
-                    //p.StartInfo.FileName = local_applyUpdatesExe;
-                    //p.Start();
+                    Process p = new Process();
+                    p.StartInfo.FileName = local_applyUpdatesExe;
+                    p.Start();
                 }
             }
 
             //nothing to return
             return null;
         }
+
 
         //Determine if an update is required
         private static bool isUpdateRequired(string localVersion, string remoteVersion, bool shouldAskFirst)

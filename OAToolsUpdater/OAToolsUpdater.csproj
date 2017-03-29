@@ -60,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Placeholder.txt" />
     <None Include="packages.config" />
     <Content Include="oatVersion">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

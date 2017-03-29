@@ -96,8 +96,8 @@ namespace Ribbon
             OATools.App oatoolsApp = new OATools.App();
             string oaToolsAssembly = oatoolsApp.returnAssembly();
 
-            OAToolsUpdater.App updaterApp = new OAToolsUpdater.App();
-            string updaterAssembly = updaterApp.returnAssembly();
+            //OAToolsUpdater.App updaterApp = new OAToolsUpdater.App();
+            //string updaterAssembly = updaterApp.returnAssembly();
 
             //Try to build the ribbon tab and load all resources 
             try

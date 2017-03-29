@@ -18,8 +18,8 @@ namespace OATools.Settings
 
 
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string addinsLocation = appData + "/Autodesk/Revit/Addins/2017";
-        static string appUpdater = addinsLocation + "/" + "OAToolsForRevit2017.bundle" + "/" + "AppUpdater.exe";
+        //static string addinsLocation = appData + "/Autodesk/Revit/Addins/2017";
+        //static string appUpdater = addinsLocation + "/" + "OAToolsForRevit2017.bundle" + "/" + "AppUpdater.exe";
 
 
         // The main Execute method (inherited from IExternalCommand) must be public
