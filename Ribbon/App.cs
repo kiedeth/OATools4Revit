@@ -15,8 +15,8 @@ using OATools.Test;
 using OATools.Utilities;
 using OAToolsUpdater;
 using System.Drawing;
-using AppUpdater;
 using System.Windows;
+using OAToolsUpdater;
 using OATools;
 #endregion
 
@@ -39,9 +39,10 @@ namespace Ribbon
 
             //Check for updates
             //AppUpdater.Program.Main();
-            System.Diagnostics.Process.Start(appUpdater);
+            //System.Diagnostics.Process.Start(appUpdater);
 
             //Apply the updates if any
+            //Updater.RunUpdate();
             //AppUpdater.Program.RevitHasClosed();
 
             return Result.Succeeded;
@@ -94,6 +95,9 @@ namespace Ribbon
 
             OATools.App oatoolsApp = new OATools.App();
             string oaToolsAssembly = oatoolsApp.returnAssembly();
+
+            OAToolsUpdater.App updaterApp = new OAToolsUpdater.App();
+            string updaterAssembly = updaterApp.returnAssembly();
 
             //Try to build the ribbon tab and load all resources 
             try
@@ -172,7 +176,7 @@ namespace Ribbon
 
                 // Create push button to trigger a command
                 PushButtonData d2 = new PushButtonData("Check For Updates", "Check For Updates", oaToolsAssembly, "OATools.Settings.cmdCheckForUpdates");
-                d2.ToolTip = "Initialize O/A Tools";
+                d2.ToolTip = "Update O/A Tools";
                 d2.LargeImage = NewBitmapImage(exe, "icon-initialize.ico");
 
                 //Add the button to ribbon

@@ -9,9 +9,10 @@
     <VendorId>com.typepad.thebuildingcoder</VendorId>
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
   </AddIn>-->
+  
   <AddIn Type="Application">
     <Name>OBrienAtkins Tools for Revit</Name>
-    <Assembly>OAToolsForRevit2017.bundle/Ribbon.dll</Assembly>
+    <Assembly>OAToolsForRevit2017.bundle/Contents/Ribbon.dll</Assembly>
     <FullClassName>Ribbon.App</FullClassName>
     <ClientId>9df15245-2eac-4288-8df6-f5ff092728d4</ClientId>
     <VendorId>com.typepad.thebuildingcoder</VendorId>

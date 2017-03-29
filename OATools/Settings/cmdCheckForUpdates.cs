@@ -8,6 +8,7 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.UI.Events;
 using System.Collections.Generic;
 using System.Text;
+using OAToolsUpdater;
 
 namespace OATools.Settings
 {
@@ -22,12 +23,28 @@ namespace OATools.Settings
 
 
         // The main Execute method (inherited from IExternalCommand) must be public
-        public Autodesk.Revit.UI.Result Execute(ExternalCommandData revit, ref string message, ElementSet elements)
+        public Autodesk.Revit.UI.Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            UIApplication uiapp = commandData.Application;
+            UIDocument uidoc = uiapp.ActiveUIDocument;
+            Application app = uiapp.Application;
+            Document doc = uidoc.Document;
+
             //Make call to check for updates in AppUpdater project
             //AppUpdater.Program.Main();
 
-            System.Diagnostics.Process.Start(appUpdater);
+            //System.Diagnostics.Process.Start(appUpdater);
+
+            //using (Transaction transaction = new Transaction(doc, "Creating Note BLock"))
+
+            using (Transaction tx = new Transaction(doc, "Update"))
+            {
+                tx.Start();
+
+                OAToolsUpdater.Updater.RunUpdate();
+
+                tx.Commit();
+            }
 
             return Autodesk.Revit.UI.Result.Succeeded;
         }

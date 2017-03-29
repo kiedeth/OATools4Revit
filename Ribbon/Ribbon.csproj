@@ -84,10 +84,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AppUpdater\AppUpdater.csproj">
-      <Project>{a25b3dfe-f9d3-4275-8963-70f628f89d94}</Project>
-      <Name>AppUpdater</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OAToolsUpdater\OAToolsUpdater.csproj">
       <Project>{5ae7ed62-4ec3-4169-9df5-54d1dc71e081}</Project>
       <Name>OAToolsUpdater</Name>
@@ -104,8 +100,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2017"
-copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017\OAToolsForRevit2017.bundle"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

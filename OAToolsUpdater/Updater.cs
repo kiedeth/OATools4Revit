@@ -13,12 +13,22 @@ using System.IO;
 using System.Windows.Forms;
 using System.Net;
 using System.Windows;
+using Autodesk.Revit.DB;
 #endregion
 
 namespace OAToolsUpdater
 {
     //[Transaction(TransactionMode.Manual)]
     //public class Command : IExternalCommand
+
+
+
+
+        //This should be turned back into external command to use as tranaction
+
+
+
+
 
     public class Updater
     {
@@ -73,7 +83,22 @@ namespace OAToolsUpdater
         public static readonly string ftp_FTPServerAddress = "10.10.10.54";
 
         //The OA Tools FTP Server bundle
-        public static readonly string ftp_bundle = "/srv/ftp/OAToolsForRevit2017.bundle/Contents";
+        public static readonly string ftp_bundle = "/srv/ftp/OAToolsForRevit2017.bundle/Contents/";
+
+        //The OA Tools LOCAL bundle directory
+        public static readonly string local_bundle = m_RevitAddinDir + m_oatBundleName;
+
+        //The OA Tools LOCAL apply updates exe
+        public static readonly string local_applyUpdatesExe = m_RevitAddinDir + m_oatBundleName + "OAToolsApplyUpdates.exe";
+
+        //The OA Tools LOCAL bundle contents directory
+        public static readonly string local_bundleContents = m_RevitAddinDir + m_oatBundleName + m_oatBundleContentsName;
+
+        //The OA Tools LOCAL received updates folder
+        public static readonly string local_receivedUpdates = m_RevitAddinDir + m_oatBundleName + "ReceivedUpdates/";
+
+        //The OA Tools LOCAL received version file
+        public static readonly string local_receivedVersion = local_receivedUpdates + m_oatVersionFileName;
 
         //The OA Tools FTP Server bundle
         public static readonly string ftp_versionFile = "/srv/ftp/OAToolsForRevit2017.bundle/Contents/oatVersion";
@@ -91,18 +116,18 @@ namespace OAToolsUpdater
         private static readonly Regex versionNumberRegex = new Regex(@"([0-9]+\.)*[0-9]+");
 
 
+
         //Run update
         public static void RunUpdate()
         {
+            //ftp c = new ftp();
+            //c.FtpUpdateAllFiles(ftp_bundle, local_bundle);
+
             //Check and see if an update is available and if yes then get it
             getUpdateIfAvailable();
 
             //System.Windows.MessageBox.Show("Download Complete! Please restart Revit to apply the update.");
 
-
-            //ftp a = new ftp();
-            //string test = a.FtpGetVersionFile(ftp_versionFile, m_oatLocalVersionFile);
-            
 
         }
 
@@ -164,8 +189,9 @@ namespace OAToolsUpdater
         /// Gets the latest version number from the server.
         public static string GetRemoteVersionNumber()
         {
-            Uri latestVersionUri = new Uri(m_oatRemoteVersionFile);
-            WebClient webClient = new WebClient();
+            //Uri latestVersionUri = new Uri(m_oatRemoteVersionFile);
+            //WebClient webClient = new WebClient();
+
             string receivedData = string.Empty;
             ftp ftpClass = new ftp();
 
@@ -232,6 +258,12 @@ namespace OAToolsUpdater
                 if (success)
                 {
                     updateLocalVersionFile(remoteVersionNumber);
+
+                    //launch the Apply Updates exe
+                    //System.Diagnostics.Process.Start(local_applyUpdatesExe);
+                    //Process p = new Process();
+                    //p.StartInfo.FileName = local_applyUpdatesExe;
+                    //p.Start();
                 }
             }
 
@@ -257,37 +289,53 @@ namespace OAToolsUpdater
             return MessageBoxResult.Yes == System.Windows.MessageBox.Show(
                 "There is a newer version available. Would you like to download it?", "New Version Number here...", 
                 MessageBoxButton.YesNo);
+
+
         }
 
         //Download REMOTE assembly
         public static bool DownloadRemoteAssembly()
         {
             //Create the downloader
-            WebClient downloader = new WebClient();
+            //WebClient downloader = new WebClient();
 
             //Try to download the files
             try
             {
                 //use a temporary download path in case something goes wrong, we don't want to 
                 //corrupt the program and make it unusable without making the user manually delete files. 
-                string temporaryPath = m_oatLocalRibbonDLL + ".temp";
+                //string temporaryPath = m_oatLocalRibbonDLL + ".temp";
 
-                using (var client = new WebClient() )
-                {
-                    //First delete any temporary file that may already be in the directory
-                    File.Delete(temporaryPath);
+                //Determine if there are any files to clean up
+                //var leftoverFiles = local_receivedUpdates + ".";
+                //if (File.Exists(leftoverFiles))
+                //{
+                //    System.Windows.MessageBox.Show("test");
+                //    //If yes then delete the files
+                //    File.Delete(leftoverFiles);
+                //}
 
-                    //Download the REMOTE assembly to the temporary path
-                    client.DownloadFile(m_oatRemoteAssembly, temporaryPath);
-                }
+                ftp c = new ftp();
+                c.FtpUpdateAllFiles(ftp_bundle, local_receivedUpdates);
 
-                //Determine if there is an existing assembly
-                if (File.Exists(m_oatLocalRibbonDLL) )
-                {
-                    //If yes then delete it
 
-                    //File.Delete(m_oatLocalRibbonDLL);
-                }
+
+                //using (var client = new WebClient() )
+                //{
+                //    //First delete any temporary file that may already be in the directory
+                //    File.Delete(temporaryPath);
+
+                //    //Download the REMOTE assembly to the temporary path
+                //    client.DownloadFile(m_oatRemoteAssembly, temporaryPath);
+                //}
+
+                ////Determine if there is an existing assembly
+                //if (File.Exists(m_oatLocalRibbonDLL) )
+                //{
+                //    //If yes then delete it
+
+                //    //File.Delete(m_oatLocalRibbonDLL);
+                //}
 
                 //Rename the temporary file (this is what need to go in the external .exe)
 
