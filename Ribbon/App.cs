@@ -111,7 +111,7 @@ namespace Ribbon
                 application.CreateRibbonTab(tabName);
 
                 // Add the 1st ribbon panel
-                RibbonPanel ribbonPanel1 = application.CreateRibbonPanel(tabName, "Common Tools");
+                RibbonPanel ribbonPanel1 = application.CreateRibbonPanel(tabName, "Updated Common Tools");
 
                 // Create push button to trigger a command
                 PushButtonData a1 = new PushButtonData("Text 2 Upper", "Text 2 Upper", oaToolsAssembly, "OATools.ConvertTextNotes.cmdConvertTextNotes");

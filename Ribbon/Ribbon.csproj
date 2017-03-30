@@ -77,6 +77,9 @@
     <Content Include="Resources\Img\img-icon-shapes-square-download.png" />
     <Content Include="Resources\Img\img-icon-shapes-tile1.png" />
     <Content Include="Resources\Img\img-icon-symbols-shapes-cube.png" />
+    <Content Include="oatVersion">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\oba-orange square-160.jpg" />
     <Content Include="Resources\oba_icon.ico" />
     <Content Include="OAToolsForRevit2017.addin">
@@ -84,6 +87,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OAToolsApplyUpdate\OAToolsApplyUpdate.csproj">
+      <Project>{f6134c5d-a2f1-40fb-a01e-fafff9a1ad09}</Project>
+      <Name>OAToolsApplyUpdate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OAToolsUpdater\OAToolsUpdater.csproj">
       <Project>{5ae7ed62-4ec3-4169-9df5-54d1dc71e081}</Project>
       <Name>OAToolsUpdater</Name>
@@ -91,6 +98,10 @@
     <ProjectReference Include="..\OATools\OATools.csproj">
       <Project>{38ce0fdb-b54e-4391-89ae-e322bbbc7460}</Project>
       <Name>OATools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StartupProject\StartupProject.csproj">
+      <Project>{960da59a-8d98-409c-b29b-01898a8d9fd5}</Project>
+      <Name>StartupProject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -100,8 +111,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*" "B:\OAToolsForRevit2017.betaVersion"  /s /Y
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

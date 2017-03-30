@@ -34,10 +34,13 @@
             // 
             // btnRetry
             // 
-            this.btnRetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetry.Location = new System.Drawing.Point(492, 131);
+            this.btnRetry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRetry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetry.Location = new System.Drawing.Point(149, 128);
             this.btnRetry.Name = "btnRetry";
-            this.btnRetry.Size = new System.Drawing.Size(159, 56);
+            this.btnRetry.Size = new System.Drawing.Size(117, 38);
             this.btnRetry.TabIndex = 0;
             this.btnRetry.Text = "Retry";
             this.btnRetry.UseVisualStyleBackColor = true;
@@ -45,19 +48,22 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(99, 51);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(68, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(467, 36);
+            this.label1.Size = new System.Drawing.Size(305, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Waiting on the user to clese Revit.";
+            this.label1.Text = "Waiting on the user to close Revit.";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 196);
+            this.ClientSize = new System.Drawing.Size(426, 217);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRetry);
             this.Name = "Form1";

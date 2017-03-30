@@ -48,7 +48,7 @@ namespace OAToolsUpdater
         public static readonly string m_appdataRoaming = Environment.ExpandEnvironmentVariables("%appdata%");
 
         //The current version of Revit
-        public static readonly string m_curRevitVersion = "/2017/";
+        public static readonly string m_curRevitVersion = "2017/";
 
         //The Revit Addins directory for the current version of Revit
         public static readonly string m_RevitAddinDir = m_appdataRoaming + "/Autodesk/Revit/Addins/" + m_curRevitVersion;
@@ -56,7 +56,7 @@ namespace OAToolsUpdater
         //-----------OA Tools Vars-----------//
 
         //The OA Tools Bundle Directory Name
-        public static readonly string m_oatBundleName = "/OAToolsForRevit2017.bundle/";
+        public static readonly string m_oatBundleName = "OAToolsForRevit2017.bundle/";
 
         //The OA Tools Bundle Directory path
         public static readonly string m_oatBundleDir = m_RevitAddinDir + m_oatBundleName;
@@ -69,6 +69,9 @@ namespace OAToolsUpdater
 
         //The OA Tools Version file name
         public static readonly string m_oatVersionFileName = "oatVersion";
+
+        //The OA Tools Update Apply exe file name
+        public static readonly string m_oatUpdateApplyExeName = "OAToolsApplyUpdate.exe";
 
         //The OA Tools LOCAL Version File
         public static readonly string m_oatLocalVersionFile = m_oatBundleContentsDir + m_oatVersionFileName;
@@ -92,7 +95,7 @@ namespace OAToolsUpdater
         public static readonly string local_bundleContents = m_RevitAddinDir + m_oatBundleName + m_oatBundleContentsName;
 
         //The OA Tools LOCAL apply updates exe
-        public static readonly string local_applyUpdatesExe = local_bundle + "OAToolsApplyUpdate.exe";
+        public static readonly string local_applyUpdatesExe = local_bundle + m_oatUpdateApplyExeName;
 
         //The OA Tools LOCAL received updates folder
         public static readonly string local_receivedUpdates = m_RevitAddinDir + m_oatBundleName + "ReceivedUpdates/";
@@ -260,10 +263,11 @@ namespace OAToolsUpdater
                     updateLocalVersionFile(remoteVersionNumber);
 
                     //launch the Apply Updates exe
-                    //System.Diagnostics.Process.Start(local_applyUpdatesExe);
-                    Process p = new Process();
-                    p.StartInfo.FileName = local_applyUpdatesExe;
-                    p.Start();
+                    System.Diagnostics.Process.Start(local_applyUpdatesExe);
+
+                    //Process p = new Process();
+                    //p.StartInfo.FileName = local_applyUpdatesExe;
+                    //p.Start();
                 }
             }
 
@@ -303,44 +307,9 @@ namespace OAToolsUpdater
             //Try to download the files
             try
             {
-                //use a temporary download path in case something goes wrong, we don't want to 
-                //corrupt the program and make it unusable without making the user manually delete files. 
-                //string temporaryPath = m_oatLocalRibbonDLL + ".temp";
-
-                //Determine if there are any files to clean up
-                //var leftoverFiles = local_receivedUpdates + ".";
-                //if (File.Exists(leftoverFiles))
-                //{
-                //    System.Windows.MessageBox.Show("test");
-                //    //If yes then delete the files
-                //    File.Delete(leftoverFiles);
-                //}
 
                 ftp c = new ftp();
                 c.FtpUpdateAllFiles(ftp_bundle, local_receivedUpdates);
-
-
-
-                //using (var client = new WebClient() )
-                //{
-                //    //First delete any temporary file that may already be in the directory
-                //    File.Delete(temporaryPath);
-
-                //    //Download the REMOTE assembly to the temporary path
-                //    client.DownloadFile(m_oatRemoteAssembly, temporaryPath);
-                //}
-
-                ////Determine if there is an existing assembly
-                //if (File.Exists(m_oatLocalRibbonDLL) )
-                //{
-                //    //If yes then delete it
-
-                //    //File.Delete(m_oatLocalRibbonDLL);
-                //}
-
-                //Rename the temporary file (this is what need to go in the external .exe)
-
-                //File.Move(temporaryPath, m_oatLocalRibbonDLL);
 
             }
             catch (Exception)
