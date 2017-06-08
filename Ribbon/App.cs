@@ -17,7 +17,9 @@ using OAToolsUpdater;
 using System.Drawing;
 using System.Windows;
 using OAToolsUpdater;
+using OATools.ViewFilters;
 using OATools;
+using OATools.ParameterTools;
 #endregion
 
 namespace Ribbon
@@ -96,6 +98,12 @@ namespace Ribbon
             OATools.App oatoolsApp = new OATools.App();
             string oaToolsAssembly = oatoolsApp.returnAssembly();
 
+            OATools.ViewFilters.Command viewFiltersApp = new OATools.ViewFilters.Command();
+            string viewFiltersAssembly = viewFiltersApp.returnAssembly();
+
+            OATools.ParameterTools.Command parameterToolsApp = new OATools.ParameterTools.Command();
+            string parameterToolsAssembly = parameterToolsApp.returnAssembly();
+
             //OAToolsUpdater.App updaterApp = new OAToolsUpdater.App();
             //string updaterAssembly = updaterApp.returnAssembly();
 
@@ -110,59 +118,184 @@ namespace Ribbon
                 String tabName = "O/A Tools";
                 application.CreateRibbonTab(tabName);
 
-                // Add the 1st ribbon panel
-                RibbonPanel ribbonPanel1 = application.CreateRibbonPanel(tabName, "Updated Common Tools");
+                //--------------
+
+                // Add the A ribbon panel
+                RibbonPanel ribbonPanelA = application.CreateRibbonPanel(tabName, "Common Tools");
 
                 // Create push button to trigger a command
-                PushButtonData a1 = new PushButtonData("Text 2 Upper", "Text 2 Upper", oaToolsAssembly, "OATools.ConvertTextNotes.cmdConvertTextNotes");
-                a1.ToolTip = "Load the table family and " + "place table instances";
-                a1.LargeImage = NewBitmapImage(exe, "icon-text.ico");
-                //Add the button to ribbon
-                PushButton pushButtona1 = ribbonPanel1.AddItem(a1) as PushButton;
-
-                // Add the 2nd ribbon panel
-                RibbonPanel ribbonPanel2 = application.CreateRibbonPanel(tabName, "DNotes");
+                PushButtonData A1 = new PushButtonData("Text 2 Upper", "Text 2 Upper", oaToolsAssembly, "OATools.ConvertTextNotes.cmdConvertTextNotes");
+                A1.ToolTip = "Load the table family and " + "place table instances";
+                A1.Image = NewBitmapImage(exe, "icon-text.ico");
 
                 // Create push button to trigger a command
-                PushButtonData b1 = new PushButtonData("cmdDNoteLoadPlace", "Create DNote", oaToolsAssembly, "OATools.DNotes.cmdDNoteLoadPlace");
-                b1.ToolTip = "Load the DNote family and " + "place DNote instances";
-                b1.LargeImage = NewBitmapImage(exe, "dnote_icon.ico");
-                //Add the button to ribbon
-                PushButton pushButtonb1 = ribbonPanel2.AddItem(b1) as PushButton;
+                PushButtonData A2 = new PushButtonData("Project Parameters", "Project Parameters", viewFiltersAssembly, "BuildingCoder.CmdProjectParameterGuids");
+                A2.ToolTip = "Load the table family and " + "place table instances";
+                A2.Image = NewBitmapImage(exe, "icon-grid.ico");
 
                 // Create push button to trigger a command
-                PushButtonData b2 = new PushButtonData("CmdCreateDNoteLegend", "DNote Legend", oaToolsAssembly, "OATools.DNotes.CmdCreateDNoteLegend");
-                b2.ToolTip = "Load the DNote family and " + "place DNote instances";
-                b2.LargeImage = NewBitmapImage(exe, "dnote_icon.ico");
-                //Add the button to ribbon
-                PushButton pushButtonb2 = ribbonPanel2.AddItem(b2) as PushButton;
+                PushButtonData A3 = new PushButtonData("View Filters2", "View Filters2", viewFiltersAssembly, "OATools.ViewFilters.Command");
+                A3.ToolTip = "Load the table family and " + "place table instances";
+                A3.Image = NewBitmapImage(exe, "icon-grid.ico");
 
-                // Add the 3rd ribbon panel
-                RibbonPanel ribbonPanel3 = application.CreateRibbonPanel(tabName, "Sheet Tools");
+                // Add the buttons to the panel
+                List<RibbonItem> projectButtonsA = new List<RibbonItem>();
+                projectButtonsA.AddRange(ribbonPanelA.AddStackedItems(A1, A2, A3));
 
-                // Create push button to trigger a command
-                PushButtonData c1 = new PushButtonData("cmdChangeSheet", "Change Sheet", oaToolsAssembly, "OATools.Sheet_Tools.cmdChangeSheet");
-                c1.ToolTip = "Load the DNote family and " + "place DNote instances";
-                c1.LargeImage = NewBitmapImage(exe, "icon-grid.ico");
-                //Add the button to ribbon
-                PushButton pushButtonc1 = ribbonPanel3.AddItem(c1) as PushButton;
+                //--------------
 
-                // Create push button to trigger a command
-                PushButtonData c2 = new PushButtonData("cmdChangeTB", "Change TitleBlocks", oaToolsAssembly, "OATools.Sheet_Tools.cmdChangeTB");
-                c2.ToolTip = "Load the DNote family and " + "place DNote instances";
-                c2.LargeImage = NewBitmapImage(exe, "icon-grid.ico");
-                //Add the button to ribbon
-                PushButton pushButtonc2 = ribbonPanel3.AddItem(c2) as PushButton;
+                //--------------
 
-                // Add the 4th ribbon panel
-                RibbonPanel ribbonPanel5 = application.CreateRibbonPanel(tabName, "Revitize");
+                // Add the B ribbon panel
+                RibbonPanel ribbonPanelB = application.CreateRibbonPanel(tabName, "Parameter Tools");
 
                 // Create push button to trigger a command
-                PushButtonData e1 = new PushButtonData("DWG to Drafting View", "DWG to Drafting View", oaToolsAssembly, "OATools.Revitize.cmdDWG2DrafingView");
-                e1.ToolTip = "Load the DNote family and " + "place DNote instances";
-                e1.LargeImage = NewBitmapImage(exe, "drafting_icon.ico");
+                PushButtonData B1 = new PushButtonData("P Cast", "P Cast", parameterToolsAssembly, "OATools.ParameterTools.cmdPCast");
+                B1.ToolTip = "Load the table family and " + "place table instances";
+                B1.LargeImage = NewBitmapImage(exe, "icon-text.ico");
+
                 //Add the button to ribbon
-                PushButton pushButtone1 = ribbonPanel5.AddItem(e1) as PushButton;
+                PushButton pushButtondB1 = ribbonPanelB.AddItem(B1) as PushButton;
+
+
+
+
+                //// Create push button to trigger a command
+                //PushButtonData B1 = new PushButtonData("Project Parameters", "Project Parameters", viewFiltersAssembly, "OATools.ViewFilters.cmdProjectParameters");
+                //B1.ToolTip = "Load the table family and " + "place table instances";
+                //B1.Image = NewBitmapImage(exe, "icon-text.ico");
+
+                // Create push button to trigger a command
+                //PushButtonData B2 = new PushButtonData("SelectedElement", "SelectedElement", viewFiltersAssembly, "OATools.ViewFilters.cmdSelectedElementParameters");
+                //B2.ToolTip = "Load the table family and " + "place table instances";
+                //B2.Image = NewBitmapImage(exe, "icon-grid.ico");
+
+                //// Create push button to trigger a command
+                //PushButtonData B3 = new PushButtonData("none3", "none3", viewFiltersAssembly, "OATools.ViewFilters.Command3");
+                //B3.ToolTip = "Load the table family and " + "place table instances";
+                //B3.Image = NewBitmapImage(exe, "icon-grid.ico");
+
+                //// Add the buttons to the panel
+                //List<RibbonItem> projectButtonsB = new List<RibbonItem>();
+                //projectButtonsA.AddRange(ribbonPanelB.AddStackedItems(B1, B2));
+
+                //--------------
+                //--------------
+
+                // Add the C ribbon panel
+                RibbonPanel ribbonPanelC = application.CreateRibbonPanel(tabName, "Sheet Tools");
+
+                // Create push button to trigger a command
+                PushButtonData C1 = new PushButtonData("Sheets From Views", "Sheets From Views", oaToolsAssembly, "OATools.Sheet_Tools.cmdSheetsFromViews");
+                C1.ToolTip = "Load the table family and " + "place table instances";
+                C1.Image = NewBitmapImage(exe, "icon-text.ico");
+
+                // Create push button to trigger a command
+                PushButtonData C2 = new PushButtonData("SelectedElement", "SelectedElement", oaToolsAssembly, "OATools.Sheet_Tools.cmdCreateSheetsFromViews");
+                C2.ToolTip = "Load the table family and " + "place table instances";
+                C2.Image = NewBitmapImage(exe, "icon-grid.ico");
+
+                //// Create push button to trigger a command
+                //PushButtonData B3 = new PushButtonData("none3", "none3", viewFiltersAssembly, "OATools.ViewFilters.Command3");
+                //B3.ToolTip = "Load the table family and " + "place table instances";
+                //B3.Image = NewBitmapImage(exe, "icon-grid.ico");
+
+                // Add the buttons to the panel
+                List<RibbonItem> projectButtonsC = new List<RibbonItem>();
+                projectButtonsC.AddRange(ribbonPanelC.AddStackedItems(C1, C2));
+
+                //--------------
+
+                // Add the D ribbon panel
+                RibbonPanel ribbonPanelD = application.CreateRibbonPanel(tabName, "DNotes");
+
+                // Create push button to trigger a command
+                PushButtonData D1 = new PushButtonData("cmdDNoteLoadPlace", "Create DNote", oaToolsAssembly, "OATools.DNotes.cmdDNoteLoadPlace");
+                D1.ToolTip = "Load the DNote family and " + "place DNote instances";
+                D1.Image = NewBitmapImage(exe, "dnote_icon.ico");
+
+                //Add the button to ribbon
+                //PushButton pushButtonD1 = ribbonPanelD.AddItem(D1) as PushButton;
+
+                // Create push button to trigger a command
+                PushButtonData D2 = new PushButtonData("CmdCreateDNoteLegend", "DNote Legend", oaToolsAssembly, "OATools.DNotes.CmdCreateDNoteLegend");
+                D2.ToolTip = "Load the DNote family and " + "place DNote instances";
+                D2.Image = NewBitmapImage(exe, "dnote_icon.ico");
+
+                //Add the button to ribbon
+                //PushButton pushButtonD2 = ribbonPanelD.AddItem(D2) as PushButton;
+
+                // Add the buttons to the panel
+                List<RibbonItem> projectButtonsD = new List<RibbonItem>();
+                projectButtonsD.AddRange(ribbonPanelD.AddStackedItems(D1, D2));
+
+
+                //--------------
+
+
+                //// Add the E ribbon panel
+                //RibbonPanel ribbonPanelE = application.CreateRibbonPanel(tabName, "Sheet Tools");
+
+                //// Create push button to trigger a command
+                //PushButtonData E1 = new PushButtonData("cmdChangeSheet", "Change Sheet", oaToolsAssembly, "OATools.Sheet_Tools.cmdChangeSheet");
+                //E1.ToolTip = "Load the DNote family and " + "place DNote instances";
+                //E1.LargeImage = NewBitmapImage(exe, "icon-grid.ico");
+
+                ////Add the button to ribbon
+                ////PushButton pushButtonE1 = ribbonPanelE.AddItem(E1) as PushButton;
+
+                //// Create push button to trigger a command
+                //PushButtonData E2 = new PushButtonData("cmdChangeTB", "Change TitleBlocks", oaToolsAssembly, "OATools.Sheet_Tools.cmdChangeTB");
+                //E2.ToolTip = "Load the DNote family and " + "place DNote instances";
+                //E2.LargeImage = NewBitmapImage(exe, "icon-grid.ico");
+
+                ////Add the button to ribbon
+                ////PushButton pushButtonE2 = ribbonPanelE.AddItem(E2) as PushButton;
+
+                //// Add the buttons to the panel
+                //List<RibbonItem> projectButtonsE = new List<RibbonItem>();
+                //projectButtonsE.AddRange(ribbonPanelE.AddStackedItems(E1, E2));
+
+                //--------------
+
+                //// Add the F ribbon panel
+                //RibbonPanel ribbonPanelF = application.CreateRibbonPanel(tabName, "Electrical Tools");
+
+                //// Create push button to trigger a command
+                //PushButtonData F1 = new PushButtonData("Emergency Circut", "Emergency Circut", oaToolsAssembly, "OATools.Electrical.cmdEmergencyCircut");
+                //F1.ToolTip = "Load the DNote family and " + "place DNote instances";
+                //F1.Image = NewBitmapImage(exe, "drafting_icon.ico");
+                //// Create push button to trigger a command
+                //PushButtonData F2 = new PushButtonData("Unswitched Circut", "Unswitched Circut", oaToolsAssembly, "OATools.Commands.cmdElementOveride");
+                //F2.ToolTip = "Load the DNote family and " + "place DNote instances";
+                //F2.Image = NewBitmapImage(exe, "drafting_icon.ico");
+
+                //// Add the buttons to the panel
+                //List<RibbonItem> projectButtonsF = new List<RibbonItem>();
+                //projectButtonsF.AddRange(ribbonPanelF.AddStackedItems(F1, F2));
+
+                //-------------------
+
+                // Add the G ribbon panel
+                RibbonPanel ribbonPanelG = application.CreateRibbonPanel(tabName, "Revitize");
+
+                // Create push button to trigger a command
+                PushButtonData G1 = new PushButtonData("DWG to Drafting View", "DWG to Drafting View", oaToolsAssembly, "OATools.Revitize.cmdDWG2DrafingView");
+                G1.ToolTip = "Load the DNote family and " + "place DNote instances";
+                G1.Image = NewBitmapImage(exe, "drafting_icon.ico");
+
+                // Create push button to trigger a command
+                PushButtonData G2 = new PushButtonData("Import Details", "Import", oaToolsAssembly, "OATools.Revitize.CmdViewImport");
+                G2.ToolTip = "Load the DNote family and " + "place DNote instances";
+                G2.Image = NewBitmapImage(exe, "drafting_icon.ico");
+
+                // Add the buttons to the panel
+                List<RibbonItem> projectButtonsG = new List<RibbonItem>();
+                projectButtonsG.AddRange(ribbonPanelG.AddStackedItems(G1, G2));
+
+                //------------------
+
+
 
                 // Add the 5th ribbon panel
                 RibbonPanel ribbonPanel4 = application.CreateRibbonPanel(tabName, "Settings");
@@ -175,12 +308,14 @@ namespace Ribbon
                 PushButton pushButtond1 = ribbonPanel4.AddItem(d1) as PushButton;
 
                 // Create push button to trigger a command
-                PushButtonData d2 = new PushButtonData("Check For Updates", "Check For Updates", oaToolsAssembly, "OATools.Settings.cmdCheckForUpdates");
+                PushButtonData d2 = new PushButtonData("Check For Updates", "Check for Updates", oaToolsAssembly, "OATools.Settings.cmdCheckForUpdates");
                 d2.ToolTip = "Update O/A Tools";
                 d2.LargeImage = NewBitmapImage(exe, "icon-initialize.ico");
 
                 //Add the button to ribbon
                 PushButton pushButtond2 = ribbonPanel4.AddItem(d2) as PushButton;
+
+
 
             }
             catch

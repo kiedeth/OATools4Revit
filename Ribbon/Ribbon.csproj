@@ -65,9 +65,7 @@
     <EmbeddedResource Include="Resources\Icons\icon-text-label.png" />
     <EmbeddedResource Include="Resources\Icons\icon-text.ico" />
     <EmbeddedResource Include="Resources\Icons\oba_icon.ico" />
-    <EmbeddedResource Include="Resources\Img\bmp-file.bmp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Img\bmp-file.bmp" />
     <Content Include="Resources\Img\img-icon-check-in-box.png" />
     <Content Include="Resources\Img\img-icon-check-mark5.png" />
     <Content Include="Resources\Img\img-icon-check-mark6.png" />
@@ -77,9 +75,6 @@
     <Content Include="Resources\Img\img-icon-shapes-square-download.png" />
     <Content Include="Resources\Img\img-icon-shapes-tile1.png" />
     <Content Include="Resources\Img\img-icon-symbols-shapes-cube.png" />
-    <Content Include="oatVersion">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\oba-orange square-160.jpg" />
     <Content Include="Resources\oba_icon.ico" />
     <Content Include="OAToolsForRevit2017.addin">
@@ -99,20 +94,26 @@
       <Project>{38ce0fdb-b54e-4391-89ae-e322bbbc7460}</Project>
       <Name>OATools</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ParameterTools\ParameterTools.csproj">
+      <Project>{a2a8b690-c772-4aef-8aff-88a9602c5bee}</Project>
+      <Name>ParameterTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StartupProject\StartupProject.csproj">
       <Project>{960da59a-8d98-409c-b29b-01898a8d9fd5}</Project>
       <Name>StartupProject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ViewFilters\ViewFilters.csproj">
+      <Project>{4fcbf0c9-ec78-426f-8563-c81ef2541df7}</Project>
+      <Name>ViewFilters</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fsDNote.rfa">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="Resources\fsDNote.rfa" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*" "B:\OAToolsForRevit2017.betaVersion"  /s /Y
-</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*" "B:\OAToolsForRevit2017.betaVersion\Contents"  /s /Y
+copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017\OAToolsForRevit2017.bundle\Contents"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

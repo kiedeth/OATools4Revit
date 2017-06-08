@@ -9,6 +9,9 @@ using OATools.Utilities;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
+using System.Windows;
+using System.Windows.Forms;
+using System.IO;
 #endregion // Namespaces
 
 namespace OATools.Revitize
@@ -16,27 +19,45 @@ namespace OATools.Revitize
     [Transaction(TransactionMode.Manual)]
     class cmdDWG2DrafingView : IExternalCommand
     {
+        //Set some static vars
+        static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
+        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
+        static string fileName = "OATools_Settings";
+        static string fileType = "ini";
+        public static string path = directory + "/" + fileName + "." + fileType;
 
-        public void ImportDWGsToDraftingViews()
-        {
-            
+        //public ExternalCommandData commandData { get; set; }
 
-
-        }
+        //create empty list to receive the views to be passed out of this 
+        private ViewSet createdViewList = new ViewSet();
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            if (null == commandData)
+            {
+                throw new ArgumentNullException("commandData");
+            }
+
+            Initilize c = new Initilize();
+            bool success = c.IsAppInitialized();
+            if (!success)
+            {
+                return Result.Cancelled;
+            }
+
+
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
-            Application app = uiapp.Application;            
+            Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;            
             Document doc = uidoc.Document;
 
+            
             //Set counter 
             int counter = 0;
 
 
             //Open the form
-            using (frmRevitize curForm = new frmRevitize())
+            using (frmRevitize curForm = new frmRevitize(commandData))
             {
                 //Show the form
                 curForm.ShowDialog();
@@ -58,11 +79,17 @@ namespace OATools.Revitize
                             //Loop through DWGs, create Drafting View and insert
                             foreach (string curDWG in drawingList)
                             {
+                                
+
                                 //get family type for drafting view
                                 ElementId curVFT = getDraftingViewFamilyType(doc);
 
                                 //create drafting view
-                                View curView = ViewDrafting.Create(doc, curVFT);
+                                Autodesk.Revit.DB.View curView = ViewDrafting.Create(doc, curVFT);
+
+                                //add the view to the list to be passed out of this
+                                createdViewList.Insert(curView);
+
 
                                 //rename the view to the DWG filename
                                 string tmpName = getFilenameFromPath(curDWG);
@@ -124,23 +151,64 @@ namespace OATools.Revitize
 
                                 
                             }
+
+                            
                         }
+                        
 
                         //commit changes
                         tx.Commit();
                     }
 
-
-                    //expolde the DWGs here after the transaction has committed by subscribing to the DocumentChanged event
+   
 
                 }
             }
+            
+            
 
-            //alert user
-            TaskDialog.Show("Complete", "Inserted " + counter + " DWG Files.");
+            //ask user if they want to create a sheet
+            string summeryMessage = " Inserted " + counter + " DWG Files.";
+            bool createSheet = createSheetYesNo(summeryMessage);
+            frmRevitize f1 = new frmRevitize(commandData);
+            f1.Close();
+
+            if (createSheet)
+            {
+                cmdSheetsFromViews cmd = new cmdSheetsFromViews();
+                cmd.Execute(commandData, ref message, elements, createdViewList);
+            }
+
             return Result.Succeeded;
+        }
 
 
+        //public List<Autodesk.Revit.DB.View> collectedCreatedViews()
+        //{
+        //    List<Autodesk.Revit.DB.View> theList = createdViewList;
+
+        //    return theList;
+        //}
+
+
+        private bool createSheetYesNo(string message)
+        {
+
+
+
+            //Create the message box
+            message += "\n\n Would you like to create a sheet and add these views to it?";
+            string title = "Complete";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = System.Windows.Forms.MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private string getFilenameFromPath(string filePath)

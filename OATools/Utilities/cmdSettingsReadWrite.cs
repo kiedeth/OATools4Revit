@@ -8,14 +8,21 @@ using System.Threading.Tasks;
 
 namespace OATools.Utilities
 {
-    class cmdSettingsReadWrite
+    public class cmdSettingsReadWrite
     {
+        //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/OATools";
+        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
         static string fileName = "OATools_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
-        public static string defaultPath = directory + "/" + "DNotes_default_CSVFile" + "." + fileType;
+
+        //static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
+        //static string directory = appData + "/OATools";
+        //static string fileName = "OATools_Settings";
+        //static string fileType = "ini";
+        //public static string path = directory + "/" + fileName + "." + fileType;
+        //public static string defaultPath = directory + "/" + "DNotes_default_CSVFile" + "." + fileType;
 
 
 

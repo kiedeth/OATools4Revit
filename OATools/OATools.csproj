@@ -123,13 +123,10 @@
       <DependentUpon>frmConvertTextNotes.cs</DependentUpon>
     </Compile>
     <Compile Include="CsAddPanel.cs" />
-    <Compile Include="DNoter\appDNoter.cs" />
-    <Compile Include="DNoter\cmdCreateDNote.cs" />
-    <Compile Include="DNoter\cmdDNoter.cs" />
-    <Compile Include="DNoter\frmDNoter.cs" />
-    <Compile Include="DNoter\frmDNoter.Designer.cs">
-      <DependentUpon>frmDNoter.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Filtering\cmdViewFilters.cs" />
+    <Compile Include="Filtering\Extensions.cs" />
+    <Compile Include="Filtering\FilterData.cs" />
+    <Compile Include="Filtering\FilterUtil.cs" />
     <Compile Include="DNotes\CmdCreateDNoteLegend.cs" />
     <Compile Include="DNotes\cmdDNoteLoadPlace.cs" />
     <Compile Include="DNotes\cmdFamilyParamGUID.cs" />
@@ -139,6 +136,20 @@
     </Compile>
     <Compile Include="DNotes\frmCreateDNote.Designer.cs">
       <DependentUpon>frmCreateDNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Electrical\cmdCreateViewFilter.cs" />
+    <Compile Include="Electrical\cmdEmergencyCircut.cs" />
+    <Compile Include="Filtering\frmNewFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filtering\frmNewFilter.Designer.cs">
+      <DependentUpon>frmNewFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filtering\frmViewFilters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filtering\frmViewFilters.Designer.cs">
+      <DependentUpon>frmViewFilters.cs</DependentUpon>
     </Compile>
     <Compile Include="formTest.cs">
       <SubType>Form</SubType>
@@ -156,13 +167,28 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Revitize\clsImportDWG.cs" />
+    <Compile Include="Revitize\cmdSheetsFromViews.cs" />
     <Compile Include="Revitize\cmdDWG2DrafingView.cs" />
+    <Compile Include="Revitize\CmdViewImport.cs" />
+    <Compile Include="Revitize\DuplicateViewUtils.cs" />
+    <Compile Include="Revitize\frmCreateAddViewsToSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Revitize\frmCreateAddViewsToSheet.Designer.cs">
+      <DependentUpon>frmCreateAddViewsToSheet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Revitize\frmImportDWG.cs" />
     <Compile Include="Revitize\frmRevitize.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Revitize\frmRevitize.Designer.cs">
       <DependentUpon>frmRevitize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Revitize\frmViewImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Revitize\frmViewImport.Designer.cs">
+      <DependentUpon>frmViewImport.cs</DependentUpon>
     </Compile>
     <Compile Include="Revitize\ThisDocument.cs" />
     <Compile Include="Settings\cmdCheckForUpdates.cs" />
@@ -172,8 +198,16 @@
     <Compile Include="Settings\frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sheet_Tools\AllViewsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sheet_Tools\AllViewsForm.Designer.cs">
+      <DependentUpon>AllViewsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sheet_Tools\cmdAllViews.cs" />
     <Compile Include="Sheet_Tools\cmdChangeSheet.cs" />
     <Compile Include="Sheet_Tools\cmdChangeTB.cs" />
+    <Compile Include="Sheet_Tools\cmdCreateSheetsFromViews.cs" />
     <Compile Include="Sheet_Tools\frmChangeTB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,12 +232,21 @@
     <Compile Include="Windows\RunAllText2Upper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Settings\OAToolsForRevit2017.SharedParameters.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="bmp_32x32_initialize.bmp" />
     <Content Include="DNotes\DNoteTextFile.txt" />
     <Content Include="Notes.txt" />
     <Content Include="OATools.addin">
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="Filtering\frmNewFilter.resx">
+      <DependentUpon>frmNewFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filtering\frmViewFilters.resx">
+      <DependentUpon>frmViewFilters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -217,9 +260,7 @@
     <EmbeddedResource Include="Resources\Icons\icon-text-label.png" />
     <EmbeddedResource Include="Resources\Icons\icon-text.ico" />
     <EmbeddedResource Include="Resources\Icons\icon-initialize.ico" />
-    <EmbeddedResource Include="Resources\Img\bmp-file.bmp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Img\bmp-file.bmp" />
     <EmbeddedResource Include="Resources\Icons\oba_icon.ico" />
     <EmbeddedResource Include="Resources\bmp\bmp_32x32_initialize.bmp" />
     <Content Include="Resources\Img\img-icon-check-in-box.png" />
@@ -231,8 +272,17 @@
     <Content Include="Resources\Img\img-icon-shapes-square-download.png" />
     <Content Include="Resources\Img\img-icon-shapes-tile1.png" />
     <Content Include="Resources\Img\img-icon-symbols-shapes-cube.png" />
+    <EmbeddedResource Include="Revitize\frmCreateAddViewsToSheet.resx">
+      <DependentUpon>frmCreateAddViewsToSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Revitize\frmViewImport.resx">
+      <DependentUpon>frmViewImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Settings\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sheet_Tools\AllViewsForm.resx">
+      <DependentUpon>AllViewsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\frmLoadResource.resx">
       <DependentUpon>frmLoadResource.cs</DependentUpon>
@@ -246,9 +296,6 @@
   <ItemGroup>
     <EmbeddedResource Include="ConvertTextNotes\frmConvertTextNotes.resx">
       <DependentUpon>frmConvertTextNotes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DNoter\frmDNoter.resx">
-      <DependentUpon>frmDNoter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DNotes\frmCreateDNote.resx">
       <DependentUpon>frmCreateDNote.cs</DependentUpon>
@@ -266,9 +313,7 @@
   <ItemGroup>
     <None Include="DNotes\family_api_DNote.rfa" />
     <None Include="OATools\fsDNote.rfa" />
-    <None Include="Resources\fsDNote.rfa">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\fsDNote.rfa" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OAToolsUpdater\OAToolsUpdater.csproj">
@@ -276,10 +321,14 @@
       <Name>OAToolsUpdater</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+    <Folder Include="NewFolder2\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*" "A:\"  /s /Y
-</PostBuildEvent>
+copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017\OAToolsForRevit2017.bundle\Contents"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

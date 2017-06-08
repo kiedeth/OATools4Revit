@@ -14,6 +14,8 @@ using System.Windows.Forms;
 using System.Net;
 using System.Windows;
 using Autodesk.Revit.DB;
+using System.Threading;
+using System.Linq;
 #endregion
 
 namespace OAToolsUpdater
@@ -86,7 +88,10 @@ namespace OAToolsUpdater
         public static readonly string ftp_FTPServerAddress = "10.10.10.54";
 
         //The OA Tools FTP Server bundle
-        public static readonly string ftp_bundle = "/srv/ftp/OAToolsForRevit2017.bundle/Contents/";
+        public static readonly string ftp_bundle = "/srv/ftp/OAToolsForRevit2017.bundle/";
+
+        //The OA Tools FTP Server bundle
+        public static readonly string ftp_bundleContents = ftp_bundle + "Contents/";
 
         //The OA Tools LOCAL bundle directory
         public static readonly string local_bundle = m_RevitAddinDir + m_oatBundleName;
@@ -95,7 +100,10 @@ namespace OAToolsUpdater
         public static readonly string local_bundleContents = m_RevitAddinDir + m_oatBundleName + m_oatBundleContentsName;
 
         //The OA Tools LOCAL apply updates exe
-        public static readonly string local_applyUpdatesExe = local_bundle + m_oatUpdateApplyExeName;
+        public static readonly string local_additionalDirectory = local_bundle + "Additional/";
+
+        //The OA Tools LOCAL apply updates exe
+        public static readonly string local_applyUpdatesExe = local_additionalDirectory + m_oatUpdateApplyExeName;
 
         //The OA Tools LOCAL received updates folder
         public static readonly string local_receivedUpdates = m_RevitAddinDir + m_oatBundleName + "ReceivedUpdates/";
@@ -123,27 +131,9 @@ namespace OAToolsUpdater
         //Run update
         public static void RunUpdate()
         {
-            //ftp c = new ftp();
-            //c.FtpUpdateAllFiles(ftp_bundle, local_bundle);
-
             //Check and see if an update is available and if yes then get it
             getUpdateIfAvailable();
-
-            //System.Windows.MessageBox.Show("Download Complete! Please restart Revit to apply the update.");
-
-
         }
-
-
-
-
-        //-------------SUPPORTING CODE ----------------//
-
-        // The reason a file is used instead of checking the assembly's metadata itself
-        // is because checking the metadata requires loading the assembly to check the
-        // version. Once the assembly is loaded and it turns out an upgrade is available,
-        // you cannot unload the assembly to overwrite the binaries. This is unfortunately
-        // a general .NET restriction. 
 
 
         //--------Local----------//
@@ -217,8 +207,6 @@ namespace OAToolsUpdater
                 : null;
         }
 
-        //Add refernce to the App;y updates project and fire the .exe from the end of this 
-
 
         //----------Update happens here---------//
 
@@ -257,17 +245,20 @@ namespace OAToolsUpdater
                 //An update is required so get the REMOTE assembly
                 bool success = DownloadRemoteAssembly();
 
+                //update/replace the update apply exe
+                bool updateAdditional = updateTheAdditionalDirectory();
+
+                Thread.Sleep(3000);
+
                 //Success update the local version file
                 if (success)
                 {
-                    updateLocalVersionFile(remoteVersionNumber);
+                    //update the local version number (this is now done when the files are moved)
+                    //updateLocalVersionFile(remoteVersionNumber);
+
 
                     //launch the Apply Updates exe
                     System.Diagnostics.Process.Start(local_applyUpdatesExe);
-
-                    //Process p = new Process();
-                    //p.StartInfo.FileName = local_applyUpdatesExe;
-                    //p.Start();
                 }
             }
 
@@ -291,26 +282,122 @@ namespace OAToolsUpdater
                 return true;
             }
 
+            //Get and set the REMOTE version number
+            string remoteVersionNumber = GetRemoteVersionNumber();
+
+            //Get and set the LOCAL version number
+            string localVersionNumber = GetLocalVersionNumber();
+
+            //Show message box
             return MessageBoxResult.Yes == System.Windows.MessageBox.Show(
-                "There is a newer version available. Would you like to download it?", "New Version Number here...", 
+                "O/A Tools has an update available. \r\nWould you like to download version:" + remoteVersionNumber, "Version: " + localVersionNumber, 
                 MessageBoxButton.YesNo);
 
 
         }
 
+        public static bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
+        }
+
+        //Clears a directory and verifys it
+        public static bool ClearTheDirectory(string path)
+        {
+            if (!IsDirectoryEmpty(path))
+            {
+                System.IO.DirectoryInfo di = new DirectoryInfo(path);
+
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    file.Delete();
+                }                
+            }
+
+            if (IsDirectoryEmpty(path))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         //Download REMOTE assembly
         public static bool DownloadRemoteAssembly()
         {
-            //Create the downloader
-            //WebClient downloader = new WebClient();
+            //clear downloads directory
+            if (ClearTheDirectory(local_receivedUpdates))
+            {               
+                //Try to download the files
+                try
+                {
+                    //use FTP downloader
+                    ftp c = new ftp();
+                    c.FtpGetFiles(ftp_bundleContents, local_receivedUpdates, ".temp");
+                }
+                catch (Exception)
+                {
+                    //So much can go wrong so just return false 
+                    return false;
+                }
+            }
+            //The update completed, return true
+            return true;
+        }
 
+        //Replace the update apply exe
+        public static bool updateTheAdditionalDirectory()
+        {
             //Try to download the files
             try
             {
 
-                ftp c = new ftp();
-                c.FtpUpdateAllFiles(ftp_bundle, local_receivedUpdates);
+                    //use FTP downloader
+                    ftp c = new ftp();
+                    c.FtpGetFiles(ftp_bundle + "Additional/", local_additionalDirectory, ".temp");
 
+            }
+
+            catch (Exception)
+            {
+                //So much can go wrong so just return false 
+                return false;
+            }
+            //The update completed, return true
+            return true;
+        }
+
+        //Get new settings file
+        public static bool GetSettingsFile()
+        {
+            //Try to download the file
+            try
+            {
+                //use FTP downloader
+                ftp c = new ftp();
+                c.FtpGetFile(ftp_bundle + "Additional/OATools_Settings.ini", local_additionalDirectory + "/OATools_Settings.ini");
+
+                return true;
+            }
+            catch (Exception)
+            {
+                //So much can go wrong so just return false 
+                return false;
+            }
+        }
+
+        public bool getDNoteFile()
+        {
+            //Try to download the file
+            try
+            {
+                //use FTP downloader
+
+                ftp c = new ftp();
+
+                c.FtpGetFile(ftp_bundle + "Additional/fsDNote.rfa", local_additionalDirectory + "/fsDNote.rfa");
+
+                return true;
             }
             catch (Exception)
             {
@@ -318,11 +405,7 @@ namespace OAToolsUpdater
                 return false;
             }
 
-            //The update completed, return true
-            return true;
-
         }
-
 
     }
 }

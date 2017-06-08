@@ -45,6 +45,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cbxCreateAddToSheet = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -232,12 +233,23 @@
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
+            // cbxCreateAddToSheet
+            // 
+            this.cbxCreateAddToSheet.AutoSize = true;
+            this.cbxCreateAddToSheet.Location = new System.Drawing.Point(357, 627);
+            this.cbxCreateAddToSheet.Name = "cbxCreateAddToSheet";
+            this.cbxCreateAddToSheet.Size = new System.Drawing.Size(283, 21);
+            this.cbxCreateAddToSheet.TabIndex = 14;
+            this.cbxCreateAddToSheet.Text = "Create a sheet and add these views to it";
+            this.cbxCreateAddToSheet.UseVisualStyleBackColor = true;
+            // 
             // frmRevitize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(804, 664);
+            this.Controls.Add(this.cbxCreateAddToSheet);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
@@ -282,5 +294,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.CheckBox cbxCreateAddToSheet;
     }
 }

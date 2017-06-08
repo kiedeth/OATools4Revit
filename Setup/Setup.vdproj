@@ -33,12 +33,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2D632C59AF5C906BBC32CED1F6EC3EFA"
-        "OwnerKey" = "8:_E71C759AFC1148DDAE2D508255DD3108"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_49070918581546D5AB6955D4F5FCF3A9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -57,32 +51,62 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B95D085537C64459B03ADD8D698085DE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC52535994A1C99B98A61BDEF378B29E"
+        "OwnerKey" = "8:_EAA8D4EB534C451ABE47CC48CEB43E10"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CD29A916E882407C801EA4C99F7CC856"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D8EA36E920CA8F3F0FB2B9836B41AB8F"
+        "MsmKey" = "8:_E8F1CBB18B3FF8C2CF5CB3E15637DD2D"
         "OwnerKey" = "8:_2D632C59AF5C906BBC32CED1F6EC3EFA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E71C759AFC1148DDAE2D508255DD3108"
+        "MsmKey" = "8:_EAA8D4EB534C451ABE47CC48CEB43E10"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EF0F8856504948719D1133547192A848"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E71C759AFC1148DDAE2D508255DD3108"
+        "OwnerKey" = "8:_49070918581546D5AB6955D4F5FCF3A9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_49070918581546D5AB6955D4F5FCF3A9"
+        "OwnerKey" = "8:_EAA8D4EB534C451ABE47CC48CEB43E10"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BC52535994A1C99B98A61BDEF378B29E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EF0F8856504948719D1133547192A848"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,7 +124,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D8EA36E920CA8F3F0FB2B9836B41AB8F"
+        "OwnerKey" = "8:_E8F1CBB18B3FF8C2CF5CB3E15637DD2D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -143,7 +167,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\OATools Setup.msi"
+        "OutputFilename" = "8:B:\\OAToolsForRevit2017.installFiles\\OATools Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -304,7 +328,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:OATools, Version=0.0.0.1, Culture=neutral, processorArchitecture=AMD64"
+            "AssemblyAsmDisplayName" = "8:OATools, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6DC77B9A60C5B88C239A052EF2235808"
@@ -351,6 +375,57 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B95D085537C64459B03ADD8D698085DE"
+            {
+            "SourcePath" = "8:..\\OATools\\Resources\\fsDNote.rfa"
+            "TargetName" = "8:fsDNote.rfa"
+            "Tag" = "8:"
+            "Folder" = "8:_F212E315F890480A83C1E2EE67F088C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BC52535994A1C99B98A61BDEF378B29E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RevitAPI, Version=17.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_BC52535994A1C99B98A61BDEF378B29E"
+                    {
+                    "Name" = "8:RevitAPI.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:RevitAPI.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F59AF6726F32436EA842BB2D75FC910E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD29A916E882407C801EA4C99F7CC856"
             {
             "SourcePath" = "8:..\\OAToolsUpdater\\.Placeholder"
@@ -371,14 +446,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D8EA36E920CA8F3F0FB2B9836B41AB8F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E8F1CBB18B3FF8C2CF5CB3E15637DD2D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Renci.SshNet, Version=2016.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D8EA36E920CA8F3F0FB2B9836B41AB8F"
+                    "_E8F1CBB18B3FF8C2CF5CB3E15637DD2D"
                     {
                     "Name" = "8:Renci.SshNet.DLL"
                     "Attributes" = "3:512"
@@ -402,14 +477,45 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E71C759AFC1148DDAE2D508255DD3108"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EAA8D4EB534C451ABE47CC48CEB43E10"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ViewFilters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_EAA8D4EB534C451ABE47CC48CEB43E10"
+                    {
+                    "Name" = "8:ViewFilters.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\ViewFilters\\bin\\Release\\ViewFilters.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F59AF6726F32436EA842BB2D75FC910E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EF0F8856504948719D1133547192A848"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:OAToolsApplyUpdate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E71C759AFC1148DDAE2D508255DD3108"
+                    "_EF0F8856504948719D1133547192A848"
                     {
                     "Name" = "8:OAToolsApplyUpdate.exe"
                     "Attributes" = "3:512"
@@ -418,7 +524,7 @@
             "SourcePath" = "8:..\\OAToolsApplyUpdate\\bin\\Release\\OAToolsApplyUpdate.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_F212E315F890480A83C1E2EE67F088C1"
+            "Folder" = "8:_20EB56031AA24F6EB0CA2B1498459EBB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -526,6 +632,17 @@
                                                     "Property" = "8:_45B0746212D94B809B92687429856A76"
                                                         "Folders"
                                                         {
+                                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_20EB56031AA24F6EB0CA2B1498459EBB"
+                                                            {
+                                                            "Name" = "8:Additional"
+                                                            "AlwaysCreate" = "11:FALSE"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "Property" = "8:_3E46571E483D4488834E3CB9CBB405C9"
+                                                                "Folders"
+                                                                {
+                                                                }
+                                                            }
                                                             "{9EF0B969-E518-4E46-987F-47570745A589}:_A56F667B6D794405BA1A982B74539AFB"
                                                             {
                                                             "Name" = "8:ReceivedUpdates"
@@ -611,7 +728,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OA Tools 4 Revit"
         "ProductCode" = "8:{C9F4AF92-BFC7-4BD5-B77D-DEC6875BB46A}"
-        "PackageCode" = "8:{4D5D0DA6-2139-4456-85FC-8BE79BDE40C5}"
+        "PackageCode" = "8:{A1655AF8-5A3F-4B0D-952D-505C383CEEAE}"
         "UpgradeCode" = "8:{D946FD63-2CA0-4231-A705-FF421D4814CD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

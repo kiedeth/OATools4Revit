@@ -13,32 +13,61 @@ namespace OATools.Utilities
     {
         //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/OATools";
+        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; 
         static string fileName = "OATools_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
         public static string defaultDNotesFilePath = directory + "/" + "DNotes_default_CSVFile" + "." + "csv";
 
+        //Confirm initialize
+        public bool IsAppInitialized()
+        {
+            //Check for settings file
+            if (!File.Exists(path))
+            {
+                TaskDialog.Show("Error!", "Please Initialize OA Tools!");
 
+                return false;
+            }
+
+            return true;
+        }
 
         //Perform a series of checks and perform the required tasks
         public void initializeApp()
         {
+            if (!File.Exists(path))
+            {
+                //Download Settings File
+                bool sucess = OAToolsUpdater.Updater.GetSettingsFile();
+
+                if (sucess)
+                {
+                    TaskDialog.Show("Success", "OA Tools has been sucessfully initialized.");
+                }
+                else
+                {
+                    TaskDialog.Show("Error", "Something went wrong! ERROR CODE:1776.");
+                }
+            }
+
+            else
+            {
+                TaskDialog.Show("Message", "OA Tools has already been initialized.");
+            }
+
             //Check for directory if null create it
-            if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
+            //if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
-            //Check for settings file if null create it
-            if (!File.Exists(path)) CreateSettingsFile();
+            ////Check for settings file if null create it
+            //if (!File.Exists(path)) CreateSettingsFile();
 
-            //Check for DNotes file if null create it
-            if (!File.Exists(defaultDNotesFilePath)) CreateDefaultDNotesFile();
+            ////Check for DNotes file if null create it
+            //if (!File.Exists(defaultDNotesFilePath)) CreateDefaultDNotesFile();
 
+            ////Else show message
+            //else TaskDialog.Show("Message", "OA Tools has already been initialized.");
 
-
-
-            //Else show message
-            else TaskDialog.Show("Message", "OA Tools has already been initialized.");
-            
             //Return back
             return;
 
@@ -57,7 +86,7 @@ namespace OATools.Utilities
 
                 //Create blank setting tags
                 String t1 = "<DNOTE_FILE_PATH>" + defaultDNotesFilePath;
-                String t2 = "<NEW_TAG>";
+                String t2 = "<IMPORT_VIEW_FILE_PATH>";
                 String t3 = "<NEW_TAG>";
                 String t4 = "<NEW_TAG>";
 

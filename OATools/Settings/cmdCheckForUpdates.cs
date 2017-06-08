@@ -9,6 +9,7 @@ using Autodesk.Revit.UI.Events;
 using System.Collections.Generic;
 using System.Text;
 using OAToolsUpdater;
+using OATools.Utilities;
 
 namespace OATools.Settings
 {
@@ -25,6 +26,12 @@ namespace OATools.Settings
         // The main Execute method (inherited from IExternalCommand) must be public
         public Autodesk.Revit.UI.Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+
+            //Confirm App has been initialized
+            Initilize c = new Initilize();
+            bool success = c.IsAppInitialized();
+            if (!success) return Result.Cancelled;
+
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Application app = uiapp.Application;

@@ -13,6 +13,7 @@ using System.IO;
 using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI.Selection;
 using OATools.Utilities;
+using OAToolsUpdater;
 
 namespace OATools.DNotes
 {
@@ -21,7 +22,7 @@ namespace OATools.DNotes
     {
         //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/OATools"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
+        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
         static string fileName = "OATools_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
@@ -83,14 +84,11 @@ namespace OATools.DNotes
         /// </summary>
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-
-            //Check for settings file if null create it
-            if (!File.Exists(path))
-            {
-                TaskDialog.Show("Error!", "Please Initialize OA Tools!");
-
-                return Result.Cancelled;
-            }
+            //Confirm App has been initialized
+            Initilize c = new Initilize();
+            bool success = c.IsAppInitialized();
+            if (!success) return Result.Cancelled;
+            
             else
             {                
 
@@ -122,12 +120,21 @@ namespace OATools.DNotes
                 {
                     if (!File.Exists(FamilyPath))
                     {
-                        Utilities.Util.ErrorMsg(string.Format(
-                          "Please ensure that the DNote "
-                          + "family file '{0}' exists in '{1}'.",
-                          FamilyName, _family_folder));
+                        //Utilities.Util.ErrorMsg(string.Format(
+                        //  "Please ensure that the DNote "
+                        //  + "family file '{0}' exists in '{1}'.",
+                        //  FamilyName, _family_folder));
 
-                        return Result.Failed;
+                        OAToolsUpdater.Updater c2 = new Updater();
+                        bool success2 = c2.getDNoteFile();
+
+                        if (!success2)
+                        {
+                            TaskDialog.Show("ERROR!", "Cannot download the DNote .rfa file. ERROR CODE:1777");
+
+                            return Result.Failed;
+                        }
+                        
                     }
 
                     // It is not present, so load it:
@@ -231,6 +238,8 @@ namespace OATools.DNotes
                 return Result.Succeeded;
             }
         }
+
+
 
         //Create a OnDocumentChanged method
         void OnDocumentChanged(object sender, DocumentChangedEventArgs e)

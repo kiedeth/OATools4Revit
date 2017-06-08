@@ -15,10 +15,15 @@ namespace OATools.Revitize
 {
     public partial class frmRevitize : Form
     {
-
-        public frmRevitize()
+        //Create the public commandData var
+        public ExternalCommandData c_data { get; set; }
+       
+        public frmRevitize(ExternalCommandData commandData)
         {
             InitializeComponent();
+
+            //set the public commandData var
+            c_data = commandData;
 
             //Set the drop downs
             this.cmbColors.SelectedIndex = 0;
@@ -45,6 +50,7 @@ namespace OATools.Revitize
                 st = a.GetManifestResourceStream("OATools.Resources.Icons.icon-text.ico");
                 icnTask = new System.Drawing.Icon(st);
 
+
             }
             catch
             {
@@ -56,6 +62,7 @@ namespace OATools.Revitize
         private void btnOK_Click(object sender, EventArgs e)
         {
 
+            
         }
 
         private void btnSelectFiles_Click(object sender, EventArgs e)
