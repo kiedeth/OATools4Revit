@@ -17,8 +17,8 @@ namespace OAToolsUpdater
     {
         String Host = "10.10.10.54";
         int Port = 22;
-        String Username = "ftp";
-        String Password = "zyynxdnm";
+        String Username = "ftpuser";
+        String Password = "Pass1234";
         
         public string FtpGetVersionFile(string source, string destination)
         {            

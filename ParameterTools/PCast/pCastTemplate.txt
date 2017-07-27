@@ -1,0 +1,2 @@
+TemplateName	GUID	Name	DataType	GroupNumber	GroupName	Visible	InstanceOrType	GroupUnder	Source	ParamToReplace	MapToElecConnector	Value	Formula	SortOrder	ToolTip					
+FirstTemplate	88b2ceac-489a-4412-8375-7686ccc0dd84	TestName	Text

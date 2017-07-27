@@ -16,6 +16,7 @@ using System.Windows;
 using Autodesk.Revit.DB;
 using System.Threading;
 using System.Linq;
+using Autodesk.Revit.UI;
 #endregion
 
 namespace OAToolsUpdater
@@ -248,7 +249,11 @@ namespace OAToolsUpdater
                 //update/replace the update apply exe
                 bool updateAdditional = updateTheAdditionalDirectory();
 
-                Thread.Sleep(3000);
+                //Thread.Sleep(3000);
+
+                TaskDialog.Show("test", "point reached");
+
+                System.Diagnostics.Process.Start(local_applyUpdatesExe);
 
                 //Success update the local version file
                 if (success)
@@ -256,6 +261,7 @@ namespace OAToolsUpdater
                     //update the local version number (this is now done when the files are moved)
                     //updateLocalVersionFile(remoteVersionNumber);
 
+                    TaskDialog.Show("test", "point reached");
 
                     //launch the Apply Updates exe
                     System.Diagnostics.Process.Start(local_applyUpdatesExe);
@@ -360,6 +366,8 @@ namespace OAToolsUpdater
 
             catch (Exception)
             {
+                TaskDialog.Show("Error:", "Failed to download the Additional directory. Error Code: 1473");
+
                 //So much can go wrong so just return false 
                 return false;
             }
@@ -385,6 +393,8 @@ namespace OAToolsUpdater
                 return false;
             }
         }
+
+
 
         public bool getDNoteFile()
         {

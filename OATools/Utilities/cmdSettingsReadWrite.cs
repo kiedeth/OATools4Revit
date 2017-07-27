@@ -54,6 +54,8 @@ namespace OATools.Utilities
         }
 
 
+
+
         public string GetSetting(string tag)
         {
             var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);

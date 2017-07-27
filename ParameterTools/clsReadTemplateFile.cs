@@ -18,64 +18,37 @@ namespace OATools.ParameterTools
 
     public class clsReadTemplateFile
     {
-        //public DataTable ConvertToDataTable (string filePath, int numberOfColumns)
-        //{
-        //    DataTable tbl = new DataTable();
 
-        //    for (int col = 0; col < numberOfColumns; col++)
-        //        tbl.Columns.Add(new DataColumn("Column" + (col + 1).ToString()));
-
-        //    string[] lines = System.IO.File.ReadAllLines(filePath);
-
-        //    foreach (string line in lines)
-        //    {
-        //        var cols = line.Split(':');
-
-        //        DataRow dr = tbl.NewRow();
-        //        for(int cIndex=0; cIndex < 3; cIndex++)
-        //        {
-        //            dr[cIndex] = cols[cIndex];
-        //        }
-
-        //        tbl.Rows.Add(dr);
-        //    }
-
-        //    return tbl;
-        //}
 
         public DataTable GetDataSourceFromFile(string fileName)
         {
+            
             //Create the dt
-            DataTable dt = new DataTable("TextFile");
-
-            string[] columns = null;
-
-            //Read the text file
-            var lines = File.ReadAllLines(fileName);
-
-            // assuming the first row contains the columns information
-            if (lines.Count() > 0)
+            DataTable datatable = new DataTable();
+            using (StreamReader streamreader = new StreamReader(fileName))
             {
-                columns = lines[0].Split(new char[] { '\t' });
+                char[] delimiter = new char[] { '\t' };
+                string[] columnheaders = streamreader.ReadLine().Split(delimiter);
+                foreach (string columnheader in columnheaders)
+                {
+                    datatable.Columns.Add(columnheader); // I've added the column headers here.
+                }
 
-                foreach (var column in columns)
-                    dt.Columns.Add(column, typeof(string));
+                while (streamreader.Peek() > 0)
+                {
+                    DataRow datarow = datatable.NewRow();
+                    datarow.ItemArray = streamreader.ReadLine().Split(delimiter);
+                    datatable.Rows.Add(datarow);
+                }
+
+                streamreader.Dispose();
+                streamreader.Close();                
             }
-
-            // reading rest of the data
-            for (int i = 1; i < lines.Count(); i++)
-            {
-                DataRow dr = dt.NewRow();
-                string[] values = lines[i].Split(new char[] { '\t' });
-
-                for (int j = 0; j < values.Count() && j < columns.Count(); j++)
-                    dr[j] = values[j];
-
-                dt.Rows.Add(dr);
-            }
-            //return the dt
-            return dt;
+            
+            return datatable;
         }
+
+      
 
 
         public DataTable RemoveDuplicateRows(DataTable table, string DistinctColumn)
@@ -129,6 +102,25 @@ namespace OATools.ParameterTools
 
         }
 
+        public bool DeleteTemplate(string fileName, string tag)
+        {
+            string strFilePath = fileName;
+            string strSearchText = tag;
+            string strOldText;
+            string n = "";
+            StreamReader sr = File.OpenText(strFilePath);
+            while ((strOldText = sr.ReadLine()) != null)
+            {
+                if (!strOldText.Contains(strSearchText))
+                {
+                    n += strOldText + Environment.NewLine;
+                }
+            }
+            sr.Close();
+            File.WriteAllText(strFilePath, n);
+
+            return true;
+        }
 
 
 
@@ -137,4 +129,66 @@ namespace OATools.ParameterTools
 }
 
 
-//TaskDialog.Show("test", "test");
+
+//public DataTable ConvertToDataTable (string filePath, int numberOfColumns)
+//{
+//    DataTable tbl = new DataTable();
+
+//    for (int col = 0; col < numberOfColumns; col++)
+//        tbl.Columns.Add(new DataColumn("Column" + (col + 1).ToString()));
+
+//    string[] lines = System.IO.File.ReadAllLines(filePath);
+
+//    foreach (string line in lines)
+//    {
+//        var cols = line.Split(':');
+
+//        DataRow dr = tbl.NewRow();
+//        for(int cIndex=0; cIndex < 3; cIndex++)
+//        {
+//            dr[cIndex] = cols[cIndex];
+//        }
+
+//        tbl.Rows.Add(dr);
+//    }
+
+//    return tbl;
+//}
+
+
+//public DataTable GetDataSourceFromFile(string fileName)
+//{
+//    //Create the dt
+//    DataTable dt = new DataTable("TextFile");
+
+//    string[] columns = null;
+
+//    //Read the text file
+//    var lines = File.ReadAllLines(fileName);
+
+//    // assuming the first row contains the columns information
+//    if (lines.Count() > 0)
+//    {
+//        columns = lines[0].Split(new char[] { '\t' });
+
+//        foreach (var column in columns)
+//            dt.Columns.Add(column, typeof(string));
+//    }
+
+//    // reading rest of the data
+//    for (int i = 1; i < lines.Count(); i++)
+//    {
+//        DataRow dr = dt.NewRow();
+//        string[] values = lines[i].Split(new char[] { '\t' });
+
+//        for (int j = 0; j < values.Count() && j < columns.Count(); j++)
+//            dr[j] = values[j];
+
+//        dt.Rows.Add(dr);
+//    }
+
+
+
+//    //return the dt
+//    return dt;
+//}

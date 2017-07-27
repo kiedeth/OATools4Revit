@@ -112,8 +112,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*" "B:\OAToolsForRevit2017.betaVersion\Contents"  /s /Y
-copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017\OAToolsForRevit2017.bundle\Contents"</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*" "F:\OAToolsForRevit2017.betaVersion\Contents"  /s /Y
+xcopy "$(TargetDir)*" "C:\Users\jschaad\AppData\Roaming\Autodesk\Revit\Addins\2017\OAToolsForRevit2017.bundle\Contents" /s /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

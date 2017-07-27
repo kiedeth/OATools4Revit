@@ -6,6 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OATools", "OATools\OATools.csproj", "{38CE0FDB-B54E-4391-89AE-E322BBBC7460}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OA Tools Setup", "Setup\Setup.vdproj", "{89F45D6A-FC63-48C8-8A12-5C8FF6156373}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6134C5D-A2F1-40FB-A01E-FAFFF9A1AD09} = {F6134C5D-A2F1-40FB-A01E-FAFFF9A1AD09}
+		{5AE7ED62-4EC3-4169-9DF5-54D1DC71E081} = {5AE7ED62-4EC3-4169-9DF5-54D1DC71E081}
+		{A2A8B690-C772-4AEF-8AFF-88A9602C5BEE} = {A2A8B690-C772-4AEF-8AFF-88A9602C5BEE}
+		{960DA59A-8D98-409C-B29B-01898A8D9FD5} = {960DA59A-8D98-409C-B29B-01898A8D9FD5}
+		{4FCBF0C9-EC78-426F-8563-C81EF2541DF7} = {4FCBF0C9-EC78-426F-8563-C81EF2541DF7}
+		{38CE0FDB-B54E-4391-89AE-E322BBBC7460} = {38CE0FDB-B54E-4391-89AE-E322BBBC7460}
+		{FB39C0E1-6EFC-45B9-89FC-DA06C9A24083} = {FB39C0E1-6EFC-45B9-89FC-DA06C9A24083}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ribbon", "Ribbon\Ribbon.csproj", "{FB39C0E1-6EFC-45B9-89FC-DA06C9A24083}"
 EndProject
@@ -27,6 +36,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewFilters", "ViewFilters\ViewFilters.csproj", "{4FCBF0C9-EC78-426F-8563-C81EF2541DF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParameterTools", "ParameterTools\ParameterTools.csproj", "{A2A8B690-C772-4AEF-8AFF-88A9602C5BEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Additional", "Additional", "{D0753733-5853-4E40-9A3D-BCC273613E2D}"
+	ProjectSection(SolutionItems) = preProject
+		Class1.cs = Class1.cs
+		F:\OAToolsForRevit2017.bundle\Additional\fsDNote.rfa = F:\OAToolsForRevit2017.bundle\Additional\fsDNote.rfa
+		F:\OAToolsForRevit2017.bundle\Additional\OATools_Settings.ini = F:\OAToolsForRevit2017.bundle\Additional\OATools_Settings.ini
+		OAToolsApplyUpdate\bin\Release\OAToolsApplyUpdate.exe = OAToolsApplyUpdate\bin\Release\OAToolsApplyUpdate.exe
+		F:\OAToolsForRevit2017.bundle\Additional\pCastTemplate.txt = F:\OAToolsForRevit2017.bundle\Additional\pCastTemplate.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -176,5 +194,6 @@ Global
 		{1DFCBD17-5AC1-451D-8BF8-7035F6EC37FC} = {65E4CA3A-1005-4B81-942F-5C20159EE155}
 		{4FCBF0C9-EC78-426F-8563-C81EF2541DF7} = {16507181-FEA7-4D64-B6C1-4356B94BE0DF}
 		{A2A8B690-C772-4AEF-8AFF-88A9602C5BEE} = {16507181-FEA7-4D64-B6C1-4356B94BE0DF}
+		{D0753733-5853-4E40-9A3D-BCC273613E2D} = {65E4CA3A-1005-4B81-942F-5C20159EE155}
 	EndGlobalSection
 EndGlobal

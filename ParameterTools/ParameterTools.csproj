@@ -32,9 +32,11 @@
   <ItemGroup>
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,17 +50,35 @@
     <Reference Include="System.Xml" />
     <Reference Include="UIFramework">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\UIFramework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsParameterDataTypes.cs" />
+    <Compile Include="clsReadSharedParamFile.cs" />
+    <Compile Include="clsWriteParametersToFile.cs" />
     <Compile Include="cmdPCast.cs" />
     <Compile Include="clsReadTemplateFile.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="frmNewSharedParameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewSharedParameter.Designer.cs">
+      <DependentUpon>frmNewSharedParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PCast\clsVerifyPCastTemplate.cs" />
+    <Compile Include="PCast\FamilyParameterAssigner.cs" />
     <Compile Include="PCast\frmPCast.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PCast\frmPCast.Designer.cs">
       <DependentUpon>frmPCast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PCast\frmSaveAsTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PCast\frmSaveAsTemplate.Designer.cs">
+      <DependentUpon>frmSaveAsTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,12 +86,22 @@
     <ProjectReference Include="..\OATools\OATools.csproj">
       <Project>{38ce0fdb-b54e-4391-89ae-e322bbbc7460}</Project>
       <Name>OATools</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmNewSharedParameter.resx">
+      <DependentUpon>frmNewSharedParameter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PCast\frmPCast.resx">
       <DependentUpon>frmPCast.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PCast\frmSaveAsTemplate.resx">
+      <DependentUpon>frmSaveAsTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PCast\pCastTemplate.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

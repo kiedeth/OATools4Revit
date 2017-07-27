@@ -292,6 +292,7 @@
     <Content Include="Resources\oba_icon.ico" />
     <Content Include="Revitize\frmImportDWG.vb" />
     <Content Include="Revitize\ThisDocument.vb" />
+    <None Include="Settings\OATools_Settings.ini" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConvertTextNotes\frmConvertTextNotes.resx">
@@ -327,8 +328,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*" "A:\"  /s /Y
-copy "$(ProjectDir)bin\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017\OAToolsForRevit2017.bundle\Contents"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
