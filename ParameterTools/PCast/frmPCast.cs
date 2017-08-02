@@ -99,7 +99,9 @@ namespace OATools.ParameterTools.PCast
             if (fillTemplateGrid())
             {
                 //if true fill parameter grid
-                if (fillParameterGrid(bs_selectedTemplateSet))
+                //if (fillParameterGrid(bs_selectedTemplateSet))
+
+                if (ClsInitDGVs.initDGV(dgvParameters, bs_selectedTemplateSet))
                 {
                     //if true clone the column headers to the mySet grid
                     if (cloneParameterGridColumns(dgvMySet))
@@ -113,12 +115,9 @@ namespace OATools.ParameterTools.PCast
                         if (returnedPath != "")
                         {
                             tbxSharedParameterFilePath.Text = returnedPath;
-
-                            cloneParameterGridColumns(dgvParametersFromFile);
-
+                   
                             fillParamatersFromFileGrid(returnedPath);
                         }
-
                     }
                 }
             }
@@ -304,6 +303,8 @@ namespace OATools.ParameterTools.PCast
             return false;
         }
 
+
+
         //Clone the parameter grid columns to the myset grid
         private bool cloneParameterGridColumns(DataGridView cloneTo)
         {
@@ -325,11 +326,23 @@ namespace OATools.ParameterTools.PCast
         //fill the parameters from file grid
         private bool fillParamatersFromFileGrid(string filePath)
         {
-            //string tempPath = "C:/Users/jschaad/Desktop/oaTools/SharedParams2.txt";
 
             dt_fromFile = clsReadSharedParamFile.ReadSharedParamFile(filePath);
 
+            //dgv.Columns[2].Visible = true;
+
+
+
+
             dgvParametersFromFile.DataSource = dt_fromFile;
+
+            int colCount = dgvParametersFromFile.ColumnCount;
+            for (int i = 0; i < colCount; i++)
+            {
+                dgvParametersFromFile.Columns[i].Visible = false;
+            }
+            dgvParametersFromFile.Columns[2].Visible = true;
+            dgvParametersFromFile.Columns[3].Visible = true;
 
             return true;
         }

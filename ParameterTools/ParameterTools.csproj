@@ -66,6 +66,7 @@
     <Compile Include="frmNewSharedParameter.Designer.cs">
       <DependentUpon>frmNewSharedParameter.cs</DependentUpon>
     </Compile>
+    <Compile Include="PCast\clsInitDGVs.cs" />
     <Compile Include="PCast\clsVerifyPCastTemplate.cs" />
     <Compile Include="PCast\FamilyParameterAssigner.cs" />
     <Compile Include="PCast\frmPCast.cs">
