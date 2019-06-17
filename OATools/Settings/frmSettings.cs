@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace OATools.Settings
+namespace OATools2018.Settings
 {
     public partial class frmSettings : Form
     {

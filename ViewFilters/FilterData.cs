@@ -35,7 +35,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.DB.Architecture;
 using PFRF = Autodesk.Revit.DB.ParameterFilterRuleFactory;
 
-namespace OATools.ViewFilters
+namespace OATools2018.ViewFilters
 {
     /// <summary>
     /// Sample custom immutable class used to represents Revit internal FilterRule.

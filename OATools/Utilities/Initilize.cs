@@ -6,15 +6,15 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.ApplicationServices;
 using System.Data;
 
-namespace OATools.Utilities
+namespace OATools2018.Utilities
 {
     [Transaction(TransactionMode.Manual)]
     public class Initilize : IExternalCommand
     {
         //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; 
-        static string fileName = "OATools_Settings";
+        static string directory = appData + "/Autodesk/Revit/Addins/2018/OATools2018.bundle/Additional"; 
+        static string fileName = "OATools2018_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
         public static string defaultDNotesFilePath = directory + "/" + "DNotes_default_CSVFile" + "." + "csv";
@@ -39,7 +39,7 @@ namespace OATools.Utilities
             if (!File.Exists(path))
             {
                 //Download Settings File
-                bool sucess = OAToolsUpdater.Updater.GetSettingsFile();
+                bool sucess = OATools2018Updater.Updater.GetSettingsFile();
 
                 if (sucess)
                 {
@@ -139,4 +139,4 @@ namespace OATools.Utilities
         }//Execute
 
     }//Initilize
-}//OATools.Utilities
+}//OATools2018.Utilities

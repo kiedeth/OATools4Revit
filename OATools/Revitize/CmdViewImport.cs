@@ -9,7 +9,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.Attributes;
 #endregion // Namespaces
 
-namespace OATools.Revitize
+namespace OATools2018.Revitize
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]

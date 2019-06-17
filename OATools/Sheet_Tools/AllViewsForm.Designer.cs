@@ -20,7 +20,7 @@
 // (Rights in Technical Data and Computer Software), as applicable.
 //
 
-namespace OATools.Sheet_Tools
+namespace OATools2018.Sheet_Tools
 {
     partial class AllViewsForm
     {

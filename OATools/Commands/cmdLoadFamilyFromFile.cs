@@ -8,7 +8,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Structure;
 
-namespace OATools.Commands
+namespace OATools2018.Commands
 {
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
@@ -25,7 +25,7 @@ namespace OATools.Commands
                 Transaction documentTransaction = new Transaction(commandData.Application.ActiveUIDocument.Document, "Document");
                 documentTransaction.Start();
 
-                String fileName = @"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\fsDNote.rfa";
+                String fileName = @"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools2018\OATools2018\Resources\fsDNote.rfa";
 
 
                 // try to load family
@@ -80,7 +80,7 @@ namespace OATools.Commands
     //void CreateTables(Autodesk.Revit.DB.Document document)
     //{
 
-    //    String fileName = @"C:\Users\jschaad\Documents\Visual Studio 2015\Projects\OATools\OATools\Resources\fsDNote.rfa";
+    //    String fileName = @"C:\Users\jschaad\Documents\Visual Studio 2015\Projects\OATools2018\OATools2018\Resources\fsDNote.rfa";
 
     //    // try to load family
     //    Family family = null;

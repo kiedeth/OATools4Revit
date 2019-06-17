@@ -10,7 +10,7 @@ using Autodesk.Revit.UI.Selection;
 using System.Collections.Generic;
 #endregion // Namespaces
 
-namespace OATools.ViewFilters
+namespace OATools2018.ViewFilters
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]

@@ -7,11 +7,11 @@ using Autodesk.Revit.UI;
 using System.Text;
 using Autodesk.Revit.UI.Selection;
 using System.Collections.Generic;
-using OATools.ParameterTools.PCast;
-using OATools.Utilities;
+using OATools2018.ParameterTools.PCast;
+using OATools2018.Utilities;
 #endregion // Namespaces
 
-namespace OATools.ParameterTools
+namespace OATools2018.ParameterTools
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
@@ -29,12 +29,40 @@ namespace OATools.ParameterTools
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
-            Selection selection = uidoc.Selection;            
+            Selection selection = uidoc.Selection;
+
 
             frmPCast f = new frmPCast(commandData);
             f.ShowDialog();
 
             return Result.Succeeded;
         }
+
+
+        private List<ParameterType> getAllSharedParameters(Autodesk.Revit.ApplicationServices.Application app, Document doc)
+        {
+            List<ParameterType> ret = new List<ParameterType>();
+
+            string filename = app.SharedParametersFilename;
+            if (!string.IsNullOrEmpty(filename))
+            {
+                // get the current shared params file object:
+                DefinitionFile file = app.OpenSharedParameterFile();
+
+                if (null != file)
+                {
+                    foreach (var gp in file.Groups)
+                    {
+                        foreach (var d in gp.Definitions)
+                        {
+                            ret.Add(d.ParameterType);
+                        }
+                    }
+                }
+            }
+
+            return ret;
+        }
+
     }
 }

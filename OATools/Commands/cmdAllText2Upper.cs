@@ -7,10 +7,10 @@
 //using Autodesk.Revit;
 //using Autodesk.Revit.DB;
 //using Autodesk.Revit.UI;
-//using OATools;
+//using OATools2018;
 
 
-//namespace OATools.Commands
+//namespace OATools2018.Commands
 //{
 //    /// <summary>
 //    /// Find all the TextNote instances in the document and change their formatting to 'AllCaps'

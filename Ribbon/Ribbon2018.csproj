@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB39C0E1-6EFC-45B9-89FC-DA06C9A24083}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ribbon</RootNamespace>
+    <AssemblyName>Ribbon</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProgramW6432)\Autodesk\Revit 2017\Revit.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(ProgramW6432)\Autodesk\Revit 2017\Revit.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release OATools|AnyCPU'">
+    <OutputPath>bin\Release OATools\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="clsLoadIcon.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\bmp\bmp_32x32_initialize.bmp" />
+    <EmbeddedResource Include="Resources\Icons\dnote_icon.ico" />
+    <EmbeddedResource Include="Resources\Icons\drafting_icon.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon-check_16x16.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon-check_32x32.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon-grid.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon-home.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon-initialize.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon-text-label.png" />
+    <EmbeddedResource Include="Resources\Icons\icon-text.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_textToUpper.ico" />
+    <EmbeddedResource Include="Resources\Icons\oba_icon.ico" />
+    <EmbeddedResource Include="Resources\Img\bmp-file.bmp" />
+    <EmbeddedResource Include="Resources\Icons\pCast.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_pCast.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_DwgBlaster.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_updates.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_init.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_sheetBlaster.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_beta.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_about.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_familyTools.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_AutoSectionBox.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_AutoSectionView.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_myProject.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_getter.ico" />
+    <EmbeddedResource Include="Resources\Icons\icon_projectFolder.ico" />
+    <Content Include="Resources\Icons\pCast.png" />
+    <EmbeddedResource Include="Resources\Icons\textToUpper.ico" />
+    <Content Include="Resources\Icons\textToUpper.png" />
+    <Content Include="Resources\Img\img-icon-check-in-box.png" />
+    <Content Include="Resources\Img\img-icon-check-mark5.png" />
+    <Content Include="Resources\Img\img-icon-check-mark6.png" />
+    <Content Include="Resources\Img\img-icon-shapes-checkmark-solid-circle.png" />
+    <Content Include="Resources\Img\img-icon-shapes-comment-bubbles.png" />
+    <Content Include="Resources\Img\img-icon-shapes-power-button.png" />
+    <Content Include="Resources\Img\img-icon-shapes-square-download.png" />
+    <Content Include="Resources\Img\img-icon-shapes-tile1.png" />
+    <Content Include="Resources\Img\img-icon-symbols-shapes-cube.png" />
+    <None Include="Resources\oba-orange square-160.jpg" />
+    <Content Include="Resources\oba_icon.ico" />
+    <Content Include="OAToolsForRevit2018.addin">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonTools\CommonTools2018.csproj">
+      <Project>{675c4595-7a61-41a8-86a5-3660cd72806f}</Project>
+      <Name>CommonTools2018</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FamilyTools\FamilyTools2018.csproj">
+      <Project>{9fefe4c1-e0ed-4fe4-9bad-2d5898c1860c}</Project>
+      <Name>FamilyTools2018</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OAToolsApplyUpdate\OAToolsApplyUpdate2018.csproj">
+      <Project>{f6134c5d-a2f1-40fb-a01e-fafff9a1ad09}</Project>
+      <Name>OAToolsApplyUpdate2018</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OAToolsUpdater\OAToolsUpdater2018.csproj">
+      <Project>{5ae7ed62-4ec3-4169-9df5-54d1dc71e081}</Project>
+      <Name>OAToolsUpdater2018</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OATools\OATools2018.csproj">
+      <Project>{38ce0fdb-b54e-4391-89ae-e322bbbc7460}</Project>
+      <Name>OATools2018</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ParameterTools\ParameterTools2018.csproj">
+      <Project>{a2a8b690-c772-4aef-8aff-88a9602c5bee}</Project>
+      <Name>ParameterTools2018</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StartupProject\StartupProject.csproj">
+      <Project>{960da59a-8d98-409c-b29b-01898a8d9fd5}</Project>
+      <Name>StartupProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewFilters\ViewFilters2018.csproj">
+      <Project>{4fcbf0c9-ec78-426f-8563-c81ef2541df7}</Project>
+      <Name>ViewFilters2018</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\fsDNote.rfa" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)*" "C:\Users\jschaad\AppData\Roaming\Autodesk\Revit\Addins\2018\OATools2018.bundle\Contents" /s /Y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Target Name="AfterClean">
+    <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2017\Ribbon.addin" />
+    <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2017\Ribbon.dll" />
+  </Target>
+</Project>

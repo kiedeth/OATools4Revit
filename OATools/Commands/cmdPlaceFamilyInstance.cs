@@ -20,7 +20,7 @@ using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI;
 #endregion // Namespaces
 
-namespace OATools.Commands
+namespace OATools2018.Commands
 {
   [Transaction( TransactionMode.Manual )]
   [Regeneration( RegenerationOption.Manual )]

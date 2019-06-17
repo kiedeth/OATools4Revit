@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OATools.ParameterTools.PCast
+namespace OATools2018.ParameterTools.PCast
 {
     public partial class frmSaveAsTemplate : Form
     {
@@ -133,6 +133,11 @@ namespace OATools.ParameterTools.PCast
 
                 }
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

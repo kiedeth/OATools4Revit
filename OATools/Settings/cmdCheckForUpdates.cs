@@ -8,10 +8,10 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.UI.Events;
 using System.Collections.Generic;
 using System.Text;
-using OAToolsUpdater;
-using OATools.Utilities;
+using OATools2018Updater;
+using OATools2018.Utilities;
 
-namespace OATools.Settings
+namespace OATools2018.Settings
 {
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
     public class cmdCheckForUpdates : IExternalCommand
@@ -19,8 +19,8 @@ namespace OATools.Settings
 
 
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        //static string addinsLocation = appData + "/Autodesk/Revit/Addins/2017";
-        //static string appUpdater = addinsLocation + "/" + "OAToolsForRevit2017.bundle" + "/" + "AppUpdater.exe";
+        //static string addinsLocation = appData + "/Autodesk/Revit/Addins/2018";
+        //static string appUpdater = addinsLocation + "/" + "OATools2018.bundle" + "/" + "AppUpdater.exe";
 
 
         // The main Execute method (inherited from IExternalCommand) must be public
@@ -48,7 +48,7 @@ namespace OATools.Settings
             {
                 tx.Start();
 
-                OAToolsUpdater.Updater.RunUpdate();
+                //OATools2018Updater.Updater.RunUpdate();
 
                 tx.Commit();
             }

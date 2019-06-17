@@ -1,4 +1,4 @@
-﻿namespace OATools.Test
+﻿namespace OATools2018.Test
 {
     partial class frmLoadResource
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OAToolsUpdater;
+using OATools2018Updater;
 
 namespace StartupProject
 {
@@ -20,7 +20,7 @@ namespace StartupProject
 
             //Application.Run(new Form1());
 
-            OAToolsUpdater.Updater.RunUpdate();
+            //OATools2018Updater.Updater.RunUpdate();
         }
     }
 }

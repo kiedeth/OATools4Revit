@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using OATools.Test;
+using OATools2018.Test;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OATools.ConvertTextNotes
+namespace OATools2018.ConvertTextNotes
 {
     public partial class frmConvertTextNotes : System.Windows.Forms.Form
     {
@@ -155,6 +155,11 @@ namespace OATools.ConvertTextNotes
         {
             frmLoadResource frm = new frmLoadResource();
             frm.ShowDialog();
+        }
+
+        private void frmConvertTextNotes_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

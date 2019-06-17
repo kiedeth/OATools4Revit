@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OAToolsApplyUpdate
+namespace OATools2018ApplyUpdate
 {
     public partial class frmCloseRevit : Form
     {
@@ -39,6 +39,11 @@ namespace OAToolsApplyUpdate
             {
                 this.Close();
             }
+        }
+
+        private void frmCloseRevit_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

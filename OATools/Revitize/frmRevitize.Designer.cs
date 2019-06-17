@@ -1,4 +1,4 @@
-﻿namespace OATools.Revitize
+﻿namespace OATools2018.Revitize
 {
     partial class frmRevitize
     {
@@ -44,11 +44,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.cbxCreateAddToSheet = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbColors
@@ -124,9 +121,9 @@
             // 
             this.btnSelectFiles.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSelectFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectFiles.Location = new System.Drawing.Point(575, 223);
+            this.btnSelectFiles.Location = new System.Drawing.Point(631, 223);
             this.btnSelectFiles.Name = "btnSelectFiles";
-            this.btnSelectFiles.Size = new System.Drawing.Size(223, 32);
+            this.btnSelectFiles.Size = new System.Drawing.Size(167, 32);
             this.btnSelectFiles.TabIndex = 5;
             this.btnSelectFiles.Text = "Select DWG Files:";
             this.btnSelectFiles.UseVisualStyleBackColor = false;
@@ -158,7 +155,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(370, 53);
+            this.label2.Location = new System.Drawing.Point(345, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 19);
             this.label2.TabIndex = 8;
@@ -171,7 +168,7 @@
             this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Swis721 BdOul BT", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(338, 12);
+            this.label3.Location = new System.Drawing.Point(297, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(248, 36);
             this.label3.TabIndex = 9;
@@ -217,31 +214,14 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::OATools.Properties.Resources.oba_orange_square_160;
-            this.pictureBox1.Location = new System.Drawing.Point(698, 5);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(631, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.Size = new System.Drawing.Size(166, 83);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(374, 109);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(162, 136);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            // 
-            // cbxCreateAddToSheet
-            // 
-            this.cbxCreateAddToSheet.AutoSize = true;
-            this.cbxCreateAddToSheet.Location = new System.Drawing.Point(357, 627);
-            this.cbxCreateAddToSheet.Name = "cbxCreateAddToSheet";
-            this.cbxCreateAddToSheet.Size = new System.Drawing.Size(283, 21);
-            this.cbxCreateAddToSheet.TabIndex = 14;
-            this.cbxCreateAddToSheet.Text = "Create a sheet and add these views to it";
-            this.cbxCreateAddToSheet.UseVisualStyleBackColor = true;
             // 
             // frmRevitize
             // 
@@ -249,8 +229,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(804, 664);
-            this.Controls.Add(this.cbxCreateAddToSheet);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
@@ -270,7 +248,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,7 +270,5 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.CheckBox cbxCreateAddToSheet;
     }
 }

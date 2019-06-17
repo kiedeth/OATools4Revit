@@ -1,4 +1,4 @@
-﻿namespace OATools.DNotes
+﻿namespace OATools2018.DNotes
 {
     partial class frmCreateDNote
     {
@@ -269,7 +269,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::OATools.Properties.Resources.oba_orange_square_160;
+            this.pictureBox1.Image = global::OATools2018.Properties.Resources.oba_orange_square_160;
             this.pictureBox1.Location = new System.Drawing.Point(938, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);

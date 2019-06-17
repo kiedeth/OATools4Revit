@@ -11,7 +11,7 @@ using Renci.SshNet.Common;
 using Renci.SshNet.Sftp;
 using System.Windows;
 
-namespace OAToolsUpdater
+namespace OATools2018Updater
 {
     public class ftp
     {

@@ -7,7 +7,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 #endregion
 
-namespace OAToolsUpdater
+namespace OATools2018Updater
 {
     public class App : IExternalApplication
     {

@@ -21,7 +21,7 @@
 //
 
 
-namespace OATools.Filtering
+namespace OATools2018.Filtering
 {
     partial class frmViewFilters
     {

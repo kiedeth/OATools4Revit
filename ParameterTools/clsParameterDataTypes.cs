@@ -13,7 +13,7 @@ using System.Linq;
 using System.Collections;
 #endregion // Namespaces
 
-namespace OATools.ParameterTools
+namespace OATools2018.ParameterTools
 {
     public class clsParameterDataTypes
     {
@@ -106,45 +106,46 @@ namespace OATools.ParameterTools
             listOfDataTypes.Add(ParameterType.MassDensity.ToString());
             listOfDataTypes.Add(ParameterType.MassPerUnitArea.ToString());
             listOfDataTypes.Add(ParameterType.MassPerUnitLength.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
-            listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+
+
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
+            //listOfDataTypes.Add(ParameterType.Acceleration.ToString());
 
 
             return listOfDataTypes;

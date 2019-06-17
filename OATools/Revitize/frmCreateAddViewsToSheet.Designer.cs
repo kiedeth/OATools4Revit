@@ -1,4 +1,4 @@
-﻿namespace OATools.Revitize
+﻿namespace OATools2018.Revitize
 {
     partial class frmCreateAddViewsToSheet
     {
@@ -29,20 +29,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateAddViewsToSheet));
             this.GenerateSheetGroupBox = new System.Windows.Forms.GroupBox();
-            this.allViewsGroupBox = new System.Windows.Forms.GroupBox();
-            this.allViewsTreeView = new System.Windows.Forms.TreeView();
-            this.titleBlocksListBox = new System.Windows.Forms.ListBox();
+            this.gbSheetData = new System.Windows.Forms.GroupBox();
             this.sheetNameLabel = new System.Windows.Forms.Label();
             this.sheetNameTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.oKButton = new System.Windows.Forms.Button();
             this.gbTitleBlocks = new System.Windows.Forms.GroupBox();
-            this.gbSheetData = new System.Windows.Forms.GroupBox();
+            this.titleBlocksListBox = new System.Windows.Forms.ListBox();
+            this.allViewsGroupBox = new System.Windows.Forms.GroupBox();
+            this.allViewsTreeView = new System.Windows.Forms.TreeView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.GenerateSheetGroupBox.SuspendLayout();
-            this.allViewsGroupBox.SuspendLayout();
-            this.gbTitleBlocks.SuspendLayout();
             this.gbSheetData.SuspendLayout();
+            this.gbTitleBlocks.SuspendLayout();
+            this.allViewsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // GenerateSheetGroupBox
@@ -50,46 +53,27 @@
             this.GenerateSheetGroupBox.Controls.Add(this.gbSheetData);
             this.GenerateSheetGroupBox.Controls.Add(this.gbTitleBlocks);
             this.GenerateSheetGroupBox.Controls.Add(this.allViewsGroupBox);
-            this.GenerateSheetGroupBox.Location = new System.Drawing.Point(13, 13);
+            this.GenerateSheetGroupBox.Location = new System.Drawing.Point(13, 129);
             this.GenerateSheetGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.GenerateSheetGroupBox.Name = "GenerateSheetGroupBox";
             this.GenerateSheetGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.GenerateSheetGroupBox.Size = new System.Drawing.Size(1123, 488);
+            this.GenerateSheetGroupBox.Size = new System.Drawing.Size(1123, 489);
             this.GenerateSheetGroupBox.TabIndex = 2;
             this.GenerateSheetGroupBox.TabStop = false;
             this.GenerateSheetGroupBox.Text = "Generate Sheet";
             // 
-            // allViewsGroupBox
+            // gbSheetData
             // 
-            this.allViewsGroupBox.Controls.Add(this.allViewsTreeView);
-            this.allViewsGroupBox.Location = new System.Drawing.Point(8, 23);
-            this.allViewsGroupBox.Margin = new System.Windows.Forms.Padding(4);
-            this.allViewsGroupBox.Name = "allViewsGroupBox";
-            this.allViewsGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.allViewsGroupBox.Size = new System.Drawing.Size(619, 451);
-            this.allViewsGroupBox.TabIndex = 3;
-            this.allViewsGroupBox.TabStop = false;
-            this.allViewsGroupBox.Text = "Select views to add";
-            // 
-            // allViewsTreeView
-            // 
-            this.allViewsTreeView.CheckBoxes = true;
-            this.allViewsTreeView.Location = new System.Drawing.Point(8, 23);
-            this.allViewsTreeView.Margin = new System.Windows.Forms.Padding(4);
-            this.allViewsTreeView.Name = "allViewsTreeView";
-            this.allViewsTreeView.Size = new System.Drawing.Size(600, 417);
-            this.allViewsTreeView.TabIndex = 0;
-            // 
-            // titleBlocksListBox
-            // 
-            this.titleBlocksListBox.FormattingEnabled = true;
-            this.titleBlocksListBox.ItemHeight = 16;
-            this.titleBlocksListBox.Location = new System.Drawing.Point(8, 22);
-            this.titleBlocksListBox.Margin = new System.Windows.Forms.Padding(4);
-            this.titleBlocksListBox.Name = "titleBlocksListBox";
-            this.titleBlocksListBox.Size = new System.Drawing.Size(466, 180);
-            this.titleBlocksListBox.Sorted = true;
-            this.titleBlocksListBox.TabIndex = 6;
+            this.gbSheetData.Controls.Add(this.sheetNameLabel);
+            this.gbSheetData.Controls.Add(this.sheetNameTextBox);
+            this.gbSheetData.Controls.Add(this.cancelButton);
+            this.gbSheetData.Controls.Add(this.oKButton);
+            this.gbSheetData.Location = new System.Drawing.Point(634, 245);
+            this.gbSheetData.Name = "gbSheetData";
+            this.gbSheetData.Size = new System.Drawing.Size(481, 229);
+            this.gbSheetData.TabIndex = 8;
+            this.gbSheetData.TabStop = false;
+            this.gbSheetData.Text = "Sheet Data";
             // 
             // sheetNameLabel
             // 
@@ -143,33 +127,65 @@
             this.gbTitleBlocks.TabStop = false;
             this.gbTitleBlocks.Text = "TitleBlocks";
             // 
-            // gbSheetData
+            // titleBlocksListBox
             // 
-            this.gbSheetData.Controls.Add(this.sheetNameLabel);
-            this.gbSheetData.Controls.Add(this.sheetNameTextBox);
-            this.gbSheetData.Controls.Add(this.cancelButton);
-            this.gbSheetData.Controls.Add(this.oKButton);
-            this.gbSheetData.Location = new System.Drawing.Point(634, 245);
-            this.gbSheetData.Name = "gbSheetData";
-            this.gbSheetData.Size = new System.Drawing.Size(481, 229);
-            this.gbSheetData.TabIndex = 8;
-            this.gbSheetData.TabStop = false;
-            this.gbSheetData.Text = "Sheet Data";
+            this.titleBlocksListBox.FormattingEnabled = true;
+            this.titleBlocksListBox.ItemHeight = 16;
+            this.titleBlocksListBox.Location = new System.Drawing.Point(8, 22);
+            this.titleBlocksListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.titleBlocksListBox.Name = "titleBlocksListBox";
+            this.titleBlocksListBox.Size = new System.Drawing.Size(466, 180);
+            this.titleBlocksListBox.Sorted = true;
+            this.titleBlocksListBox.TabIndex = 6;
+            // 
+            // allViewsGroupBox
+            // 
+            this.allViewsGroupBox.Controls.Add(this.allViewsTreeView);
+            this.allViewsGroupBox.Location = new System.Drawing.Point(8, 23);
+            this.allViewsGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.allViewsGroupBox.Name = "allViewsGroupBox";
+            this.allViewsGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.allViewsGroupBox.Size = new System.Drawing.Size(619, 451);
+            this.allViewsGroupBox.TabIndex = 3;
+            this.allViewsGroupBox.TabStop = false;
+            this.allViewsGroupBox.Text = "Select views to add";
+            // 
+            // allViewsTreeView
+            // 
+            this.allViewsTreeView.CheckBoxes = true;
+            this.allViewsTreeView.Location = new System.Drawing.Point(8, 23);
+            this.allViewsTreeView.Margin = new System.Windows.Forms.Padding(4);
+            this.allViewsTreeView.Name = "allViewsTreeView";
+            this.allViewsTreeView.Size = new System.Drawing.Size(600, 417);
+            this.allViewsTreeView.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(970, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(166, 83);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
             // 
             // frmCreateAddViewsToSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 514);
+            this.ClientSize = new System.Drawing.Size(1146, 626);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.GenerateSheetGroupBox);
             this.Name = "frmCreateAddViewsToSheet";
             this.Text = "frmCreateAddViewsToSheet";
             this.Load += new System.EventHandler(this.frmCreateAddViewsToSheet_Load);
             this.GenerateSheetGroupBox.ResumeLayout(false);
-            this.allViewsGroupBox.ResumeLayout(false);
-            this.gbTitleBlocks.ResumeLayout(false);
             this.gbSheetData.ResumeLayout(false);
             this.gbSheetData.PerformLayout();
+            this.gbTitleBlocks.ResumeLayout(false);
+            this.allViewsGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -186,5 +202,6 @@
         private System.Windows.Forms.TreeView allViewsTreeView;
         private System.Windows.Forms.GroupBox gbSheetData;
         private System.Windows.Forms.GroupBox gbTitleBlocks;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

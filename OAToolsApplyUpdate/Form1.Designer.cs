@@ -1,4 +1,4 @@
-﻿namespace OAToolsApplyUpdate
+﻿namespace OATools2018ApplyUpdate
 {
     partial class Form1
     {

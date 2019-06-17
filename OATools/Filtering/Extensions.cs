@@ -29,7 +29,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Diagnostics;
 
-namespace OATools.Filtering
+namespace OATools2018.Filtering
 {
     /// <summary>
     /// Generic utility class used to extend enum parse related methods

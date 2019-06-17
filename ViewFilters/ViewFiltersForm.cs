@@ -33,7 +33,7 @@ using Autodesk.Revit;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
 
-namespace OATools.ViewFilters
+namespace OATools2018.ViewFilters
 {
     /// <summary>
     /// UI form to display the view filters information

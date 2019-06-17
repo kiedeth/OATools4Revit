@@ -12,10 +12,10 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using System.Collections;
 using System.Windows.Documents;
-using OATools.Utilities;
+using OATools2018.Utilities;
 #endregion // Namespaces
 
-namespace OATools.Utilities
+namespace OATools2018.Utilities
 {
     class UtilSelection
     {

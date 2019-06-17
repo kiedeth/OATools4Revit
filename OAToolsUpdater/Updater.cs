@@ -19,7 +19,7 @@ using System.Linq;
 using Autodesk.Revit.UI;
 #endregion
 
-namespace OAToolsUpdater
+namespace OATools2018Updater
 {
     //[Transaction(TransactionMode.Manual)]
     //public class Command : IExternalCommand
@@ -51,7 +51,7 @@ namespace OAToolsUpdater
         public static readonly string m_appdataRoaming = Environment.ExpandEnvironmentVariables("%appdata%");
 
         //The current version of Revit
-        public static readonly string m_curRevitVersion = "2017/";
+        public static readonly string m_curRevitVersion = "2018/";
 
         //The Revit Addins directory for the current version of Revit
         public static readonly string m_RevitAddinDir = m_appdataRoaming + "/Autodesk/Revit/Addins/" + m_curRevitVersion;
@@ -59,7 +59,7 @@ namespace OAToolsUpdater
         //-----------OA Tools Vars-----------//
 
         //The OA Tools Bundle Directory Name
-        public static readonly string m_oatBundleName = "OAToolsForRevit2017.bundle/";
+        public static readonly string m_oatBundleName = "OATools2018.bundle/";
 
         //The OA Tools Bundle Directory path
         public static readonly string m_oatBundleDir = m_RevitAddinDir + m_oatBundleName;
@@ -74,7 +74,7 @@ namespace OAToolsUpdater
         public static readonly string m_oatVersionFileName = "oatVersion";
 
         //The OA Tools Update Apply exe file name
-        public static readonly string m_oatUpdateApplyExeName = "OAToolsApplyUpdate.exe";
+        public static readonly string m_oatUpdateApplyExeName = "OATools2018ApplyUpdate.exe";
 
         //The OA Tools LOCAL Version File
         public static readonly string m_oatLocalVersionFile = m_oatBundleContentsDir + m_oatVersionFileName;
@@ -83,13 +83,13 @@ namespace OAToolsUpdater
         public static readonly string m_oatLocalRibbonDLL = m_oatBundleContentsDir + "Ribbon.dll";
 
         //The OA Tools REMOTE Server address
-        public static readonly string m_oatRemoteServerAddress = "http://10.10.10.54/oatools/";
+        public static readonly string m_oatRemoteServerAddress = "http://10.10.10.54/OATools2018/";
 
         //The OA Tools FTP Server address
         public static readonly string ftp_FTPServerAddress = "10.10.10.54";
 
         //The OA Tools FTP Server bundle
-        public static readonly string ftp_bundle = "/srv/ftp/OAToolsForRevit2017.bundle/";
+        public static readonly string ftp_bundle = "/srv/ftp/OATools2018.bundle/";
 
         //The OA Tools FTP Server bundle
         public static readonly string ftp_bundleContents = ftp_bundle + "Contents/";
@@ -116,7 +116,7 @@ namespace OAToolsUpdater
         public static readonly string m_oatRibbonAssembly = local_bundleContents + "Ribbon.dll";
 
         //The OA Tools FTP Server bundle
-        public static readonly string ftp_versionFile = "/srv/ftp/OAToolsForRevit2017.bundle/Contents/oatVersion";
+        public static readonly string ftp_versionFile = "/srv/ftp/OATools2018.bundle/Contents/oatVersion";
 
         //The OA Tools REMOTE bundle contents directory
         public static readonly string m_oatRemoteBundleContentsDir = m_oatRemoteServerAddress + m_oatBundleName + m_oatBundleContentsName;
@@ -127,20 +127,31 @@ namespace OAToolsUpdater
         // Your version number. A series of numbers separated by periods.
         private static readonly Regex versionNumberRegex = new Regex(@"([0-9]+\.)*[0-9]+");
 
+        public static string localVersionNumber = null;
+
 
 
         //Run update
-        public static void RunUpdate()
+        public static void RunUpdate(int i)
         {
+            if (i == 1)
+            {
+                getUpdateIfAvailable();
+            }
             //Check and see if an update is available and if yes then get it
-            getUpdateIfAvailable();
+            if (i == 2)
+            {
+                bool getUpdate = updateIsRequired();
+            }
+
+
         }
 
 
         //--------Local----------//
 
         //Get the LOCAL version number
-        private static string GetLocalVersionNumber()
+        public static string GetLocalVersionNumber()
         {
             //Check for version info file and a current .dll
             if (File.Exists(m_oatLocalVersionFile) && File.Exists(m_oatLocalRibbonDLL))
@@ -232,44 +243,57 @@ namespace OAToolsUpdater
                 //Something went wrong so return the LOCAL assembly
 
                 //Show the user a message telling them that the update failed
-                System.Windows.MessageBox.Show("Error Code 102: Update failed");
+                System.Windows.MessageBox.Show("Error Code U102: Could not access the remote server. Update failed");
 
                 return getTheLocalAssembly();
             }
 
             //Get and set the LOCAL version number
-            string localVersionNumber = GetLocalVersionNumber();
+            localVersionNumber = GetLocalVersionNumber();
 
             //Run the checks to determine if update is required
             if (isUpdateRequired(localVersionNumber, remoteVersionNumber, shouldPromptForUpgrade) )
             {
-                //An update is required so get the REMOTE assembly
-                bool success = DownloadRemoteAssembly();
+                bool getTheUpdate = updateIsRequired();
+            }
 
-                //update/replace the update apply exe
-                bool updateAdditional = updateTheAdditionalDirectory();
+            if (!isUpdateRequired(localVersionNumber, remoteVersionNumber, shouldPromptForUpgrade))
+            {               
+                TaskDialog.Show("No Update Available", "There is no update available at this time. \n Thank you for your business. \n Come back soon!");
+            }
+           
+            //nothing to return
+            return null;
+        }
 
-                //Thread.Sleep(3000);
+        public static bool updateIsRequired()
+        {
+
+            //An update is required so get the REMOTE assembly
+            bool success = DownloadRemoteAssembly();
+
+            //update/replace the update apply exe
+            bool updateAdditional = updateTheAdditionalDirectory();
+
+            //Thread.Sleep(3000);
+
+            TaskDialog.Show("test", "point reached");
+
+            System.Diagnostics.Process.Start(local_applyUpdatesExe);
+
+            //Success update the local version file
+            if (success)
+            {
+                //update the local version number (this is now done when the files are moved)
+                //updateLocalVersionFile(remoteVersionNumber);
 
                 TaskDialog.Show("test", "point reached");
 
+                //launch the Apply Updates exe
                 System.Diagnostics.Process.Start(local_applyUpdatesExe);
-
-                //Success update the local version file
-                if (success)
-                {
-                    //update the local version number (this is now done when the files are moved)
-                    //updateLocalVersionFile(remoteVersionNumber);
-
-                    TaskDialog.Show("test", "point reached");
-
-                    //launch the Apply Updates exe
-                    System.Diagnostics.Process.Start(local_applyUpdatesExe);
-                }
             }
 
-            //nothing to return
-            return null;
+            return true;
         }
 
 
@@ -383,7 +407,7 @@ namespace OAToolsUpdater
             {
                 //use FTP downloader
                 ftp c = new ftp();
-                c.FtpGetFile(ftp_bundle + "Additional/OATools_Settings.ini", local_additionalDirectory + "/OATools_Settings.ini");
+                c.FtpGetFile(ftp_bundle + "Additional/OATools2018_Settings.ini", local_additionalDirectory + "/OATools2018_Settings.ini");
 
                 return true;
             }

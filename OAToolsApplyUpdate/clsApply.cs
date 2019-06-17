@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OAToolsApplyUpdate
+namespace OATools2018ApplyUpdate
 {
     class clsApply
     {
@@ -20,7 +20,7 @@ namespace OAToolsApplyUpdate
     public static readonly string m_appdataRoaming = Environment.ExpandEnvironmentVariables("%appdata%");
 
     //The current version of Revit
-    public static readonly string m_curRevitVersion = "2017/";
+    public static readonly string m_curRevitVersion = "2018/";
 
     //The Revit Addins directory for the current version of Revit
     public static readonly string m_RevitAddinDir = m_appdataRoaming + "/Autodesk/Revit/Addins/" + m_curRevitVersion;
@@ -28,7 +28,7 @@ namespace OAToolsApplyUpdate
     //-----------OA Tools Vars-----------//
 
     //The OA Tools Bundle Directory Name
-    public static readonly string m_oatBundleName = "OAToolsForRevit2017.bundle/";
+    public static readonly string m_oatBundleName = "OATools2018.bundle/";
 
     //The OA Tools Bundle Directory path
     public static readonly string m_oatBundleDir = m_RevitAddinDir + m_oatBundleName;
@@ -43,7 +43,7 @@ namespace OAToolsApplyUpdate
     public static readonly string m_oatVersionFileName = "oatVersion";
 
     //The OA Tools Update Apply exe file name
-    public static readonly string m_oatUpdateApplyExeName = "OAToolsApplyUpdate.exe";
+    public static readonly string m_oatUpdateApplyExeName = "OATools2018ApplyUpdate.exe";
 
     //The OA Tools LOCAL Version File
     public static readonly string m_oatLocalVersionFile = m_oatBundleContentsDir + m_oatVersionFileName;
@@ -52,7 +52,7 @@ namespace OAToolsApplyUpdate
     public static readonly string m_oatLocalRibbonDLL = m_oatBundleContentsDir + "Ribbon.dll";
 
     //The OA Tools REMOTE Server address
-    public static readonly string m_oatRemoteServerAddress = "http://10.10.10.54/oatools/";
+    public static readonly string m_oatRemoteServerAddress = "http://10.10.10.54/OATools2018/";
 
     //The OA Tools LOCAL bundle directory
     public static readonly string local_bundle = m_RevitAddinDir + m_oatBundleName;
@@ -73,7 +73,7 @@ namespace OAToolsApplyUpdate
     public static readonly string m_oatRibbonAssembly = local_bundleContents + "Ribbon.dll";
 
     //The OA Tools FTP Server bundle
-    public static readonly string ftp_versionFile = "/srv/ftp/OAToolsForRevit2017.bundle/Contents/oatVersion";
+    public static readonly string ftp_versionFile = "/srv/ftp/OATools2018.bundle/Contents/oatVersion";
 
     //The OA Tools REMOTE bundle contents directory
     public static readonly string m_oatRemoteBundleContentsDir = m_oatRemoteServerAddress + m_oatBundleName + m_oatBundleContentsName;

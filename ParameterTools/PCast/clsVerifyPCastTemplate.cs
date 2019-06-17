@@ -7,19 +7,19 @@ using Autodesk.Revit.UI;
 using System.Text;
 using Autodesk.Revit.UI.Selection;
 using System.Collections.Generic;
-using OATools.ParameterTools.PCast;
-using OATools.Utilities;
+using OATools2018.ParameterTools.PCast;
+using OATools2018.Utilities;
 using System.IO;
 #endregion // Namespaces
 
-namespace OATools.ParameterTools.PCast
+namespace OATools2018.ParameterTools.PCast
 {
     class clsVerifyPCastTemplate
     {
         //Declare the template file path var
         private static string pCastTemplate;
 
-        private static string defaultTemplate = Environment.ExpandEnvironmentVariables("%appdata%") + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional/pCast_Template.pct";
+        private static string defaultTemplate = Environment.ExpandEnvironmentVariables("%appdata%") + "/Autodesk/Revit/Addins/2018/OATools2018.bundle/Additional/pCast_Template.pct";
 
 
         //Read the template path from the settings file

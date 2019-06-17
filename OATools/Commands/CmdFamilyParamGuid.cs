@@ -2,7 +2,7 @@
 //
 // CmdFamilyParamGuid.cs - determine family parameter IsShared and GUID properties using System.Reflection
 //
-// Copyright (C) 2011-2017 by Jeremy Tammik, Autodesk Inc. All rights reserved.
+// Copyright (C) 2011-2018 by Jeremy Tammik, Autodesk Inc. All rights reserved.
 //
 // Keywords: The Building Coder Revit API C# .NET add-in.
 //
@@ -14,7 +14,7 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using OATools.Utilities;
+using OATools2018.Utilities;
 #endregion // Namespaces
 
 namespace BuildingCoder

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OATools.Filtering
+namespace OATools2018.Filtering
 {
     public partial class frmNewFilter : System.Windows.Forms.Form
     {

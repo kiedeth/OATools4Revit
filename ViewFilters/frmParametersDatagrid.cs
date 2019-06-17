@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OATools.ViewFilters
+namespace OATools2018.ViewFilters
 {
     public partial class frmParametersDatagrid : Form
     {

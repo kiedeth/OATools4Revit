@@ -10,15 +10,15 @@ using Autodesk.Revit.UI;
 using System.Windows.Media.Imaging;
 //using Autodesk.Windows; // RibbonTab class
 //using RibbonPanel = Autodesk.Windows.RibbonPanel; // ambiguous, exists in Autodesk.Revit as well as Autodesk.Windows
-using OATools.Main;
-using OATools.Test;
-using OATools.Utilities;
+using OATools2018.Main;
+using OATools2018.Test;
+using OATools2018.Utilities;
 using System.Drawing;
 using System.Windows;
 
 #endregion
 
-namespace OATools
+namespace OATools2018
 {
     public class App : IExternalApplication
     {        
@@ -26,8 +26,8 @@ namespace OATools
         string thisAssemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
         private static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        private static string addinsLocation = appData + "/Autodesk/Revit/Addins/2017";
-        private static string appUpdater = addinsLocation + "/" + "OAToolsForRevit2017.bundle" + "/" + "AppUpdater.exe";
+        private static string addinsLocation = appData + "/Autodesk/Revit/Addins/2018";
+        private static string appUpdater = addinsLocation + "/" + "OATools2018.bundle" + "/" + "AppUpdater.exe";
 
         private AppDocEvents m_appDocEvents;
 
@@ -75,7 +75,7 @@ namespace OATools
 
         
 
-        //The updater is working but it is not grabbing the OATools.dll from the server
+        //The updater is working but it is not grabbing the OATools2018.dll from the server
 
         //public void CreateTab(UIControlledApplication application)
         //{
@@ -96,7 +96,7 @@ namespace OATools
         //        RibbonPanel ribbonPanel1 = application.CreateRibbonPanel(tabName, "Common Tools");
                 
         //        // Create push button to trigger a command
-        //        PushButtonData a1 = new PushButtonData("Text 2 Upper", "Text 2 Upper", thisAssemblyPath, "OATools.ConvertTextNotes.cmdConvertTextNotes");
+        //        PushButtonData a1 = new PushButtonData("Text 2 Upper", "Text 2 Upper", thisAssemblyPath, "OATools2018.ConvertTextNotes.cmdConvertTextNotes");
         //        a1.ToolTip = "Load the table family and " + "place table instances";
         //        a1.LargeImage = loadIconCls.NewBitmapImage(thisExe, "icon-text.ico");
         //        //Add the button to ribbon
@@ -106,14 +106,14 @@ namespace OATools
         //        RibbonPanel ribbonPanel2 = application.CreateRibbonPanel(tabName, "DNotes");
 
         //        // Create push button to trigger a command
-        //        PushButtonData b1 = new PushButtonData("cmdDNoteLoadPlace", "Create DNote", thisAssemblyPath, "OATools.DNotes.cmdDNoteLoadPlace");
+        //        PushButtonData b1 = new PushButtonData("cmdDNoteLoadPlace", "Create DNote", thisAssemblyPath, "OATools2018.DNotes.cmdDNoteLoadPlace");
         //        b1.ToolTip = "Load the DNote family and " + "place DNote instances";
         //        b1.LargeImage = loadIconCls.NewBitmapImage(thisExe, "dnote_icon.ico");
         //        //Add the button to ribbon
         //        PushButton pushButtonb1 = ribbonPanel2.AddItem(b1) as PushButton;
 
         //        // Create push button to trigger a command
-        //        PushButtonData b2 = new PushButtonData("CmdCreateDNoteLegend", "DNote Legend", thisAssemblyPath, "OATools.DNotes.CmdCreateDNoteLegend");
+        //        PushButtonData b2 = new PushButtonData("CmdCreateDNoteLegend", "DNote Legend", thisAssemblyPath, "OATools2018.DNotes.CmdCreateDNoteLegend");
         //        b2.ToolTip = "Load the DNote family and " + "place DNote instances";
         //        b2.LargeImage = loadIconCls.NewBitmapImage(thisExe, "dnote_icon.ico");
         //        //Add the button to ribbon
@@ -123,14 +123,14 @@ namespace OATools
         //        RibbonPanel ribbonPanel3 = application.CreateRibbonPanel(tabName, "Sheet Tools");
 
         //        // Create push button to trigger a command
-        //        PushButtonData c1 = new PushButtonData("cmdChangeSheet", "Change Sheet", thisAssemblyPath, "OATools.Sheet_Tools.cmdChangeSheet");
+        //        PushButtonData c1 = new PushButtonData("cmdChangeSheet", "Change Sheet", thisAssemblyPath, "OATools2018.Sheet_Tools.cmdChangeSheet");
         //        c1.ToolTip = "Load the DNote family and " + "place DNote instances";
         //        c1.LargeImage = loadIconCls.NewBitmapImage(thisExe, "icon-grid.ico");
         //        //Add the button to ribbon
         //        PushButton pushButtonc1 = ribbonPanel3.AddItem(c1) as PushButton;
 
         //        // Create push button to trigger a command
-        //        PushButtonData c2 = new PushButtonData("cmdChangeTB", "Change TitleBlocks", thisAssemblyPath, "OATools.Sheet_Tools.cmdChangeTB");
+        //        PushButtonData c2 = new PushButtonData("cmdChangeTB", "Change TitleBlocks", thisAssemblyPath, "OATools2018.Sheet_Tools.cmdChangeTB");
         //        c2.ToolTip = "Load the DNote family and " + "place DNote instances";
         //        c2.LargeImage = loadIconCls.NewBitmapImage(thisExe, "icon-grid.ico");
         //        //Add the button to ribbon
@@ -140,7 +140,7 @@ namespace OATools
         //        RibbonPanel ribbonPanel5 = application.CreateRibbonPanel(tabName, "Revitize");
 
         //        // Create push button to trigger a command
-        //        PushButtonData e1 = new PushButtonData("DWG to Drafting View", "DWG to Drafting View", thisAssemblyPath, "OATools.Revitize.cmdDWG2DrafingView");
+        //        PushButtonData e1 = new PushButtonData("DWG to Drafting View", "DWG to Drafting View", thisAssemblyPath, "OATools2018.Revitize.cmdDWG2DrafingView");
         //        e1.ToolTip = "Load the DNote family and " + "place DNote instances";
         //        e1.LargeImage = loadIconCls.NewBitmapImage(thisExe, "drafting_icon.ico");
         //        //Add the button to ribbon
@@ -150,14 +150,14 @@ namespace OATools
         //        RibbonPanel ribbonPanel4 = application.CreateRibbonPanel(tabName, "Settings");
 
         //        // Create push button to trigger a command
-        //        PushButtonData d1 = new PushButtonData("Initilize", "Initilize", thisAssemblyPath, "OATools.Utilities.Initilize");
+        //        PushButtonData d1 = new PushButtonData("Initilize", "Initilize", thisAssemblyPath, "OATools2018.Utilities.Initilize");
         //        d1.ToolTip = "Initialize O/A Tools";
         //        d1.LargeImage = loadIconCls.NewBitmapImage(thisExe, "icon-initialize.ico");
         //        //Add the button to ribbon
         //        PushButton pushButtond1 = ribbonPanel4.AddItem(d1) as PushButton;
 
         //        // Create push button to trigger a command
-        //        PushButtonData d2 = new PushButtonData("Check For Updates", "Check For Updates", thisAssemblyPath, "OATools.Settings.cmdCheckForUpdates");
+        //        PushButtonData d2 = new PushButtonData("Check For Updates", "Check For Updates", thisAssemblyPath, "OATools2018.Settings.cmdCheckForUpdates");
         //        d2.ToolTip = "Initialize O/A Tools";
         //        d2.LargeImage = loadIconCls.NewBitmapImage(thisExe, "icon-initialize.ico");
 

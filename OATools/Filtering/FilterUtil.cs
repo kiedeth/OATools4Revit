@@ -34,7 +34,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB.Architecture;
 
-namespace OATools.Filtering
+namespace OATools2018.Filtering
 {
     /// <summary>
     /// One utility class used to access or modify filter related 

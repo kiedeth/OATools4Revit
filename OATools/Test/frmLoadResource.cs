@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Autodesk.Revit.UI;
 
-namespace OATools.Test
+namespace OATools2018.Test
 {
     public partial class frmLoadResource : Form
     {
@@ -27,7 +27,7 @@ namespace OATools.Test
 
                 System.Reflection.Assembly thisExe;
                 thisExe = System.Reflection.Assembly.GetExecutingAssembly();
-                System.IO.Stream file = thisExe.GetManifestResourceStream("OATools.Resources.bmp.bmp_32x32_initialize.bmp");
+                System.IO.Stream file = thisExe.GetManifestResourceStream("OATools2018.Resources.bmp.bmp_32x32_initialize.bmp");
                 this.picbxTest1.Image = Image.FromStream(file);
 
                 //picbxTest1.Image = bmpTest1;

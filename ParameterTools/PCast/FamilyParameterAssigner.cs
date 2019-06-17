@@ -29,9 +29,9 @@ using System.Reflection;
 
 using Autodesk.Revit;
 using Autodesk.Revit.DB;
-using OATools.ParameterTools;
+using OATools2018.ParameterTools;
 
-namespace OATools.ParameterTools.PCast
+namespace OATools2018.ParameterTools.PCast
 {
    /// <summary>
    /// add parameters(family parameters/shared parameters) to the opened family file
@@ -41,8 +41,8 @@ namespace OATools.ParameterTools.PCast
    {
         //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
-        static string fileName = "OATools_pCast_mySet_dump";
+        static string directory = appData + "/Autodesk/Revit/Addins/2018/OATools2018.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools2018
+        static string fileName = "OATools2018_pCast_mySet_dump";
         static string fileType = "txt";
         public static string mySetDumpFile = directory + "/" + fileName + "." + fileType;
 

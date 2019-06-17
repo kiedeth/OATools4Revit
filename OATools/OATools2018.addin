@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  
+  <AddIn Type="Application">
+    <Name>OA Tools</Name>
+    <Assembly>.\OATools2018.bundle\Contents\Ribbon.dll</Assembly>
+    <AddInId>604b1052-f742-4951-8576-c261d1993108</AddInId>
+    <FullClassName>Ribbon.App</FullClassName>
+    <VendorId>NAME</VendorId>
+    <VendorDescription>Your Company Information</VendorDescription>
+  </AddIn>
+
+</RevitAddIns>
+
+
+
+
+
+<!--<AddIn Type="Command">
+    <Text>Place Family</Text>
+    <Description>Some description for OATools2018</Description>
+    <Assembly>.\OATools2018.bundle\Contents\OATools2018.dll</Assembly>
+    <FullClassName>OATools2018.Commands.CmdPlaceFamilyInstance</FullClassName>
+    <ClientId>65e64740-c363-45de-b13a-fa53cfad9c31</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Load Family</Text>
+    <Description>Some description for OATools2018</Description>
+    <Assembly>.\OATools2018.bundle\Contents\OATools2018.dll</Assembly>
+    <FullClassName>OATools2018.Commands.cmdLoadFamilyFromFile</FullClassName>
+    <ClientId>4B602285-3F8B-4B98-9DFD-2A3DF5790B06</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Set Parameters</Text>
+    <Description>Some description for OATools2018</Description>
+    <Assembly>.\OATools2018.bundle\Contents\OATools2018.dll</Assembly>
+    <FullClassName>OATools2018.Commands.SetFamilyParams</FullClassName>
+    <ClientId>EAA7E4D0-A279-4404-A83F-77D3745F113D</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Create SP</Text>
+    <Description>Some description for OATools2018</Description>
+    <Assembly>.\OATools2018.bundle\Contents\OATools2018.dll</Assembly>
+    <FullClassName>OATools2018.Commands.CmdCreateSharedParams</FullClassName>
+    <ClientId>82636034-B708-4757-87F6-C8929670B1F6</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Show IDs</Text>
+    <Description>Some description for OATools2018</Description>
+    <Assembly>.\OATools2018.bundle\Contents\OATools2018.dll</Assembly>
+    <FullClassName>OATools2018.Commands.CmdGetElementIds</FullClassName>
+    <ClientId>E0760E01-BA87-44CB-8F81-65FF78EE94FB</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Show Parameter Info</Text>
+    <Description>Some description for OATools2018</Description>
+    <Assembly>.\OATools2018.bundle\OATools2018.dll</Assembly>
+    <FullClassName>OATools2018.Commands.CmdShowParamerInfo</FullClassName>
+    <ClientId>7B49907B-E420-4074-B36C-7DE686482874</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>-->
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>-->
+  
+  <!--<AddIn Type="Application">
+    <Name>Application OATools2018</Name>
+    <Assembly>OATools2018.dll</Assembly>
+    <FullClassName>OATools2018.App</FullClassName>
+    <ClientId>0f8780c2-68e8-46ba-96f6-db7a9f66c987</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>-->
+  
+  <!--<AddIn Type="Command">
+    <Text>Command OATools2018</Text>
+    <Description>Some description for OATools2018</Description>
+    <Assembly>OATools2018.dll</Assembly>
+    <FullClassName>OATools2018.Command</FullClassName>
+    <ClientId>65e64740-c363-45de-b13a-fa53cfad9c31</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>-->
+
+<!--</RevitAddIns>-->

@@ -7,7 +7,7 @@ using Autodesk.Revit;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace OATools.Filtering
+namespace OATools2018.Filtering
 {
     /// <summary>
     /// To add an external command to Autodesk Revit, 

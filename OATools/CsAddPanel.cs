@@ -8,7 +8,7 @@
 //using System.Collections.Generic;
 
 
-//namespace OATools
+//namespace OATools2018
 //{
 //   /// <remarks>
 //   /// This application's main class. The class must be Public.
@@ -28,7 +28,7 @@
 //         // Create a push button to trigger a command add it to the ribbon panel.
 //         string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
 //         PushButtonData buttonData = new PushButtonData("cmdHelloWorld",
-//            "Say Hello", thisAssemblyPath, "OATools.HelloWorld");
+//            "Say Hello", thisAssemblyPath, "OATools2018.HelloWorld");
 
 //         PushButton pushButton = ribbonPanel.AddItem(buttonData) as PushButton;
 
@@ -37,7 +37,7 @@
 //         pushButton.ToolTip = "Say hello to the entire world.";
 
 //         // b) large bitmap
-//         Uri uriImage = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-grid.ico");
+//         Uri uriImage = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools2018\OATools2018\Resources\Icons\icon-grid.ico");
 //         BitmapImage largeImage = new BitmapImage(uriImage);
 //         pushButton.LargeImage = largeImage;
 
@@ -64,4 +64,4 @@
 //         return Autodesk.Revit.UI.Result.Succeeded;
 //      }
 //   }
-//}//OATools
+//}//OATools2018

@@ -7,11 +7,11 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using OATools.Utilities;
+using OATools2018.Utilities;
 using Autodesk.Revit.UI.Selection;
 #endregion // Namespaces
 
-namespace OATools.Electrical
+namespace OATools2018.Electrical
 {
     class cmdCreateViewFilter
     {

@@ -1,4 +1,4 @@
-﻿namespace OATools.Settings
+﻿namespace OATools2018.Settings
 {
     partial class frmSettings
     {

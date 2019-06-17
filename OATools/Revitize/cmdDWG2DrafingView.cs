@@ -5,7 +5,7 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using OATools.Utilities;
+using OATools2018.Utilities;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
@@ -14,15 +14,15 @@ using System.Windows.Forms;
 using System.IO;
 #endregion // Namespaces
 
-namespace OATools.Revitize
+namespace OATools2018.Revitize
 {
     [Transaction(TransactionMode.Manual)]
     class cmdDWG2DrafingView : IExternalCommand
     {
         //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
-        static string fileName = "OATools_Settings";
+        static string directory = appData + "/Autodesk/Revit/Addins/2018/OATools2018.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools2018
+        static string fileName = "OATools2018_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
 

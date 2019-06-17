@@ -12,19 +12,19 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using OATools.Utilities;
-using OATools;
-using OATools.ParameterTools;
+using OATools2018.Utilities;
+using OATools2018;
+using OATools2018.ParameterTools;
 using System.IO;
 
-namespace OATools.ParameterTools.PCast
+namespace OATools2018.ParameterTools.PCast
 {
     public partial class frmPCast : System.Windows.Forms.Form
     {
         //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
-        static string fileName = "OATools_pCast_mySet_dump";
+        static string directory = appData + "/Autodesk/Revit/Addins/2018/OATools2018.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools2018
+        static string fileName = "OATools2018_pCast_mySet_dump";
         static string fileType = "txt";
         static string mySetDumpFile = directory + "/" + fileName + "." + fileType;
 
@@ -61,6 +61,8 @@ namespace OATools.ParameterTools.PCast
             InitializeComponent();
 
             m_app = commandData.Application;
+
+            this.Text = "pCaster by O'BrienAtkins, PA";
 
             //Clear out any misc. data
             PerformReset();
@@ -352,6 +354,19 @@ namespace OATools.ParameterTools.PCast
         {
             //create a filter and use the textbox text to filter by
             bs_selectedTemplateSet.Filter = string.Format("Name LIKE '*{0}*'", tbxParameterSearch.Text);
+
+            //string rowFilter = string.Format("[{0}] = '{1}'", "Name", tbxParameterSearch.Text);
+            //(dgvParameters.DataSource as DataTable).DefaultView.RowFilter = rowFilter;
+
+            //(dgvParameters.DataSource as DataTable).DefaultView.RowFilter = 
+            //    string.Format("Name LIKE '{0}%' OR Name LIKE '% {0}%'",tbxParameterSearch.Text);
+        }
+
+        //The ParameterFromFile Search box
+        private void tbxParameterFromFileSearch_TextChanged(object sender, EventArgs e)
+        {
+            (dgvParametersFromFile.DataSource as DataTable).DefaultView.RowFilter =
+                string.Format("Name LIKE '{0}%' OR Name LIKE '% {0}%'", tbxParameterFromFileSearch.Text);
         }
 
         //Add to mySet button
@@ -462,27 +477,31 @@ namespace OATools.ParameterTools.PCast
         private void btnCreateBackup_Click(object sender, EventArgs e)
         {
             SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "Text File|*.txt";
+            dialog.Filter = "pCast Template|*.pct";
             var result = dialog.ShowDialog();
             if (result != DialogResult.OK)
                 return;
 
-            // setup for export
-            dgvMySet.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dgvMySet.SelectAll();
-            // hiding row headers to avoid extra \t in exported text
-            var rowHeaders = dgvMySet.RowHeadersVisible;
-            dgvMySet.RowHeadersVisible = false;
+            System.IO.File.Copy(verifiedPCastTemplate, dialog.FileName, true);
 
-            // ! creating text from grid values
-            string content = dgvMySet.GetClipboardContent().GetText();
+            MessageBox.Show(@"The pCast file was created at " + dialog.FileName + ".");
 
-            // restoring grid state
-            dgvMySet.ClearSelection();
-            dgvMySet.RowHeadersVisible = rowHeaders;
+            //// setup for export
+            //dgvMySet.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            //dgvMySet.SelectAll();
+            //// hiding row headers to avoid extra \t in exported text
+            //var rowHeaders = dgvMySet.RowHeadersVisible;
+            //dgvMySet.RowHeadersVisible = false;
 
-            System.IO.File.WriteAllText(dialog.FileName, content);
-            MessageBox.Show(@"Text file was created.");
+            //// ! creating text from grid values
+            //string content = dgvMySet.GetClipboardContent().GetText();
+
+            //// restoring grid state
+            //dgvMySet.ClearSelection();
+            //dgvMySet.RowHeadersVisible = rowHeaders;
+
+            //System.IO.File.WriteAllText(dialog.FileName, content);
+            //MessageBox.Show(@"Text file was created.");
         }
 
         //Create a dataTable from dgvMySet
@@ -524,11 +543,20 @@ namespace OATools.ParameterTools.PCast
 
         //Clear mySet button
         private void btnClearMySet_Click(object sender, EventArgs e)
-        {
-            //Clear mySet dgv
-            dgvMySet.DataSource = null;
-            dgvMySet.Rows.Clear();
-            dgvMySet.Refresh();
+        {            
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you would like to clear MySet?", "Clear MySet?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //Clear mySet dgv
+                dgvMySet.DataSource = null;
+                dgvMySet.Rows.Clear();
+                dgvMySet.Refresh();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
         }
 
         //add the parameters to memory to be written to a template
@@ -661,7 +689,7 @@ namespace OATools.ParameterTools.PCast
             }
             else
             {
-                TaskDialog.Show("pCast", "The operation faild Error Code:2212");
+                TaskDialog.Show("pCast", "The operation faild Error:2212");
             }
         }
 
@@ -696,6 +724,28 @@ namespace OATools.ParameterTools.PCast
 
 
 
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TaskDialog.Show("Error!", "Feature not enabled yet. \n Pay $19.99 to enable.");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxTemplateFileLocation_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

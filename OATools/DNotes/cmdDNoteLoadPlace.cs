@@ -8,22 +8,22 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System.Text;
 using System.Threading.Tasks;
-using OATools.Main;
+using OATools2018.Main;
 using System.IO;
 using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI.Selection;
-using OATools.Utilities;
-using OAToolsUpdater;
+using OATools2018.Utilities;
+using OATools2018Updater;
 
-namespace OATools.DNotes
+namespace OATools2018.DNotes
 {
     [Transaction(TransactionMode.Manual)]
     public class cmdDNoteLoadPlace : IExternalCommand
     {
         //Set some static vars
         static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
-        static string fileName = "OATools_Settings";
+        static string directory = appData + "/Autodesk/Revit/Addins/2018/OATools2018.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools2018
+        static string fileName = "OATools2018_Settings";
         static string fileType = "ini";
         public static string path = directory + "/" + fileName + "." + fileType;
 
@@ -48,7 +48,7 @@ namespace OATools.DNotes
         /// </summary>
         const string _family_ext = "rfa";
 
-        //C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\OATools\fsDNote.rfa
+        //C:\Users\jschaad\documents\visual studio 2015\Projects\OATools2018\OATools2018\OATools2018\fsDNote.rfa
 
 
 
@@ -125,7 +125,7 @@ namespace OATools.DNotes
                         //  + "family file '{0}' exists in '{1}'.",
                         //  FamilyName, _family_folder));
 
-                        OAToolsUpdater.Updater c2 = new Updater();
+                        OATools2018Updater.Updater c2 = new Updater();
                         bool success2 = c2.getDNoteFile();
 
                         if (!success2)

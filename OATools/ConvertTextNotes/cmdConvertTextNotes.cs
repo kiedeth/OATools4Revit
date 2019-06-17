@@ -9,7 +9,7 @@ using Autodesk.Revit;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace OATools.ConvertTextNotes
+namespace OATools2018.ConvertTextNotes
 {
 
     [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]

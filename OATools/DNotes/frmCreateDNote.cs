@@ -18,9 +18,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OATools.Utilities;
+using OATools2018.Utilities;
 
-namespace OATools.DNotes
+namespace OATools2018.DNotes
 {
     public partial class frmCreateDNote : System.Windows.Forms.Form
     {

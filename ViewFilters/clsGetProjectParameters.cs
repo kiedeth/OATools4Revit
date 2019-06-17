@@ -2,7 +2,7 @@
 //
 // CmdProjectParameterGuids.cs - determine and report all project parameter GUIDs
 //
-// Copyright (C) 2015-2017 by CoderBoy and Jeremy Tammik, Autodesk Inc. All rights reserved.
+// Copyright (C) 2015-2018 by CoderBoy and Jeremy Tammik, Autodesk Inc. All rights reserved.
 //
 // Keywords: The Building Coder Revit API C# .NET add-in.
 //
@@ -23,7 +23,7 @@ using System.Windows;
 using System.Windows.Forms;
 #endregion // Namespaces
 
-namespace OATools.ViewFilters
+namespace OATools2018.ViewFilters
 {
 
     class clsGetProjectParameters

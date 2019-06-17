@@ -13,14 +13,14 @@ using System.Linq;
 using System.Collections;
 #endregion // Namespaces
 
-namespace OATools.ParameterTools
+namespace OATools2018.ParameterTools
 {
     class clsWriteParametersToFile
     {
         ////Set some static vars
         //static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-        //static string directory = appData + "/Autodesk/Revit/Addins/2017/OAToolsForRevit2017.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
-        //static string fileName = "OATools_pCast_mySet_dump";
+        //static string directory = appData + "/Autodesk/Revit/Addins/2018/OATools2018.bundle/Additional"; //this gives C:\Users\<userName>\AppData\Roaming\OATools2018
+        //static string fileName = "OATools2018_pCast_mySet_dump";
         //static string fileType = "txt";
         //public static string mySetDumpFile = directory + "/" + fileName + "." + fileType;
 
@@ -80,6 +80,8 @@ namespace OATools.ParameterTools
 
                 for (int j = 0; j < m_colCount; j++)
                 {
+                    myArray[i, 3] = convertParameter(myArray[i, 3]);
+
                     string dataType = myArray[i, 3];
 
                     sw.Write(myArray[i, j] + "\t");
@@ -101,13 +103,21 @@ namespace OATools.ParameterTools
         {
             return string.Concat(str.Select((x, i) => i > 0 && char.IsUpper(x) ? "_" + x.ToString() : x.ToString())).ToLower();
         }
+
+        private string convertParameter(string param)
+        {
+            if (param == ParameterType.HVACAirflow.ToString()) param = "HVAC_AIR_FLOW";
+
+            return param;
+        }
+
     }
 }
 
 
 //private bool writeParameters(string[,] myArray)
 //{
-//    FileStream file = new FileStream("C:/Users/jschaad/Desktop/oaTools/pCastTest.txt", FileMode.Append, FileAccess.Write);
+//    FileStream file = new FileStream("C:/Users/jschaad/Desktop/OATools2018/pCastTest.txt", FileMode.Append, FileAccess.Write);
 
 //    StreamWriter sw = new StreamWriter(file);
 

@@ -8,9 +8,9 @@ using Autodesk.Revit;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using OATools.Utilities;
+using OATools2018.Utilities;
 
-namespace OATools.ViewFilters
+namespace OATools2018.ViewFilters
 {
     /// <summary>
     /// To add an external command to Autodesk Revit, 

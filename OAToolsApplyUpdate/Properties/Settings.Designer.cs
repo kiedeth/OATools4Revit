@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OAToolsApplyUpdate.Properties
+namespace OATools2018ApplyUpdate.Properties
 {
 
 

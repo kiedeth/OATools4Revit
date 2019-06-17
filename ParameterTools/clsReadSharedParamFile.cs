@@ -13,7 +13,7 @@ using System.Linq;
 using System.Collections;
 #endregion // Namespaces
 
-namespace OATools.ParameterTools
+namespace OATools2018.ParameterTools
 {
 
     public static class clsReadSharedParamFile

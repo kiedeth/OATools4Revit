@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OATools")]
+[assembly: AssemblyTitle("OATools2018")]
 [assembly: AssemblyDescription("Revit Add-In")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Autodesk Inc.")]
-[assembly: AssemblyProduct("OATools Revit C# .NET Add-In")]
-[assembly: AssemblyCopyright("Copyright 2016 (C) Jeremy Tammik, Autodesk Inc.")]
+[assembly: AssemblyCompany("O'Brien/Atkins Associates, PA")]
+[assembly: AssemblyProduct("OATools2018 Revit C# .NET Add-In")]
+[assembly: AssemblyCopyright("Copyright 2019 (C) O'Brien/Atkins Associates, PA")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("321044f7-b0b2-4b1c-af18-e71a19252be0")]
+[assembly: Guid("321055f7-b0b2-4b1c-af18-e71a19252be0")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,11 +32,11 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.0.1")]
-[assembly: AssemblyFileVersion("0.0.0.1")]
+[assembly: AssemblyVersion("18.0.0.1")]
+[assembly: AssemblyFileVersion("18.0.0.1")]
 
 
 
 
-//copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2017"
-//copy "$(ProjectDir)bin\x64\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2017"
+//copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2018"
+//copy "$(ProjectDir)bin\x64\debug\*.dll" "$(AppData)\Autodesk\REVIT\Addins\2018"

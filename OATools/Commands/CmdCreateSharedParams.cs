@@ -4,7 +4,7 @@
 //// parameter for the doors, walls, inserted DWG,
 //// model groups, and model lines.
 ////
-//// Copyright (C) 2009-2017 by Jeremy Tammik,
+//// Copyright (C) 2009-2018 by Jeremy Tammik,
 //// Autodesk Inc. All rights reserved.
 ////
 //// Keywords: The Building Coder Revit API C# .NET add-in.
@@ -20,10 +20,10 @@
 //using Autodesk.Revit.Attributes;
 //using Autodesk.Revit.DB;
 //using Autodesk.Revit.UI;
-//using OATools.Utilities;
+//using OATools2018.Utilities;
 //#endregion // Namespaces
 
-//namespace OATools.Commands
+//namespace OATools2018.Commands
 //{
 //    [Transaction(TransactionMode.Manual)]
 //    class CmdCreateSharedParams : IExternalCommand
@@ -31,9 +31,9 @@
 
 //        //Set some static vars
 //        static string appData = Environment.ExpandEnvironmentVariables("%appdata%"); //this gives C:\Users\<userName>\AppData\Roaming
-//        static string directory = appData + "/OAToolsForRevit2017.bundle/"; //this gives C:\Users\<userName>\AppData\Roaming\OATools
+//        static string directory = appData + "/OATools2018.bundle/"; //this gives C:\Users\<userName>\AppData\Roaming\OATools2018
 
-//        static string _filename = directory + "OAToolsForRevit2017.SharedParameters.txt";
+//        static string _filename = directory + "OATools2018.SharedParameters.txt";
 //        const string _groupname = "OA Tools Parameters";
 //        const string _defname = "Emergency_Circut";
 //        ParameterType _deftype = ParameterType.YesNo;

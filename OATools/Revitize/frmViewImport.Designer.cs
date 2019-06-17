@@ -1,4 +1,4 @@
-﻿namespace OATools.Revitize
+﻿namespace OATools2018.Revitize
 {
     partial class frmViewImport
     {
@@ -42,7 +42,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::OATools.Properties.Resources.oba_orange_square_160;
+            this.pictureBox1.Image = global::OATools2018.Properties.Resources.oba_orange_square_160;
             this.pictureBox1.Location = new System.Drawing.Point(982, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);

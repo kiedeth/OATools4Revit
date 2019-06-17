@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using OATools;
+using OATools2018;
 
-namespace OATools.Utilities
+namespace OATools2018.Utilities
 {
     public class clsLoadIcon
     {

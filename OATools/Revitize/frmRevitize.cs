@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OATools.Revitize
+namespace OATools2018.Revitize
 {
     public partial class frmRevitize : Form
     {
@@ -39,7 +39,7 @@ namespace OATools.Revitize
                 ////get the location of the assembly
                 //_assembly = Assembly.GetExecutingAssembly();
                 ////test to see if a icon can be loaded
-                //_imageStream = _assembly.GetManifestResourceStream("OATools.bmp-file.bmp");
+                //_imageStream = _assembly.GetManifestResourceStream("OATools2018.bmp-file.bmp");
 
                 //pictureBox2.Image = new Bitmap(_imageStream);
 
@@ -47,7 +47,7 @@ namespace OATools.Revitize
                 System.Drawing.Icon icnTask;
                 System.IO.Stream st;
                 System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
-                st = a.GetManifestResourceStream("OATools.Resources.Icons.icon-text.ico");
+                st = a.GetManifestResourceStream("OATools2018.Resources.Icons.icon-text.ico");
                 icnTask = new System.Drawing.Icon(st);
 
 

@@ -7,7 +7,7 @@
 //using Autodesk.Revit.UI.Events;
 //using System.Collections.Generic;
 
-//namespace OATools
+//namespace OATools2018
 //{
 //    /// <remarks>
 //    /// This creates the custom Tab and adds the Ribbon and buttons to it.
@@ -32,11 +32,11 @@
 
 //            // Create 1st push button to trigger a command add it to the ribbon panel.
 //            PushButtonData buttonData1 = new PushButtonData("cmdHelloWorld",
-//               "Say Hello", thisAssemblyPath, "OATools.clsHelloWorld");
+//               "Say Hello", thisAssemblyPath, "OATools2018.clsHelloWorld");
 
 //            // Create 2nd push button to trigger a command add it to the ribbon panel.
 //            PushButtonData buttonData2 = new PushButtonData("cmdConvertTextNotes",
-//               "Text To Upper", thisAssemblyPath, "OATools.ConvertTextNotes.cmdConvertTextNotes");
+//               "Text To Upper", thisAssemblyPath, "OATools2018.ConvertTextNotes.cmdConvertTextNotes");
 
 
 //            //Adds the button to the ribbon
@@ -46,14 +46,14 @@
 
 //            // Button #1
 //            pushButton1.ToolTip = "Convert all text notes to uppercase text.";
-//            Uri uriImage1 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-home.ico");
+//            Uri uriImage1 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools2018\OATools2018\Resources\Icons\icon-home.ico");
 //            BitmapImage largeImage1 = new BitmapImage(uriImage1);
 //            pushButton1.LargeImage = largeImage1;
 
 
 //            // Button #2
 //            pushButton2.ToolTip = "Convert all text notes to uppercase text.";
-//            Uri uriImage2 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-text.ico");
+//            Uri uriImage2 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools2018\OATools2018\Resources\Icons\icon-text.ico");
 //            BitmapImage largeImage2 = new BitmapImage(uriImage2);
 //            pushButton2.LargeImage = largeImage2;
 
@@ -63,11 +63,11 @@
 
 //            // Create 1st push button to trigger a command add it to the ribbon panel.
 //            PushButtonData buttonData3 = new PushButtonData("cmdDNote",
-//               "Place DNote", thisAssemblyPath, "OATools.DNoter.cmdDNoter");
+//               "Place DNote", thisAssemblyPath, "OATools2018.DNoter.cmdDNoter");
 
 //            // Create 2nd push button to trigger a command add it to the ribbon panel.
 //            PushButtonData buttonData4 = new PushButtonData("cmdDLegend",
-//               "DNote Legend", thisAssemblyPath, "OATools.DNoter.cmdCreateDNote");
+//               "DNote Legend", thisAssemblyPath, "OATools2018.DNoter.cmdCreateDNote");
 
 
 //            //Adds the button to the ribbon
@@ -77,17 +77,17 @@
 
 //            // Button #1
 //            pushButton3.ToolTip = "Convert all text notes to uppercase text.";
-//            Uri uriImage3 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-home.ico");
+//            Uri uriImage3 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools2018\OATools2018\Resources\Icons\icon-home.ico");
 //            BitmapImage largeImage3 = new BitmapImage(uriImage1);
 //            pushButton3.LargeImage = largeImage3;
 
 
 //            // Button #2
 //            pushButton4.ToolTip = "Convert all text notes to uppercase text.";
-//            Uri uriImage4 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools\OATools\Resources\Icons\icon-text.ico");
+//            Uri uriImage4 = new Uri(@"C:\Users\jschaad\documents\visual studio 2015\Projects\OATools2018\OATools2018\Resources\Icons\icon-text.ico");
 //            BitmapImage largeImage4 = new BitmapImage(uriImage2);
 //            pushButton4.LargeImage = largeImage4;
 
 //        }
 //    }
-//}//OATools
+//}//OATools2018

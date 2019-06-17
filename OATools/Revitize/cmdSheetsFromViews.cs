@@ -32,7 +32,7 @@ using Autodesk.Revit;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace OATools.Revitize
+namespace OATools2018.Revitize
 {
     /// <summary>
     /// Implements the Revit add-in interface IExternalCommand

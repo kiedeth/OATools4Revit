@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OAToolsUpdater")]
-[assembly: AssemblyDescription("Revit Add-In Description for OAToolsUpdater")]
+[assembly: AssemblyTitle("OATools2018Updater")]
+[assembly: AssemblyDescription("Revit Add-In Description for OATools2018Updater")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Autodesk Inc.")]
-[assembly: AssemblyProduct("OAToolsUpdater Revit C# .NET Add-In")]
+[assembly: AssemblyProduct("OATools2018Updater Revit C# .NET Add-In")]
 [assembly: AssemblyCopyright("Copyright 2016 (C) Jeremy Tammik, Autodesk Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2017.0.0.0")]
-[assembly: AssemblyFileVersion("2017.0.0.0")]
+[assembly: AssemblyVersion("2018.0.0.0")]
+[assembly: AssemblyFileVersion("2018.0.0.0")]

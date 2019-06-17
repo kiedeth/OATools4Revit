@@ -32,7 +32,7 @@ using System.IO;
 
 using Autodesk.Revit.DB;
 
-namespace OATools.ViewFilters
+namespace OATools2018.ViewFilters
 {
     /// <summary>
     /// Form used to create new filter

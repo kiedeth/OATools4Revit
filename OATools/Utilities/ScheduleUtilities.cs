@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OATools.Utilities
+namespace OATools2018.Utilities
 {
     class ScheduleUtilities
     {

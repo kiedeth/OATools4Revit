@@ -25,11 +25,9 @@ namespace Ribbon
             Document doc = uidoc.Document;
 
             // Access current selection
-
             Selection sel = uidoc.Selection;
 
             // Retrieve elements from database
-
             FilteredElementCollector col
               = new FilteredElementCollector(doc)
                 .WhereElementIsNotElementType()
@@ -44,7 +42,6 @@ namespace Ribbon
             }
 
             // Modify document within a transaction
-
             using (Transaction tx = new Transaction(doc))
             {
                 tx.Start("Transaction Name");
@@ -54,4 +51,5 @@ namespace Ribbon
             return Result.Succeeded;
         }
     }
+
 }

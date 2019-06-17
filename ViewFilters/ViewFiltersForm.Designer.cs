@@ -21,7 +21,7 @@
 //
 
 
-namespace OATools.ViewFilters
+namespace OATools2018.ViewFilters
 {
     partial class ViewFiltersForm
    {

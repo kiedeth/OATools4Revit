@@ -28,7 +28,7 @@ using System.Text;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace OATools.Revitize
+namespace OATools2018.Revitize
 {
     /// <summary>
     /// Utilities that facilitate duplication of drafting views and schedules into another document.
